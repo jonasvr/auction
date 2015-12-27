@@ -1,0 +1,27 @@
+database benodigheden:
+
+user
+	*naam 
+	*voornaam 
+	*adres 
+	*email
+	*geboortedatum
+
+Art
+	*user_id
+	*prijs
+	*Era
+	*omschrijving
+	*ending
+
+
+FAQ
+	*tag_id
+	*categorie_id
+	*vraag
+	*antwoord
+
+auctions
+
+	*tijd
+	
