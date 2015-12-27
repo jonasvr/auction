@@ -1,18 +1,34 @@
  .carousel-inner > .item > img,
   .carousel-inner > .item > a > img {
-      width: 70%;
+      width: 80%;
       margin: auto;
   }
+
+
+
+  .carousel-inner > .item > .carousel-caption
+  {
+  	background-color: rgba(56, 62, 130, 0.7);
+  	/*http://stackoverflow.com/questions/637921/opacity-of-background-color-but-not-the-text*/
+  }
+  
 
  .carousel
  {
  	min-height: 85%;
  }
 
-.carousel-control
+.carousel .carousel-control
 {
 	height: 50px;
-	width: 10px;
+	width: 40px;
+	top: 48%;
+}
+
+.carousel .carousel-control.left,.carousel  .carousel-control.right 
+{  
+    background-image: none;
+    background-color: #a2a29b;
 }
 
 

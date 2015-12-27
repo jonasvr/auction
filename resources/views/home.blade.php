@@ -27,7 +27,6 @@
     <div class="item active">
       <img src="img/1.jpg" alt="Chania">
       <div class="carousel-caption">
-        <h3>Chania</h3>
         <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
       </div>
     </div>
@@ -35,7 +34,6 @@
     <div class="item">
       <img src="img/2.jpg" alt="Chania">
       <div class="carousel-caption">
-        <h3>Chania</h3>
         <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
       </div>
     </div>
@@ -43,7 +41,6 @@
     <div class="item">
       <img src="img/3.jpg" alt="Flower">
       <div class="carousel-caption">
-        <h3>Flowers</h3>
         <p>Beatiful flowers in Kolymbari, Crete.</p>
       </div>
     </div>
@@ -51,7 +48,6 @@
     <div class="item">
       <img src="img/4.jpg" alt="Flower">
       <div class="carousel-caption">
-        <h3>Flowers</h3>
         <p>Beatiful flowers in Kolymbari, Crete.</p>
       </div>
     </div>
