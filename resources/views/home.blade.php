@@ -98,16 +98,19 @@
   <p class="introTitle">most popular this week?</p>
   <div class="row">
     <div class="less col-md-4">
-      <div class="row">
-        <img src="/img/6.jpg">
-      </div>
-      <div class="row">
-        <img src="/img/7.jpg">
-      </div>
+        <a class="image row"  href="#">
+        <span class="rollover" ></span>
+        <img class="imgborder" alt="" src="img/6.jpg">      
+      </a>
+        <a class="image row"  href="#">
+        <span class="rollover" ></span>
+        <img class="imgborder" alt="" src="img/7.jpg">      
+      </a>
     </div>
-    <div class="most col-md-6">
-      <img src="/img/5.jpg">
-    </div>
+    <a class="image most col-md-6"  href="#">
+      <span class="rollover" ></span>
+      <img class="imgborder" alt="" src="img/5.jpg">      
+    </a>
   </div>
 </div>
 @endsection
