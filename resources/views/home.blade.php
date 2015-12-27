@@ -64,7 +64,52 @@
   </a>
 </div>
 
+<div id="intro">
+ <p class="introTitle">how does it work?</p>
+  <div class="row">
 
+    <div class="col-md-offset-2 col-md-2">
+      <img src="img/intro1.png">
+      <h3> Sign up  </h3> 
+      <div class="introText">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+      </div>
+    </div>
+    <div class="col-md-offset-1 col-md-2">
+      <img src="img/intro2.png">
+      <h3> Make deals  </h3> 
+      <div class="introText">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+      </div>
+    </div>
+    <div class="col-md-offset-1 col-md-2">
+       <img src="img/intro3.png">
+      
+       <h3> Everyone happy  </h3> 
+      <div class="introText">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="popular">
+  <p class="introTitle">most popular this week?</p>
+  <div class="row">
+    <div class="less col-md-4">
+      <div class="row">
+        <img src="/img/6.jpg">
+      </div>
+      <div class="row">
+        <img src="/img/7.jpg">
+      </div>
+    </div>
+    <div class="most col-md-6">
+      <img src="/img/5.jpg">
+    </div>
+  </div>
+</div>
 @endsection
 
  

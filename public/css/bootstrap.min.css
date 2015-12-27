@@ -2,8 +2,12 @@
   .carousel-inner > .item > a > img {
       width: 80%;
       margin: auto;
+      max-height: 80%;
   }
-
+.carousel, .carousel-inner
+{
+	max-height: 85%;
+}
 
 
   .carousel-inner > .item > .carousel-caption
@@ -88,6 +92,33 @@
 {
 	color: #5c5c5c;
 }
+
+#intro, #popular
+{
+	/*position: relative;*/
+	padding: 20px 0; 
+	text-align: center;
+}
+
+#intro .introTitle, #popular .introTitle
+{
+	color: #0a1e75;
+	text-transform: capitalize;
+	font-size: 40px;
+	padding-bottom: 10px;
+}
+
+#popular
+{
+	height: 400px;
+}
+
+#popular .most img
+{
+	min-width: 100%;
+}
+
+
 /*!
  * Bootstrap v3.3.6 (http://getbootstrap.com)
  * Copyright 2011-2015 Twitter, Inc.
