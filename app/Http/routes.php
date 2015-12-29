@@ -31,3 +31,6 @@ Route::get('/detail', function(){
 Route::get('/faq', function(){
 	return View('FAQ');
 });
+Route::get('/isearch', function(){
+	return View('isearch');
+});
