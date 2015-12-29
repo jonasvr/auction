@@ -3,13 +3,7 @@
 @section('title')
     auction
 @endsection
-<style>
-  .carousel-inner > .item > img,
-  .carousel-inner > .item > a > img {
-      width: 70%;
-      margin: auto;
-  }
-  </style>
+
 
 @section('container')   
 
@@ -69,20 +63,20 @@
   <div class="row">
 
     <div class="col-md-offset-2 col-md-2">
-      <img src="img/intro1.png">
+      <img src="img/intro1.png" class="img-responsive">
       <h3> Sign up  </h3> 
       <div class="introText">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
       </div>
     </div>
     <div class="col-md-offset-1 col-md-2">
-      <img src="img/intro2.png">
+      <img src="img/intro2.png" class="img-responsive">
       <h3> Make deals  </h3> 
       <div class="introText">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
       </div>
     </div>
-    <div class="col-md-offset-1 col-md-2">
+    <div class="col-md-offset-1 col-md-2" class="img-responsive">
        <img src="img/intro3.png">
       
        <h3> Everyone happy  </h3> 
@@ -97,19 +91,19 @@
 <div id="popular">
   <p class="introTitle">most popular this week?</p>
   <div class="row">
-    <div class="less col-md-4">
+    <div class="less col-md-offset-1 col-md-3">
         <a class="image row"  href="#">
         <span class="rollover" ></span>
-        <img class="imgborder" alt="" src="img/6.jpg">      
+        <img class="imgborder img-responsive" alt="" src="img/6.jpg">      
       </a>
-        <a class="image row"  href="#">
+      <a class="image row"  href="#">
         <span class="rollover" ></span>
-        <img class="imgborder" alt="" src="img/7.jpg">      
+        <img class="imgborder img-responsive" alt="" src="img/7.jpg">      
       </a>
     </div>
     <a class="image most col-md-6"  href="#">
       <span class="rollover" ></span>
-      <img class="imgborder" alt="" src="img/5.jpg">      
+      <img class="imgborder img-responsive" alt="" src="img/5.jpg">      
     </a>
   </div>
 </div>

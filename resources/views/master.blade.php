@@ -31,8 +31,8 @@
               <form class="navbar-form" role="search">
               <div class="input-group">
                   <input type="text" class="form-control" placeholder="Search" name="q">
-                  <div class="input-group-btn">
-                      <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+                  <div class="input-group-addon">
+                      <button class="glyphicon glyphicon-search" type="submit"></button>
                   </div>
               </div>
               </form>
@@ -85,9 +85,9 @@
   </div>
 
 
-  <div class="container text-center">
+  <div class="container text-left text-capitalize">
       <hr />
-    <div class="row footer">
+    <div class="row footer ">
       <div class="col-lg-12">
         <div class="col-md-3">
           <ul class="nav nav-pills nav-stacked">
