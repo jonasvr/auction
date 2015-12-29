@@ -82,6 +82,21 @@
 {
 	color: #5c5c5c;
 }
+/*header-----------------------------*/
+
+.detailHead
+{
+	background-image:url('/img/1.jpg');
+    background-repeat:no-repeat;
+    background-size:cover;
+    min-height: 350px;
+}
+
+.path
+{
+	padding-top: 20px;
+}
+
 
 /*homepage---------------------------*/
 .carousel-inner > .item > img,
@@ -178,13 +193,7 @@ span.rollover:hover {
 
 /*details----------------------------------*/
 
-.detailHead
-{
-	background-image:url('/img/1.jpg');
-    background-repeat:no-repeat;
-    background-size:cover;
-    min-height: 350px;
-}
+
 
 
 .detailInfo-blue
@@ -274,3 +283,35 @@ span.rollover:hover {
 	margin-top: 0;
 	margin-bottom: 0;
 } 
+
+
+/*questions------------------------------*/
+
+.FAQ .awnsers .question
+{
+	padding-top:25px;
+	
+}
+
+.FAQ .awnsers .Q, .FAQ .awnsers .A
+{
+	font-size: 25px;
+	padding-top:0;
+}
+
+.FAQ .awnsers .QT
+{
+	font-size:20px; 
+	
+}
+
+.FAQ .awnsers .AT
+{
+	font-size:17px; 
+	
+}
+
+.FAQ
+{
+	margin-bottom: 40px;
+}

@@ -27,3 +27,7 @@ Route::post('/register', 'Auth\AuthController@postRegister');
 Route::get('/detail', function(){
 	return View('detail');
 });
+
+Route::get('/faq', function(){
+	return View('FAQ');
+});
