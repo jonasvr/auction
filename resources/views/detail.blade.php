@@ -30,7 +30,7 @@
     <!-- data links images -->
       <div class="detailDataBlock row">
         <div class="col-md-offset-2 col-md-6 detailImages">
-          <div class="row">
+          <div class="row white-overlay">
             <img src="/img/1.jpg" class="col-md-12 img-responsive">
             <img src="/img/1.jpg" class="col-md-4 img-responsive">
             <img src="/img/1.jpg" class="col-md-4 img-responsive">
