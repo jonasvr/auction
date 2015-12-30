@@ -92,19 +92,33 @@
   <p class="introTitle">{!! trans('home.most') !!}</p>
   <div class="row">
     <div class="less col-md-offset-1 col-md-3">
-        <a class="image row"  href="#">
-        <span class="rollover" ></span>
-        <img class="imgborder img-responsive" alt="" src="img/6.jpg">      
-      </a>
-      <a class="image row"  href="#">
-        <span class="rollover" ></span>
-        <img class="imgborder img-responsive" alt="" src="img/7.jpg">      
-      </a>
+      <div class="image-container">
+        <a href="#">
+          <img class="img-responsive" alt="" src="img/6.jpg"> 
+          <div class="after">
+            <img class="mag" src="img/mag.png">
+          </div>
+        </a>
+      </div>
+      <div class="image-container">
+        <a href="#">
+          <img class="img-responsive" alt="" src="img/7.jpg"> 
+          <div class="after">
+            <img class="mag" src="img/mag.png">
+          </div>
+        </a>
+      </div>
     </div>
-    <a class="image most col-md-6 overlay"  href="#">
-      <span class="rollover" ></span>
-      <img class="imgborder img-responsive" alt="" src="img/5.jpg">      
-    </a>
+    <div class="most col-md-6">
+      <div class="image-container">
+        <a href="#">
+          <img class="img-responsive mostimg" alt="" src="img/5.jpg"> 
+          <div class="after">
+            <img class="mag" src="img/mag.png">
+          </div>
+        </a>
+      </div>
+    </div>
   </div>
 </div>
 @endsection
