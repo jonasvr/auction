@@ -101,7 +101,7 @@
         <img class="imgborder img-responsive" alt="" src="img/7.jpg">      
       </a>
     </div>
-    <a class="image most col-md-6"  href="#">
+    <a class="image most col-md-6 overlay"  href="#">
       <span class="rollover" ></span>
       <img class="imgborder img-responsive" alt="" src="img/5.jpg">      
     </a>

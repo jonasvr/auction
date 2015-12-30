@@ -108,11 +108,13 @@
   .carousel-inner > .item > a > img {
       width: 80%;
       margin: auto;
-      max-height: 80%;
-  }
-.carousel, .carousel-inner
+      max-height: 600px;
+}
+  
+.carousel, 
+.carousel-inner
 {
-	min-height: 85%;
+	height: 600px;
 }
 
 
@@ -123,10 +125,6 @@
   }
   
 
- .carousel
- {
- 	min-height: 85%;
- }
 
 .carousel .carousel-control
 {
@@ -196,6 +194,10 @@ span.rollover:hover {
 }
 
 
+/*optie 2 om te proberen:
+http://codepen.io/ianfarb/pen/ikeAf
+*/
+
 /*details----------------------------------*/
 
 
@@ -207,6 +209,12 @@ span.rollover:hover {
 	color: white;
 	height: 200px;
 	margin-top:30px;
+
+}
+
+.detailInfo-blue p,.detailInfo-blue h3
+{
+	padding-left: 10px; 
 }
 
 .visit

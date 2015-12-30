@@ -2,8 +2,9 @@
     <div class="col-md-offset-8 col-md-2">
       <div class="detailInfo-blue row">
         <h3>Lorem ipsum </h3> 
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt   
+        </p>
       </div>
       <div class="visit row">
         <a href="#">visit auction > </a>
