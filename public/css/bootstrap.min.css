@@ -153,9 +153,13 @@
 #intro .introTitle, #popular .introTitle
 {
 	color: #0a1e75;
-	text-transform: capitalize;
 	font-size: 40px;
 	padding-bottom: 10px;
+}
+
+#intro .introTitle, #intro h3, #popular .introTitle
+{
+	text-transform: capitalize;
 }
 
 #popular

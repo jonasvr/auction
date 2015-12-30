@@ -11,6 +11,9 @@
 |
 */
 
+Route::get('/language/{lng}',['as'=> 'language', 'uses'=> 'LanguageController@chooser']);
+
+
 Route::get('/', function () {
     return view('home');
 });

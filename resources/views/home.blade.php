@@ -59,19 +59,19 @@
 </div>
 
 <div id="intro">
- <p class="introTitle">how does it work?</p>
+ <p class="introTitle text-center">{!! trans('home.howdoesitwork') !!}</p>
   <div class="row">
 
-    <div class="col-md-offset-2 col-md-2">
-      <img src="img/intro1.png" class="img-responsive">
-      <h3> Sign up  </h3> 
+    <div class="col-md-offset-2 col-md-2" class="img-responsive">
+      <img src="img/intro1.png" >
+      <h3>{!! trans('home.signUp') !!}  </h3> 
       <div class="introText">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
       </div>
     </div>
-    <div class="col-md-offset-1 col-md-2">
-      <img src="img/intro2.png" class="img-responsive">
-      <h3> Make deals  </h3> 
+    <div class="col-md-offset-1 col-md-2" class="img-responsive">
+      <img src="img/intro2.png" >
+      <h3> {!! trans('home.makeDeals') !!}   </h3> 
       <div class="introText">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
       </div>
@@ -79,7 +79,7 @@
     <div class="col-md-offset-1 col-md-2" class="img-responsive">
        <img src="img/intro3.png">
       
-       <h3> Everyone happy  </h3> 
+       <h3> {!! trans('home.everyoneHappy') !!}  </h3> 
       <div class="introText">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
       </div>
