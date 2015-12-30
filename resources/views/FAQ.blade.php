@@ -10,15 +10,15 @@
  
 <div class="FAQ">
   <div class="row links">
-    <h2 class="col-md-offset-2 col-md-8">Find what you're looking for?</h2>
+    <h2 class="col-md-offset-2 col-md-8">{!! trans('faq.find') !!}?</h2>
     <div class="row col-md-offset-2 col-md-8">
-      <a class="col-md-3" href="#bid"> How to bid?</a>
-      <a class="col-md-3" href="#buy"> How to buy?</a>
-      <a class="col-md-3" href="#question"> How to ask a question?</a>
-      <a class="col-md-3" href="#watchlist"> How to use a watchlist?</a>
-      <a class="col-md-3" href="#sell"> How to sell?</a>
-      <a class="col-md-3" href="#register"> How to register?</a>
-      <a class="col-md-3" href="#whatis"> What is a watchlist?</a>
+      <a class="col-md-3" href="#bid"> {!! trans('faq.bid') !!}?</a>
+      <a class="col-md-3" href="#buy"> {!! trans('faq.buy') !!}?</a>
+      <a class="col-md-3" href="#question"> {!! trans('faq.ask') !!}?</a>
+      <a class="col-md-3" href="#watchlist">{!! trans('faq.watch') !!}?</a>
+      <a class="col-md-3" href="#sell"> {!! trans('faq.sell') !!}?</a>
+      <a class="col-md-3" href="#register"> {!! trans('faq.register') !!}?</a>
+      <a class="col-md-3" href="#whatis"> {!! trans('faq.what') !!}?</a>
     </div>
     <div class="row">
       <a class="btn btn-default col-md-offset-9 col-md-1 grey-back blue-text" href="{{'isearch'}}"> I search ></a>
@@ -27,7 +27,7 @@
   <div class="row awnsers">
     <div class="row question  blue-text">
       <p id="bid" class="col-md-offset-2 col-md-1 Q"> Q</p>
-      <p class="col-md-2 QT"> How to bid?</p>
+      <p class="col-md-3 QT"> {!! trans('faq.bid') !!}?</p>
     </div>
     <div class="row">
       <p class="col-md-offset-2 col-md-1 A"> A</p>
@@ -37,7 +37,7 @@
 
     <div id="buy" class="row question  blue-text">
       <p class="col-md-offset-2 col-md-1 Q"> Q</p>
-      <p class="col-md-2 QT"> How to buy?</p>
+      <p class="col-md-3 QT"> {!! trans('faq.buy') !!}?</p>
     </div>
     <div class="row">
       <p class="col-md-offset-2 col-md-1 A"> A</p>
@@ -47,7 +47,7 @@
 
     <div id="question" class="row question  blue-text">
       <p class="col-md-offset-2 col-md-1 Q"> Q</p>
-      <p class="col-md-2 QT"> How to ask a question?</p>
+      <p class="col-md-3 QT"> {!! trans('faq.ask') !!}?</p>
     </div>
     <div class="row">
       <p class="col-md-offset-2 col-md-1 A"> A</p>
@@ -57,7 +57,7 @@
 
     <div id="watchlist" class="row question  blue-text">
       <p class="col-md-offset-2 col-md-1 Q"> Q</p>
-      <p class="col-md-2 QT"> How to use a watchlist?</p>
+      <p class="col-md-3 QT"> {!! trans('faq.watch') !!}?</p>
     </div>
     <div class="row">
       <p class="col-md-offset-2 col-md-1 A"> A</p>
@@ -67,7 +67,7 @@
 
     <div id="sell" class="row question  blue-text">
       <p class="col-md-offset-2 col-md-1 Q"> Q</p>
-      <p class="col-md-2 QT"> How to sell?</p>
+      <p class="col-md-2 QT"> {!! trans('faq.sell') !!}?</p>
     </div>
     <div class="row">
       <p class="col-md-offset-2 col-md-1 A"> A</p>
@@ -77,7 +77,7 @@
 
     <div id="register" class="row question  blue-text">
       <p class="col-md-offset-2 col-md-1 Q"> Q</p>
-      <p class="col-md-2 QT"> How to register?</p>
+      <p class="col-md-3 QT"> {!! trans('faq.register') !!}?</p>
     </div>
     <div class="row">
       <p class="col-md-offset-2 col-md-1 A"> A</p>
@@ -87,7 +87,7 @@
 
     <div id="whatis" class="row question  blue-text">
       <p class="col-md-offset-2 col-md-1 Q"> Q</p>
-      <p class="col-md-2 QT"> What is a wachtlist?</p>
+      <p class="col-md-3 QT">{!! trans('faq.watch') !!}?</p>
     </div>
     <div class="row">
       <p class="col-md-offset-2 col-md-1 A"> A</p>

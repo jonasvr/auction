@@ -89,7 +89,7 @@
 
 
 <div id="popular">
-  <p class="introTitle">most popular this week?</p>
+  <p class="introTitle">{!! trans('home.most') !!}</p>
   <div class="row">
     <div class="less col-md-offset-1 col-md-3">
         <a class="image row"  href="#">

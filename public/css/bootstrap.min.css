@@ -6,8 +6,11 @@
 /*# sourceMappingURL=bootstrap.min.css.map */
 
  /*algemeen---------------------------------*/
+body
+{overflow-x: hidden;}
 
  .blue-text
+}
 {
 	color:#0a1e75;
 }

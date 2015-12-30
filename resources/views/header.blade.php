@@ -7,7 +7,7 @@
         </p>
       </div>
       <div class="visit row">
-        <a href="#">visit auction > </a>
+        <a href="#">{!! trans('master.visit') !!} > </a>
       </div>
     </div>
 </div>

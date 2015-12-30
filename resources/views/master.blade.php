@@ -20,11 +20,11 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav upper col-md-6">
-            <li class="active"><a href="#"><span class="glyphicon glyphicon-align-justify"> watchlist</a></li>
+            <li class="active"><a href="#"><span class="glyphicon glyphicon-align-justify"> {!! trans('master.watchlist') !!}</a></li>
             <li role="separator" class="divider-vertical"></li>
-            <li><a href="#"><span class="glyphicon glyphicon-user"> profile</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-user"> {!! trans('master.profile') !!}</a></li>
             <li role="separator" class="divider-vertical"></li>
-            <li><a href="#">logout</a></li> 
+            <li><a href="#"> {!! trans('master.logout') !!}</a></li> 
           </ul>
           <div class="col-md-2">
             <ul class="nav navbar-nav navbar-right">
@@ -45,19 +45,19 @@
         <div class="collapse navbar-collapse row" id="myNavbar2">
           <div class="col-md-offset-3 col-md-6">
             <ul class="nav navbar-nav upper ">
-              <li><a href="#">home</a></li>
-              <li><a href="#">art</a></li>
-              <li><a href="#">search</a></li> 
-              <li><a href="#">myauctions</a></li>
-              <li><a href="#">Mybids</a></li>
-              <li><a href="#">contact</a></li> 
+              <li><a href="#">{!! trans('master.home') !!}</a></li>
+              <li><a href="#">{!! trans('master.art') !!}</a></li>
+              <li><a href="#">{!! trans('master.search') !!}</a></li> 
+              <li><a href="#">{!! trans('master.logout') !!}</a></li> 
+              <li><a href="#">{!! trans('master.mybids') !!}</a></li>
+              <li><a href="#">{!! trans('master.contact') !!}</a></li>
             </ul>
           </div>
           <div class="col-md-2">
             <ul class="nav navbar-nav navbar-right upper">
               <li><a href="{{ URL::route('language', array('lng' => 'nl')) }}">nl</a></li>
               <li><a href="/language/fr">fr</a></li>
-              <li><a href="/language/en">en</a></li> 
+              <li><a href="{{ URL::route('language', array('lng' => 'en')) }}">en</a></li> 
             </ul>
           </div>
           <div class="col-md-1"></div>
@@ -92,8 +92,8 @@
         <div class="col-md-3">
           <ul class="nav nav-pills nav-stacked">
             <li><p class="footerTitles">help</p></li>
-            <li><a href="#">login</a></li>
-            <li><a href="#">register</a></li>
+            <li><a href="#">{!! trans('master.login') !!}</a></li>
+            <li><a href="#">{!! trans('master.register') !!}</a></li>
           </ul>
           <ul class="nav nav-pills nav-stacked">
             <li><p class="footerTitles">help</p></li>
@@ -104,7 +104,7 @@
             <li><a href="#">About Us</a></li>
           </ul>
           <ul class="nav nav-pills nav-stacked">
-            <li><p class="footerTitles">Languages</p></li>
+            <li><p class="footerTitles">{!! trans('master.languages') !!}</p></li>
             <li><a href="#">Nederlands</a></li>
             <li><a href="#">Français</a></li>
             <li><a href="#">English</a></li>
@@ -112,57 +112,57 @@
         </div>
         <div class="col-md-3">
           <ul class="nav nav-pills nav-stacked">
-            <li><p class="footerTitles">style</p></li>
-            <li><a href="#">Abstract</a></li>
-            <li><a href="#">African American</a></li>
-            <li><a href="#">Asian Contemporary</a></li>
-            <li><a href="#">Cemceptual</a></li>
-            <li><a href="#">Contemporary</a></li>
-            <li><a href="#">Emerging Artist</a></li>
-            <li><a href="#">Figurative</a></li>
-            <li><a href="#">Middle Eastern Contemporary</a></li>
-            <li><a href="#">Minimalism</a></li>
-            <li><a href="#">Modern</a></li>
-            <li><a href="#">pop</a></li>
-            <li><a href="#">Urban</a></li>
-            <li><a href="#">Vintage Photographs</a></li>
+            <li><p class="footerTitles">{!! trans('master.style') !!}</p></li>
+            <li><a href="#">{!! trans('master.abstract') !!}</a></li>
+            <li><a href="#">{!! trans('master.african') !!}</a></li>
+            <li><a href="#">{!! trans('master.asian') !!}</a></li>
+            <li><a href="#">{!! trans('master.cemceptual') !!}</a></li>
+            <li><a href="#">{!! trans('master.contemporary') !!}</a></li>
+            <li><a href="#">{!! trans('master.emerging') !!}</a></li>
+            <li><a href="#">{!! trans('master.figurative') !!}</a></li>
+            <li><a href="#">{!! trans('master.middle') !!}</a></li>
+            <li><a href="#">{!! trans('master.mini') !!}</a></li>
+            <li><a href="#">{!! trans('master.modern') !!}</a></li>
+            <li><a href="#">{!! trans('master.pop') !!}</a></li>
+            <li><a href="#">{!! trans('master.urban') !!}</a></li>
+            <li><a href="#">{!! trans('master.vintage') !!}</a></li>
           </ul>
            <ul class="nav nav-pills nav-stacked">
-            <li><p class="footerTitles">style</p></li>
-            <li><a href="#">design</a></li>
-            <li><a href="#">paintings and Works on Paper</a></li>
-            <li><a href="#">Photographs</a></li>
-            <li><a href="#">prints and Multiples</a></li>
-            <li><a href="#">Sculpture</a></li>
+            <li><p class="footerTitles">{!! trans('master.style') !!}</p></li>
+            <li><a href="#">{!! trans('master.design') !!}</a></li>
+            <li><a href="#">{!! trans('master.paintings') !!}</a></li>
+            <li><a href="#">{!! trans('master.photographs') !!}</a></li>
+            <li><a href="#">{!! trans('master.prints') !!}</a></li>
+            <li><a href="#">{!! trans('master.sculpture') !!}</a></li>
           </ul>
         </div>
         <div class="col-md-3">
           <ul class="nav nav-pills nav-stacked">
-            <li><p class="footerTitles">Price</p></li>
-            <li><a href="#">Up to 5,000</a></li>
+            <li><p class="footerTitles">{!! trans('master.price') !!}</p></li>
+            <li><a href="#">{!! trans('master.up') !!} 5,000</a></li>
             <li><a href="#">5,000-10,000</a></li>
             <li><a href="#">10,000-25,000</a></li>
             <li><a href="#">25,000-50,000</a></li>
             <li><a href="#">50,000-100,000</a></li>
-            <li><a href="#">above</a></li>
+            <li><a href="#">{!! trans('master.above') !!}</a></li>
           </ul>
           <ul class="nav nav-pills nav-stacked">
-            <li><p class="footerTitles">era</p></li>
-            <li><a href="#">Pre-War</a></li>
+            <li><p class="footerTitles">{!! trans('master.era') !!}</p></li>
+            <li><a href="#">{!! trans('master.pre') !!}</a></li>
             <li><a href="#">1940s-1950s</a></li>
             <li><a href="#">1960s-1980s</a></li>
-            <li><a href="#">1980s-Present</a></li>
+            <li><a href="#">1980s-{!! trans('master.present') !!}</a></li>
           </ul>
           <ul class="nav nav-pills nav-stacked">
-            <li><p class="footerTitles">ending</p></li>
-            <li><a href="#">Nederlding this Weekands</a></li>
-            <li><a href="#">Newly Listed</a></li>
-            <li><a href="#">Purchase Now</a></li>
+            <li><p class="footerTitles">{!! trans('master.ending') !!}</p></li>
+            <li><a href="#">{!! trans('master.this') !!}</a></li>
+            <li><a href="#">{!! trans('master.newly') !!}</a></li>
+            <li><a href="#">{!! trans('master.now') !!}</a></li>
           </ul>
         </div>
         <div class="col-md-3">
           <ul class="nav nav-pills nav-stacked">
-            <li><p class="footerTitles">find what you need.</p></li>
+            <li><p class="footerTitles">{!! trans('master.find') !!}</p></li>
             <form class="navbar-form" role="search">
               <div class="input-group">
                   <input type="text" class="form-control" placeholder="Search" name="q">
@@ -191,12 +191,12 @@
               <div class="collapse navbar-collapse row" id="myNavbar2">
                 <div class="col-md-offset-3 col-md-6">
                   <ul class="nav navbar-nav upper ">
-                    <li><a href="#">home</a></li>
-                    <li><a href="#">art</a></li>
-                    <li><a href="#">search</a></li> 
-                    <li><a href="#">myauctions</a></li>
-                    <li><a href="#">Mybids</a></li>
-                    <li><a href="#">contact</a></li> 
+                   <li><a href="#">{!! trans('master.home') !!}</a></li>
+                  <li><a href="#">{!! trans('master.art') !!}</a></li>
+                  <li><a href="#">{!! trans('master.search') !!}</a></li> 
+                  <li><a href="#">{!! trans('master.logout') !!}</a></li> 
+                  <li><a href="#">{!! trans('master.mybids') !!}</a></li>
+                  <li><a href="#">{!! trans('master.contact') !!}</a></li>
                   </ul>
                 </div>
                 <div class="col-md-2">
