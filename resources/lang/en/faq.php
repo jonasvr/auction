@@ -9,6 +9,6 @@
 		'register'			=> 'How to register',
 		'what'				=> 'What is a watchlist',
 		'find'				=> "Find what you're looking for",
-		'search'			=> 'Ik zoek',
+		'search'			=> 'I search',
 
 	);

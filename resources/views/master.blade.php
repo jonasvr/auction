@@ -20,11 +20,15 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav upper col-md-6">
-            <li class="active"><a href="#"><span class="glyphicon glyphicon-align-justify"> {!! trans('master.watchlist') !!}</a></li>
-            <li role="separator" class="divider-vertical"></li>
-            <li><a href="#"><span class="glyphicon glyphicon-user"> {!! trans('master.profile') !!}</a></li>
-            <li role="separator" class="divider-vertical"></li>
-            <li><a href="#"> {!! trans('master.logout') !!}</a></li> 
+            @if(Auth::check())
+              <li class="{{ Request::is('/') ? 'active' : '' }}"><a href="{{ url('/') }}"><span class="glyphicon glyphicon-align-justify"> {!! trans('master.watchlist') !!}</a></li>
+              <li role="separator" class="divider-vertical"></li>
+              <li class="{{ Request::is('profile') ? 'active' : '' }}"><a href="{{ url('/profile') }}"><span class="glyphicon glyphicon-user"> {!! trans('master.profile') !!}</a></li>
+              <li role="separator" class="divider-vertical"></li>
+              <li><a href="/logout"> {!! trans('master.logout') !!}</a></li> 
+            @else
+              <li><a href="/login"> login</a></li> 
+            @endif
           </ul>
           <div class="col-md-2">
             <ul class="nav navbar-nav navbar-right">
@@ -45,12 +49,14 @@
         <div class="collapse navbar-collapse row" id="myNavbar2">
           <div class="col-md-offset-3 col-md-6">
             <ul class="nav navbar-nav upper ">
+            @if(Auth::check())
               <li><a href="#">{!! trans('master.home') !!}</a></li>
               <li><a href="#">{!! trans('master.art') !!}</a></li>
               <li><a href="#">{!! trans('master.search') !!}</a></li> 
               <li><a href="#">{!! trans('master.logout') !!}</a></li> 
               <li><a href="#">{!! trans('master.mybids') !!}</a></li>
               <li><a href="#">{!! trans('master.contact') !!}</a></li>
+            @endif
             </ul>
           </div>
           <div class="col-md-2">
@@ -220,3 +226,10 @@
   
  
 </html>
+
+
+
+<!-- used links -->
+
+<!-- set active:
+http://stackoverflow.com/questions/29837555/setting-bootstrap-navbar-active-class-in-laravel-5 -->

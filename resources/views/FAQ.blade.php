@@ -21,7 +21,7 @@
       <a class="col-md-3" href="#whatis"> {!! trans('faq.what') !!}?</a>
     </div>
     <div class="row">
-      <a class="btn btn-default col-md-offset-9 col-md-1 grey-back blue-text" href="{{'isearch'}}"> I search ></a>
+      <a class="btn btn-default col-md-offset-9 col-md-1 grey-back blue-text" href="{{'isearch'}}"> {!! trans('faq.search')!!} ></a>
     </div>    
   </div>
   <div class="row awnsers">

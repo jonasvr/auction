@@ -5,11 +5,10 @@
 @endsection
 
 @section('container')
-
-<div class="row centered-form">
-    <div class="col-md-offset-3 col-md-6">
+<div class="detailHead row centered-form ">
+    <div class="loginForm col-md-offset-4 col-md-4">
 	  
-		<h2>login Form</h2>
+		<h2>Login</h2>
 		<form role="form" method="POST" action="/login">
 		    {!! csrf_field() !!}
 

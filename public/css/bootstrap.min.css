@@ -384,3 +384,12 @@ img.img-responsive
 	height: 40px;
 	padding-top:8px;
 }
+
+/*login-----------------------*/
+
+.loginForm
+{
+	margin-top: 20px;
+	background-color: rgba(255, 255, 255, 0.7);
+	border-radius: 25px;
+}
