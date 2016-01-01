@@ -12,6 +12,7 @@
 		'mybids'			=> 'mybids',
 		'contact'			=> 'contact',
 		'register'			=> 'register',
+		'new'				=> 'new piece',
 
 		// footer
 		'languages'			=> 'languages',

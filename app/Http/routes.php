@@ -18,9 +18,13 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/profile', function () {
-    return view('profile');
+Route::get('/profile', function () 
+	{    return view('profile.profile');
 });
+
+Route::get('/profile/new', ['as' => 'new', function ()
+	{    return view('profile.new');
+}]);
 
 // Authentication routes...
 Route::get('/login', 'Auth\AuthController@getLogin');
@@ -41,3 +45,7 @@ Route::get('/faq', function(){
 Route::get('/isearch', function(){
 	return View('isearch');
 });
+
+
+Route::get('/profile/addArt', 	['as' => 'addArt', 	'uses' => 'profileController@addArt']);
+	

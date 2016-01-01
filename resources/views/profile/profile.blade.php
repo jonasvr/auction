@@ -7,7 +7,7 @@
 
 @section('container')   
 
-<div>profiel</div>
+profile
 @endsection
 
  

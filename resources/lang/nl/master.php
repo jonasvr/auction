@@ -12,6 +12,7 @@
 		'mybids'			=> 'mijnboden',
 		'contact'			=> 'contact',
 		'register'			=> 'registreer',
+		'new'				=> 'nieuw stuk',
 
 		// footer
 		'languages'			=> 'talen',

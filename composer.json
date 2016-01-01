@@ -49,5 +49,11 @@
     },
     "config": {
         "preferred-install": "dist"
+    },
+    "require": {
+    "laravelcollective/html": "5.1.*",
+    "illuminate/html": "5.*",
+    "guzzlehttp/guzzle":"5.*",
+    "intervention/image": "^2.3"
     }
 }
