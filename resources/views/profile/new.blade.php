@@ -14,7 +14,7 @@
 
 <!-- kolom 1 -->
   <div class="col-md-offset-1 col-md-5">
-    {!! Form::open(array('url' => 'addArt', 'method' => 'PUT', 'class' => 'form-horizontal', 'files' => true )) !!}
+    {!! Form::open(array('url' => URL::route('addArt'), 'method' => 'POST', 'class' => 'form-horizontal', 'files' => true )) !!}
       
       <div class="form-group">
         {!! Form::label('name',  trans('profile.name'), array('class' => 'col-sm-3  control-label')) !!}
@@ -40,7 +40,7 @@
       <div class="form-group">
         {!! Form::label('condition', trans('profile.picture'), array('class' => 'col-sm-3  control-label')) !!}
         <div class="col-sm-9">
-         {!! Form::file('picture', ['class' => 'form-control']) !!}
+         {!! Form::file('img', ['class' => 'form-control']) !!}
         </div>
       </div>
 
@@ -76,7 +76,7 @@
       <div class="form-group">
         {!! Form::label('style', trans('profile.style'), array('class' => 'col-sm-3  control-label')) !!}
         <div class="col-sm-9">
-          {!! Form::text('style','',array('class' => 'form-control')) !!}
+          {!! Form::select('style', array('key' => 'value')) !!}
         </div>
       </div>
 
@@ -94,9 +94,9 @@
       </div>
 
       <div class="form-group">
-        {!! Form::label('continent', trans('profile.continent'), array('class' => 'col-sm-3  control-label')) !!}
+        {!! Form::label('country', trans('profile.continent'), array('class' => 'col-sm-3  control-label')) !!}
         <div class="col-sm-9">
-          {!! Form::text('continent','',array('class' => 'form-control')) !!}
+          {!! Form::text('country','',array('class' => 'form-control')) !!}
         </div>
       </div>
 
