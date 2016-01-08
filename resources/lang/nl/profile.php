@@ -1,7 +1,7 @@
 <?php
 
 	return array(
-		'name' 				=> 	'naam',
+		'title'				=> 	'titel',
 		'description' 		=> 	'omschrijving',
 		'condition'			=>	'staat van het werk',
 		'artyear'			=> 	'jaar van creatie',

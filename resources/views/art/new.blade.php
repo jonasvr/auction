@@ -17,9 +17,9 @@
     {!! Form::open(array('url' => URL::route('addArt'), 'method' => 'POST', 'class' => 'form-horizontal', 'files' => true )) !!}
       
       <div class="form-group">
-        {!! Form::label('name',  trans('profile.name'), array('class' => 'col-sm-3  control-label')) !!}
+        {!! Form::label('title',  trans('profile.title'), array('class' => 'col-sm-3  control-label')) !!}
         <div class="col-sm-9">
-          {!! Form::text('name','',array('class' => 'form-control'))!!}
+          {!! Form::text('title','',array('class' => 'form-control'))!!}
         </div>
       </div>
 
@@ -40,22 +40,22 @@
       <div class="form-group">
         {!! Form::label('condition', trans('profile.picture'), array('class' => 'col-sm-3  control-label')) !!}
         <div class="col-sm-9">
-         {!! Form::file('img', ['class' => 'form-control']) !!}
+        @for ($i=0; $i < 4; $i++)
+            {!! Form::file('img[]', ['class' => 'form-control']) !!}
+        @endfor
         </div>
       </div>
 
-     <div class="col-sm-offset-3 col-sm-9">
-      {!! Form::submit('Submit!', array('class' => 'btn btn-default')) !!}
-    </div>
+     
   </div>
 <!-- eind kolom 1 -->
 <!-- kolom 2 -->
   <div class="col-md-5 form-horizontal">
 
    <div class="form-group">
-        {!! Form::label('artyear', trans('profile.artyear'), array('class' => 'col-sm-3  control-label')) !!}
+        {!! Form::label('creation_y', trans('profile.artyear'), array('class' => 'col-sm-3  control-label')) !!}
         <div class="col-sm-9">
-          {!! Form::text('artyear','',array('class' => 'form-control')) !!}
+          {!! Form::text('creation_y','',array('class' => 'form-control')) !!}
         </div>
       </div>
 
@@ -74,16 +74,20 @@
       </div>
 
       <div class="form-group">
-        {!! Form::label('style', trans('profile.style'), array('class' => 'col-sm-3  control-label')) !!}
+        {!! Form::label('style_id', trans('master.style'), array('class' => 'col-sm-3  control-label')) !!}
         <div class="col-sm-9">
-          {!! Form::select('style', array('key' => 'value')) !!}
+          <select name="style_id" class="browser-default">
+                @for($i=1;$i<=count($styles);$i++)
+                <option value="{{$i}}">{{ trans('styles.' .$styles[$i])}}</option>
+                @endfor
+            </select>
         </div>
       </div>
 
       <div class="form-group">
-        {!! Form::label('era', trans('profile.era'), array('class' => 'col-sm-3  control-label')) !!}
+        {!! Form::label('era_id', trans('profile.era'), array('class' => 'col-sm-3  control-label')) !!}
         <div class="col-sm-9">
-          {!! Form::select('era', array('key' => 'value')) !!}
+          {!! Form::select('era_id', $eras) !!}
         </div>
       </div>
       <div class="form-group">
@@ -92,7 +96,7 @@
           {!! Form::text('artist','',array('class' => 'form-control')) !!}
         </div>
       </div>
-
+      
       <div class="form-group">
         {!! Form::label('country', trans('profile.continent'), array('class' => 'col-sm-3  control-label')) !!}
         <div class="col-sm-9">
@@ -121,7 +125,9 @@
         </div>
       </div>
 
-    
+    <div class="col-sm-offset-3 col-sm-9">
+      {!! Form::submit('Submit!', array('class' => 'btn btn-default')) !!}
+    </div>
   </div>
 <!-- eind kolom 2 -->
 </div>

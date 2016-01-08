@@ -151,6 +151,8 @@ return [
 
         Collective\Html\HtmlServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
+        Cviebrock\ImageValidator\ImageValidatorServiceProvider::class,
+
 
     ],
 

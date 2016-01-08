@@ -1,7 +1,7 @@
 <?php
 
 	return array(
-		'name' 				=> 	'name',
+		'title'				=> 	'title',
 		'description' 		=> 	'description',
 		'condition'			=>	'condition',
 		'artyear'			=> 	'Year of creation',

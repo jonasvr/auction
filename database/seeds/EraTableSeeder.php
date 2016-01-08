@@ -28,7 +28,7 @@ class EraTableSeeder extends Seeder
             $era->save();
 
             $era                	= new Era;
-            $era->name          	= "1980s-Preset";        
+            $era->name          	= "1980s-Present";        
             $era->save();
 
     }

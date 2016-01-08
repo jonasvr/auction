@@ -119,28 +119,28 @@
         </div>
         <div class="col-md-3">
           <ul class="nav nav-pills nav-stacked">
-            <li><p class="footerTitles">{!! trans('master.style') !!}</p></li>
-            <li><a href="#">{!! trans('master.abstract') !!}</a></li>
-            <li><a href="#">{!! trans('master.african') !!}</a></li>
-            <li><a href="#">{!! trans('master.asian') !!}</a></li>
-            <li><a href="#">{!! trans('master.cemceptual') !!}</a></li>
-            <li><a href="#">{!! trans('master.contemporary') !!}</a></li>
-            <li><a href="#">{!! trans('master.emerging') !!}</a></li>
-            <li><a href="#">{!! trans('master.figurative') !!}</a></li>
-            <li><a href="#">{!! trans('master.middle') !!}</a></li>
-            <li><a href="#">{!! trans('master.mini') !!}</a></li>
-            <li><a href="#">{!! trans('master.modern') !!}</a></li>
-            <li><a href="#">{!! trans('master.pop') !!}</a></li>
-            <li><a href="#">{!! trans('master.urban') !!}</a></li>
-            <li><a href="#">{!! trans('master.vintage') !!}</a></li>
+            <li><p class="footerTitles">{!! trans('styles.style') !!}</p></li>
+            <li><a href="#">{!! trans('styles.Abstract') !!}</a></li>
+            <li><a href="#">{!! trans('styles.African') !!}</a></li>
+            <li><a href="#">{!! trans('styles.Asian') !!}</a></li>
+            <li><a href="#">{!! trans('styles.Cemceptual') !!}</a></li>
+            <li><a href="#">{!! trans('styles.Contemporary') !!}</a></li>
+            <li><a href="#">{!! trans('styles.Emerging') !!}</a></li>
+            <li><a href="#">{!! trans('styles.Figurative') !!}</a></li>
+            <li><a href="#">{!! trans('styles.Middle') !!}</a></li>
+            <li><a href="#">{!! trans('styles.Mini') !!}</a></li>
+            <li><a href="#">{!! trans('styles.Modern') !!}</a></li>
+            <li><a href="#">{!! trans('styles.Pop') !!}</a></li>
+            <li><a href="#">{!! trans('styles.Urban') !!}</a></li>
+            <li><a href="#">{!! trans('styles.Vintage') !!}</a></li>
           </ul>
            <ul class="nav nav-pills nav-stacked">
-            <li><p class="footerTitles">{!! trans('master.style') !!}</p></li>
-            <li><a href="#">{!! trans('master.design') !!}</a></li>
-            <li><a href="#">{!! trans('master.paintings') !!}</a></li>
-            <li><a href="#">{!! trans('master.photographs') !!}</a></li>
-            <li><a href="#">{!! trans('master.prints') !!}</a></li>
-            <li><a href="#">{!! trans('master.sculpture') !!}</a></li>
+            <li><p class="footerTitles">{!! trans('styles.style') !!}</p></li>
+            <li><a href="#">{!! trans('styles.Design') !!}</a></li>
+            <li><a href="#">{!! trans('styles.Paintings') !!}</a></li>
+            <li><a href="#">{!! trans('styles.Photographs') !!}</a></li>
+            <li><a href="#">{!! trans('styles.Prints') !!}</a></li>
+            <li><a href="#">{!! trans('styles.Sculpture') !!}</a></li>
           </ul>
         </div>
         <div class="col-md-3">

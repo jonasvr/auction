@@ -46,6 +46,6 @@ Route::get('/isearch', function(){
 	return View('isearch');
 });
 
-
-Route::post('/profile/addArt', 	['as' => 'addArt', 	'uses' => 'ArtController@addArt']);
+Route::get('/art/new', 		['as' => 'new',				'uses' => 'ArtController@newArt' ]);
+Route::post('/art/addArt', 	['as' => 'addArt', 			'uses' => 'ArtController@addArt']);
 	

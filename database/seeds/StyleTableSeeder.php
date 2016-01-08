@@ -19,11 +19,11 @@ class StyleTableSeeder extends Seeder
             $style->save();
 
             $style                	= new Style;
-            $style->name          	= "African-american";        
+            $style->name          	= "African";        
             $style->save();
 
             $style                	= new Style;
-            $style->name          	= "Asian Contemporary";        
+            $style->name          	= "Asian";        
             $style->save();
 
             $style                	= new Style;
@@ -31,7 +31,7 @@ class StyleTableSeeder extends Seeder
             $style->save();
 
             $style                	= new Style;
-            $style->name          	= "Emerging Artist";        
+            $style->name          	= "Emerging";        
             $style->save();
 
             $style                	= new Style;
@@ -39,7 +39,7 @@ class StyleTableSeeder extends Seeder
             $style->save();
 
             $style                	= new Style;
-            $style->name          	= "Middle Eastern Contemporary";        
+            $style->name          	= "Middle";        
             $style->save();
 
             $style                	= new Style;
@@ -59,7 +59,7 @@ class StyleTableSeeder extends Seeder
             $style->save();
 
             $style                	= new Style;
-            $style->name          	= "Vintage Photographs";        
+            $style->name          	= "Vintage";        
             $style->save();
 
             $style                	= new Style;
@@ -67,7 +67,7 @@ class StyleTableSeeder extends Seeder
             $style->save();
 
             $style                	= new Style;
-            $style->name          	= "Paintings and works on paper";        
+            $style->name          	= "Paintings";        
             $style->save();
 
             $style                	= new Style;
@@ -75,7 +75,7 @@ class StyleTableSeeder extends Seeder
             $style->save();
 
             $style                	= new Style;
-            $style->name          	= "Prints and Multiples";        
+            $style->name          	= "Prints";        
             $style->save();
 
             $style                	= new Style;

@@ -7,26 +7,77 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+//added by jonas
+use App\Era;
+use App\Style;
+use App\Art;
+use App\Country;
+use Auth;
+
+use App\Http\Requests\addArtRequest;
+    
+
 class ArtController extends Controller
 {
-    public function addart(Request $request)
+
+    public function newArt()
     {
-        $this->validate($request, [
-            'name'                  => 'required',
-            'description'           => 'required',
-            'condition'             => 'required',
-            'artyear'               => 'numeric',
-            'era'                   => 'required',
-            'img'                   => 'required',
-            
-            'death'                 => 'numeric',
-            'birth'                 => 'numeric',
-            'price'                 => 'required|numeric',
-         ]);
+        $getEra     = Era::select('id', 'name')
+                        ->get();
+
+        foreach($getEra as $Era)
+        {
+            $eras[$Era->id] = $Era->name;
+        }
+
+
+
+        $getStyle    = Style::select('id', 'name')
+                        ->get();
+
+        foreach($getStyle as $Style)
+        {
+            $styles[$Style->id] = $Style->name;
+        }
+
+        $getCountry    = Country::select('id', 'name')
+                        ->get();
+
+        foreach($getCountry as $Country)
+        {
+            $countrys[$Country->id] = $Country->name;
+        }
+
+         // dd($Countrys);
+        return view('art.new', compact('styles','eras','cpuntrys'));
+
+    }
+    public function addart(addArtRequest $request)
+    {
+       //img nog toevoegen + validate
     
         $data = $request->all(); 
+        
+        $input                       = new Art;
 
-        dd($data);
+        $input->user_id              = Auth::user()->id;
+        $input->title                = $data['title'];
+        $input->description          = $data['description'];
+        $input->condition            = $data['condition'];
+        $input->creation_y           = $data['creation_y'];
+        $input->dimensions           = $data['dimensions'];
+        $input->color                = $data['color'];
+        $input->style_id             = $data['style_id'];
+        $input->era_id               = $data['era_id'];
+        $input->artist               = $data['artist'];
+        $input->country              = $data['country'];
+        $input->birth                = $data['birth'];
+        $input->death                = $data['death'];
+        $input->price                = $data['price'];
+        
+        $input->save();
+        
+        return $this->newArt()->withSuccess('succesvol toegevoegt');
     }
 
 }
