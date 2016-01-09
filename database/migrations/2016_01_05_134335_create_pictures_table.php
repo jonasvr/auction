@@ -14,7 +14,6 @@ class CreatePicturesTable extends Migration
     {
         Schema::create('pictures', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
             $table->integer('art_id');
             $table->string('path');
 

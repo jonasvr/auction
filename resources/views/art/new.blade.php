@@ -41,7 +41,8 @@
         {!! Form::label('condition', trans('profile.picture'), array('class' => 'col-sm-3  control-label')) !!}
         <div class="col-sm-9">
         @for ($i=0; $i < 4; $i++)
-            {!! Form::file('img[]', ['class' => 'form-control']) !!}
+            <input type="file" name="pic[]" accept="image/*">
+            <!-- {!! Form::file('img[$i]', ['class' => 'form-control']) !!} -->
         @endfor
         </div>
       </div>
@@ -126,6 +127,7 @@
       </div>
 
     <div class="col-sm-offset-3 col-sm-9">
+      <input type="hidden" name="_token" value="{{ csrf_token() }}">
       {!! Form::submit('Submit!', array('class' => 'btn btn-default')) !!}
     </div>
   </div>

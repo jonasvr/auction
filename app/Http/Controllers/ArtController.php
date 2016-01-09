@@ -13,6 +13,8 @@ use App\Style;
 use App\Art;
 use App\Country;
 use Auth;
+use Carbon\Carbon;
+use App\Pictures;
 
 use App\Http\Requests\addArtRequest;
     
@@ -76,7 +78,28 @@ class ArtController extends Controller
         $input->price                = $data['price'];
         
         $input->save();
+        $input->id;
         
+        foreach ($data['pic'] as $pic) {
+            
+            $destinationPath        = 'pic/art/' . Auth::user()->id . '/';
+            $now = Carbon::now()->format('Y-m-d');
+            $extension          = $pic->getClientOriginalExtension();
+            $fileName           = rand(11111,99999).'-'.$now.'.'.$extension; // renameing image random name
+            //fullpath = path to picture + date + filename + extension
+            $fullPath           = $destinationPath . $fileName;   
+
+            $pic->move($destinationPath , $fileName); 
+
+
+            $picInput                 = new Pictures;
+            $picInput->art_id         = $input->id;
+            $picInput->path           = $fullPath;
+            $picInput->save();
+
+
+        
+        }
         return $this->newArt()->withSuccess('succesvol toegevoegt');
     }
 

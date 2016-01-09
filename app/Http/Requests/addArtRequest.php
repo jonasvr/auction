@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
+use Input;
 
 class addArtRequest extends Request
 {
@@ -24,7 +25,7 @@ class addArtRequest extends Request
     public function rules()
     {
         $rules = [
-            'title'                  => 'required',
+            'title'                 => 'required',
             'description'           => 'required',
             'condition'             => 'required',
             'artyear'               => 'numeric',
@@ -33,15 +34,18 @@ class addArtRequest extends Request
             'birth'                 => 'numeric',
             'price'                 => 'required|numeric',
         ];
+// $validator = parent::getValidatorInstance();
 
-        // foreach($this->request->get('img[]') as $key => $val)
-        //   {
-        //     $rules['img.'.$key] = 'Image';
-        //     if($key==0)
-        //     {
-        //         $rules['img.'.$key] .= '|required';
-        //     }
-        //   }
+
+//     $validator->each('files', ['pic']);
+//         foreach('pic' as $key => $val)
+//           {
+//             $rules['img.'.$key] = 'Image';
+//             if($key==0)
+//             {
+//                 $rules['img.'.$key] .= '|required';
+//             }
+//           }
 
         return $rules;
     }

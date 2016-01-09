@@ -51,7 +51,7 @@
           <div class="col-md-offset-3 col-md-6">
             <ul class="nav navbar-nav upper ">
             @if(Auth::check())
-                <li><a href="#">{!! trans('master.home') !!}</a></li>
+                <li><a href="/">{!! trans('master.home') !!}</a></li>
                 <li><a href="{{ URL::route('new') }}">{!! trans('master.art') !!}</a></li>
                 <li><a href="#">{!! trans('master.search') !!}</a></li> 
                 <li><a href="#">{!! trans('master.logout') !!}</a></li> 
