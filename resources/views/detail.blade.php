@@ -6,8 +6,8 @@
 @endsection
 
 
-@section('container')   
-  @include('layout.header')
+@section('container')
+  @include('layout.header',['art_id' => $art->id])
   <!-- end header -->
 
   <div class="wrapper-details">
@@ -18,10 +18,10 @@
       <div class="col-md-3"></div>
 
       <div class="col-md-offset-2 col-md-7">
-          <p> 
-            25d 14u 44m 
+          <p>
+            25d 14u 44m
             <span class="blue-text">
-              (7 {!! trans('detail.bids') !!}) 
+              ({{ $nrbids }})
               <span class="glyphicon glyphicon-menu-hamburger"></span>
             </span>
           </p>
@@ -42,7 +42,7 @@
         </div>
 
         <!-- data rechts -->
-        <div class="col-md-3 text-right"> 
+        <div class="col-md-3 text-right">
           <h3> {{$art->title}}</h3>
           <p class="blue-text">
             adres
@@ -59,20 +59,20 @@
           </p>
           <a class="black-link" href="#">
             <strong>
-              <u> 
-                {!! trans('detail.more') !!} 
+              <u>
+                {!! trans('detail.more') !!}
               </u>
             </strong>
           </a>
 
           <hr />
 
-          <p class="blue-text"> 
+          <p class="blue-text">
             {!! trans('detail.estimated') !!} <br />
             <span class="price"> €9.500 - €10.500</span><br />
-            <a class="green-text" href="#"> <u>{!! trans('detail.buy') !!} €15.000</u></a>
+            <a class="green-text" href="{{ URL::route('buynow', ['art_id'=> $art->id]) }}"> <u>{!! trans('detail.buy',['askingprice' => $art->price]) !!} </u></a>
           </p>
-          
+
           <p>{!! trans('detail.bid') !!}?</p>
           {!! Form::open(array('url' => URL::route('bid'), 'method' => 'post', 'class' => 'form-horizontal bid')) !!}
             <div class="input-group">
@@ -84,24 +84,16 @@
               </div>
           {!! Form::close() !!}
           <p class="text-center">
-            @if($watchlist)
-            <a class="blue-text" href="{{ URL::route('delWl', ['id'=> $art->id] ) }}">
-              <span class="glyphicon glyphicon-menu-hamburger"> 
-              </span>
-              <u> {!! trans('detail.remove') !!} </u>
-            </a>
-            @else
             <a class="blue-text" href="{{ URL::route('addToWl', ['id'=> $art->id] ) }}">
-              <span class="glyphicon glyphicon-menu-hamburger"> 
+              <span class="glyphicon glyphicon-menu-hamburger">
               </span>
               <u> {!! trans('detail.add') !!} </u>
             </a>
-            @endif
           </p>
         </div>
     </div>
 
-    <div class="row detail-Description-enCo text-left"> 
+    <div class="row detail-Description-enCo text-left">
       <!-- description condition -->
       <div class="col-md-offset-2 col-md-6">
 
@@ -117,7 +109,7 @@
       </div>
 
 
-      <div class="col-md-offset-1 col-md-2"> 
+      <div class="col-md-offset-1 col-md-2">
         <strong>{!! trans('detail.artist') !!}</strong>
         <p>
           {{$art->artist}}
@@ -136,6 +128,39 @@
         <p>
           {{$art->color}}
         </p>
+        <!-- Trigger the modal with a button -->
+        <button type="button" class="btn-default col-md-11 question" data-toggle="modal" data-target="#modalQ">
+          {{ trans('detail.askButton') }}
+        </button>
+
+        <!-- Modal -->
+        <div id="modalQ" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">{{ trans('detail.qAsk') }}</h4>
+              </div>
+              <div class="modal-body row col-md-offset-2 col-md-8">
+                {!! Form::open(array('url' => URL::route('ask'), 'method' => 'post', 'class' => 'form-horizontal')) !!}
+                <div class="form-group">
+                      {!! Form::label('question', trans('detail.qTitle',['title' => $art->title])) !!}
+                      {!! Form::text('question','',array('class' => 'form-control'))!!}
+                      {!! Form::hidden('art_id', $art->id)!!}
+                </div>
+                <div class="form-group">
+        		        <button type="submit" class="btn btn-default">{{ trans('detail.ask') }}</button>
+        		    </div>
+                {!! Form::close()!!}
+              </div>
+              <div class="modal-footer"></div>
+            </div>
+
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
@@ -143,7 +168,7 @@
   <div class="related row">
     <div class="col-md-offset-2 col-md-8 row">
     <h2 class="blue-text">{!! trans('detail.related') !!}</h2>
-    
+
       <div class="col-md-3">
         <img class="img-responsive" src="img/2.jpg">
         <div class="row">
@@ -204,5 +229,3 @@
 
   </div>
 @endsection
-
- 

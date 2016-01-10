@@ -1,6 +1,7 @@
 <?php
 
 	return array(
-		'bid' 					=>  'you have placed a bid of :bid.',
-		
+		'bid' 					=>  'You have placed a bid of :bid.',
+		'bought'				=>  'You bought the art piece',
+
 	);

@@ -17,9 +17,11 @@ use Carbon\Carbon;
 use App\Pictures;
 use App\watchlist;
 use App\Bid;
+use App\Questions;
+use Redirect;
 
 use App\Http\Requests\addArtRequest;
-    
+
 
 class ArtController extends Controller
 {
@@ -33,8 +35,6 @@ class ArtController extends Controller
         {
             $eras[$Era->id] = $Era->name;
         }
-
-
 
         $getStyle    = Style::select('id', 'name')
                         ->get();
@@ -58,9 +58,9 @@ class ArtController extends Controller
     public function addart(addArtRequest $request)
     {
        //img nog toevoegen + validate
-    
-        $data = $request->all(); 
-        
+
+        $data = $request->all();
+
         $input                       = new Art;
 
         $input->user_id              = Auth::user()->id;
@@ -77,20 +77,19 @@ class ArtController extends Controller
         $input->birth                = $data['birth'];
         $input->death                = $data['death'];
         $input->price                = $data['price'];
-        
+
         $input->save();
-        $input->id;
-        
+
         foreach ($data['pic'] as $pic) {
-            
-            $destinationPath        = 'pic/art/' . Auth::user()->id . '/';
+
+            $destinationPath        = 'pic/art/' . $input->id . '/';
             $now = Carbon::now()->format('Y-m-d');
             $extension          = $pic->getClientOriginalExtension();
             $fileName           = rand(11111,99999).'-'.$now.'.'.$extension; // renameing image random name
             //fullpath = path to picture + date + filename + extension
-            $fullPath           = $destinationPath . $fileName;   
+            $fullPath           = $destinationPath . $fileName;
 
-            $pic->move($destinationPath , $fileName); 
+            $pic->move($destinationPath , $fileName);
 
 
             $picInput                 = new Pictures;
@@ -99,23 +98,31 @@ class ArtController extends Controller
             $picInput->save();
 
 
-        
+
         }
         return $this->newArt()->withSuccess('succesvol toegevoegt');
     }
 
     public function getDetail($id)
     {
-        $art            =   Art::find($id);
+        $art            =   Art::where('id',$id)
+                                  ->where('sold',0)
+                                  ->firstOrFail();
 
         $headpicture    =   Pictures::Where('art_id',$art->id)->first();
         $pictures       =   Pictures::Where('art_id',$art->id)->skip(1)->take(3)->get();
-        $watchlist      =   watchlist::where('art_id',$id)
-                            ->where('user_id',Auth::user()->id)
-                            ->count();
-       
-        
-        return View('detail', compact('art','headpicture','pictures','watchlist'));
+
+
+        $nrbids         =   Bid::where('art_id',$art->id)->count();
+        if ($nrbids!=1)
+        {
+          $nrbids         .= " " . trans('detail.bid');
+        }else {
+          $nrbids         .= " " . trans('detail.singleBid');
+        }
+
+
+        return View('detail', compact('art','headpicture','pictures','watchlist','nrbids'));
     }
 
     public function bid(Request $request)
@@ -123,12 +130,12 @@ class ArtController extends Controller
        $this->validate($request, [
             'bid'   => 'required|numeric',
          ]);
-        
+
         $input           =   new Bid;
         $input->art_id   =   $request->art;
         $input->user_id  =   Auth::user()->id;
         $input->bid      =   $request->bid;
-       
+
        if( $input->save() )
         {
             return $this->getDetail($request->art)->withSuccess(trans('succes.bid', ['bid' => $request->bid]));
@@ -136,6 +143,33 @@ class ArtController extends Controller
         else
         {
             return $this->getDetail($request->art)->withErrors( (trans('error.bid') ) );
-        } 
+        }
+    }
+
+    public function buyNow($art_id)
+    {
+       $art   = Art::where('id',$art_id)
+                      ->where('sold',0)
+                      ->firstOrFail();
+       $art->sold         = 1;
+       $art->sold_for     = $art->price;
+       $art->save();
+
+       return view('home')->withSuccess(trans('succes.bought'));
+    }
+
+    public function ask(Request $request)
+    {
+        $this->validate($request, [
+             'question'   => 'required',
+          ]);
+
+          $input                = new Questions;
+          $input->art_id        = $request->art_id;
+          $input->question      = $request->question;
+          $input->user_id       = Auth::user()->id;
+          $input->save();
+
+          return Redirect::back()->withSuccess(trans('succes.asked'));
     }
 }

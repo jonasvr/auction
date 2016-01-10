@@ -30,7 +30,8 @@ class CreateArtsTable extends Migration
             $table->integer('price');
             $table->boolean('sold');
             $table->integer('sold_for');
-            
+            $table->date('ending');
+
 
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

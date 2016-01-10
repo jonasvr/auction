@@ -32,18 +32,18 @@ body
 
  /*navbar----------------------------------*/
 
- 
+
  #myNavbar .upper , #myNavbar2 .upper
  {
  	text-transform: uppercase;
  }
 
- /*#myNavbar .navbar-nav a:after { 
+ /*#myNavbar .navbar-nav a:after {
     content: "|";
     padding: 0 10px;
 }*/
-#myNavbar a, 
-#myNavbar .input-group button, 
+#myNavbar a,
+#myNavbar .input-group button,
 #myNavbar2 .navbar-right a
 {
 	color: #0a1e75;
@@ -63,7 +63,7 @@ body
 	margin-bottom: 0;
 }
 
-.divider-vertical 
+.divider-vertical
 {
 	top:12px;
 	height: 25px;
@@ -112,8 +112,8 @@ body
       margin: auto;
       max-height: 600px;
 }
-  
-.carousel, 
+
+.carousel,
 .carousel-inner
 {
 	height: 600px;
@@ -125,7 +125,7 @@ body
   	background-color: rgba(33, 57, 139, 0.7);
   	/*http://stackoverflow.com/questions/637921/opacity-of-background-color-but-not-the-text*/
   }
-  
+
 
 
 .carousel .carousel-control
@@ -135,8 +135,8 @@ body
 	top: 48%;
 }
 
-.carousel .carousel-control.left,.carousel  .carousel-control.right 
-{  
+.carousel .carousel-control.left,.carousel  .carousel-control.right
+{
     background-image: none;
     background-color: #a2a29b;
 }
@@ -148,7 +148,7 @@ body
 #intro, #popular
 {
 	/*position: relative;*/
-	padding: 20px 0; 
+	padding: 20px 0;
 	text-align: center;
 }
 
@@ -175,7 +175,7 @@ body
 }
 
 /*
-http://jsfiddle.net/6Mt3Q/ 
+http://jsfiddle.net/6Mt3Q/
 -->hover overlay
 */
 .image-container {
@@ -207,7 +207,7 @@ img.img-responsive
 	position: absolute;               /* 2 */
     top: 40%;                         /* 3 */
     left: 35%;
-    transform: translate(0, -50%) 
+    transform: translate(0, -50%)
 }
 
 .most .mag{
@@ -230,7 +230,7 @@ img.img-responsive
 
 .detailInfo-blue p,.detailInfo-blue h3
 {
-	padding-left: 10px; 
+	padding-left: 10px;
 }
 
 .visit
@@ -259,7 +259,7 @@ img.img-responsive
 
 .info-block
 {
-	margin-top: 20px; 
+	margin-top: 20px;
 }
 
 .bid
@@ -311,9 +311,16 @@ img.img-responsive
 {
 	margin-top: 0;
 	margin-bottom: 0;
-} 
+}
 
+.question
+{
+  background-color: #757575;
+  color: white;
+  text-transform: uppercase;
+  text-align: center
 
+}
 
 
 /*questions------------------------------*/
@@ -321,7 +328,7 @@ img.img-responsive
 .FAQ .awnsers .question
 {
 	padding-top:25px;
-	
+
 }
 
 .FAQ .awnsers .Q, .FAQ .awnsers .A
@@ -332,14 +339,14 @@ img.img-responsive
 
 .FAQ .awnsers .QT
 {
-	font-size:20px; 
-	
+	font-size:20px;
+
 }
 
 .FAQ .awnsers .AT
 {
-	font-size:17px; 
-	
+	font-size:17px;
+
 }
 
 .FAQ
@@ -359,7 +366,7 @@ img.img-responsive
 
 .links .btn
 {
-	margin-top: 25px; 
+	margin-top: 25px;
 }
 
 .overvieuw
@@ -367,7 +374,7 @@ img.img-responsive
 	margin-top: 25px;
 }
 
-.overvieuw .results 
+.overvieuw .results
 {
 	margin-bottom:20px;
 }

@@ -7,12 +7,13 @@
 
 @section('container')
 
-<div class="row centered-form">
-    <div class="col-md-offset-3 col-md-6">
-	  
+<div class="detailHead row centered-form">
+    <div class="loginForm col-md-offset-4 col-md-4">
+
 		<h2>registratie form</h2>
-		<form role="form" method="POST" action="/register">
-		    {!! csrf_field() !!}
+		{!! Form::open(array('role' => 'form', 'url' => 'auth/register', 'method' => 'post')) !!}
+
+			    {!! csrf_field() !!}
 
 		    <div class="form-group col-md-offset-2 col-md-8">
 		        <label for="email">email</label>
@@ -34,10 +35,10 @@
 		        <input type="password" name="password_confirmation" class="form-control" id="password">
 		    </div>
 
-		    <div class="checkbox col-md-offset-2 col-md-8">
+		    <div class="form-group col-md-8">
 		        <button type="submit" class="btn btn-default">Login</button>
 		    </div>
-		</form>
+		{!! Form::close() !!}
 	</div>
 </div>
 @endsection

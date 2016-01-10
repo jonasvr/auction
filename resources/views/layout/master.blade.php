@@ -14,7 +14,7 @@
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
-            <span class="icon-bar"></span> 
+            <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="#">landoretti</a>
         </div>
@@ -25,10 +25,10 @@
               <li role="separator" class="divider-vertical"></li>
               <li class="{{ Request::is('profile') ? 'active' : '' }}"><a href="{{ url('/profile') }}"><span class="glyphicon glyphicon-user"> {!! trans('master.profile') !!}</a></li>
               <li role="separator" class="divider-vertical"></li>
-              <li><a href="/logout"> {!! trans('master.logout') !!}</a></li> 
+              <li><a href="/logout"> {!! trans('master.logout') !!}</a></li>
             @else
-              <li><a href="/login"> login</a></li> 
-              <li><a href="/register"> {!! trans('master.register') !!}</a></li> 
+              <li><a href="{{ url('auth/login') }}"> login</a></li>
+              <li><a href="{{ url('auth/register') }}"> {!! trans('master.register') !!}</a></li> 
             @endif
           </ul>
           <div class="col-md-2">
@@ -46,15 +46,15 @@
         </div>
       </div>
 
-      
+
         <div class="collapse navbar-collapse row" id="myNavbar2">
           <div class="col-md-offset-3 col-md-6">
             <ul class="nav navbar-nav upper ">
             @if(Auth::check())
                 <li><a href="/">{!! trans('master.home') !!}</a></li>
                 <li><a href="{{ URL::route('new') }}">{!! trans('master.art') !!}</a></li>
-                <li><a href="#">{!! trans('master.search') !!}</a></li> 
-                <li><a href="#">{!! trans('master.logout') !!}</a></li> 
+                <li><a href="#">{!! trans('master.search') !!}</a></li>
+                <li><a href="#">{!! trans('master.logout') !!}</a></li>
                 <li><a href="#">{!! trans('master.mybids') !!}</a></li>
                 <li><a href="#">{!! trans('master.contact') !!}</a></li>
             @endif
@@ -64,12 +64,12 @@
             <ul class="nav navbar-nav navbar-right upper">
               <li><a href="{{ URL::route('language', array('lng' => 'nl')) }}">nl</a></li>
               <li><a href="/language/fr">fr</a></li>
-              <li><a href="{{ URL::route('language', array('lng' => 'en')) }}">en</a></li> 
+              <li><a href="{{ URL::route('language', array('lng' => 'en')) }}">en</a></li>
             </ul>
           </div>
           <div class="col-md-1"></div>
         </div>
-      
+
     </div>
   </nav>
 
@@ -188,7 +188,7 @@
             <li><span class="glyphicon glyphicon-earphone"></span> +XX, (0)X XXX XX XX</li>
             <li><span class="glyphicon glyphicon-envelope"></span><a href="mailto:info@landorettiart.com" target="_top">info@landorettiart.com</a></li>
           </ul>
-        </div>  
+        </div>
       </div>
     </div>
     <hr>
@@ -200,8 +200,8 @@
                   <ul class="nav navbar-nav upper ">
                    <li><a href="#">{!! trans('master.home') !!}</a></li>
                   <li><a href="#">{!! trans('master.art') !!}</a></li>
-                  <li><a href="#">{!! trans('master.search') !!}</a></li> 
-                  <li><a href="#">{!! trans('master.logout') !!}</a></li> 
+                  <li><a href="#">{!! trans('master.search') !!}</a></li>
+                  <li><a href="#">{!! trans('master.logout') !!}</a></li>
                   <li><a href="#">{!! trans('master.mybids') !!}</a></li>
                   <li><a href="#">{!! trans('master.contact') !!}</a></li>
                   </ul>
@@ -210,22 +210,22 @@
                   <ul class="nav navbar-nav navbar-right upper">
                     <li><a href="#">nl</a></li>
                     <li><a href="#">fr</a></li>
-                    <li><a href="#">en</a></li> 
+                    <li><a href="#">en</a></li>
                   </ul>
                 </div>
                 <div class="col-md-1"></div>
               </div>
             </div>
       </div>
-  
+
   </body>
   <link rel="stylesheet" href="/css/bootstrap.min.css">
   <script src="/js/jquery.min.js"></script>
   <script src="/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="/css/style.css">
-  
-  
- 
+
+
+
 </html>
 
 

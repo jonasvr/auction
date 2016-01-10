@@ -19,7 +19,7 @@ use Hash;
 class AuthController extends Controller
 {
     protected $redirectPath = '/';
-    protected $loginPath = '/login';
+    protected $loginPath = 'auth/login';
     /*
     |--------------------------------------------------------------------------
     | Registration & Login Controller

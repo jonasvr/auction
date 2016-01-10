@@ -43,7 +43,8 @@ class Handler extends ExceptionHandler
     public function render($request, Exception $e)
     {
         if ($e instanceof ModelNotFoundException) {
-            $e = new NotFoundHttpException($e->getMessage(), $e);
+            //$e = new NotFoundHttpException($e->getMessage(), $e);
+            return response()->view('errors.500', [], 500);
         }
 
         return parent::render($request, $e);

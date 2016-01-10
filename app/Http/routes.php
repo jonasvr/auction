@@ -18,7 +18,7 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/profile', function () 
+Route::get('/profile', function ()
 	{    return view('profile.profile');
 });
 
@@ -27,13 +27,13 @@ Route::get('/profile/new', ['as' => 'new', function ()
 }]);
 
 // Authentication routes...
-Route::get('/login', 'Auth\AuthController@getLogin');
-Route::post('/login', 'Auth\AuthController@postLogin');
+Route::get('auth/login', 'Auth\AuthController@getLogin');
+Route::post('auth/login', 'Auth\AuthController@postLogin');//wat?
 Route::get('/logout', 'Auth\AuthController@getLogout');
 
 // Registration routes...
-Route::get('/register', 'Auth\AuthController@getRegister');
-Route::post('/register', 'Auth\AuthController@postRegister');
+Route::get('auth/register', 'Auth\AuthController@getRegister');
+Route::post('auth/register', 'Auth\AuthController@postRegister');
 
 
 Route::get('/faq', function(){
@@ -44,13 +44,17 @@ Route::get('/isearch', function(){
 });
 
 
-Route::get('profile/addToWList/{art_id}',	['as' => 'addToWl',			'uses' => 'ProfileController@addToWatchList']);
-Route::get('profile/delWList/{art_id}',		['as' => 'delWl',			'uses' => 'ProfileController@deleteFromWatchList']);
-Route::post('/profile/bid', 				['as' => 'bid', 			'uses' => 'ArtController@bid']);
+Route::get('art/detail/{id}', 			      ['as' => 'detail',			'uses' => 'ArtController@getDetail' ]);
 
 
+Route::group(['middleware' => 'auth'], function () {
 
-Route::get('art/detail/{id}', 			['as' => 'detail',			'uses' => 'ArtController@getDetail' ]);
-Route::get('/art/new', 					['as' => 'new',				'uses' => 'ArtController@newArt' ]);
-Route::post('/art/addArt', 				['as' => 'addArt', 			'uses' => 'ArtController@addArt']);
-	
+  Route::get('profile/addToWList/{art_id}',	['as' => 'addToWl',			'uses' => 'ProfileController@addToWatchList']);
+  Route::post('/profile/bid', 				      ['as' => 'bid', 			'uses' => 'ArtController@bid']);
+
+  Route::get('/art/new', 					          ['as' => 'new',				  'uses' => 'ArtController@newArt' ]);
+  Route::post('/art/addArt', 				        ['as' => 'addArt', 			'uses' => 'ArtController@addArt']);
+  Route::get('art/buy/{art_id}',            ['as' => 'buynow',			'uses' => 'ArtController@buyNow' ]);
+  Route::post('/art/ask', 				          ['as' => 'ask', 			  'uses' => 'ArtController@ask']);
+
+});
