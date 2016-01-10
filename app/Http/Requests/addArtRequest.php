@@ -29,10 +29,11 @@ class addArtRequest extends Request
             'description'           => 'required',
             'condition'             => 'required',
             'artyear'               => 'numeric',
-            
+
             'death'                 => 'numeric',
             'birth'                 => 'numeric',
             'price'                 => 'required|numeric',
+            'duration'              => 'required|numeric',
         ];
 // $validator = parent::getValidatorInstance();
 

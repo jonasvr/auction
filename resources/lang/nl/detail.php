@@ -21,4 +21,5 @@
 		'qAsk'					=> 'Ik heb een vraag:',
 		'ask'						=> 'vraag',
 		'askButton'			=> 'Ask a question about this auction',
+		'left'					=> 'over',
 	);

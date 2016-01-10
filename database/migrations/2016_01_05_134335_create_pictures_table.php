@@ -15,7 +15,7 @@ class CreatePicturesTable extends Migration
         Schema::create('pictures', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('art_id')->unsigned();
-            $table->foreign('art_id')->references('id')->on('arts')->onDelete('cascade');
+            //$table->foreign('art_id')->references('id')->on('arts')->onDelete('cascade');
             $table->string('path');
 
 

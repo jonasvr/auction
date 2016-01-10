@@ -60,7 +60,7 @@ class ArtController extends Controller
        //img nog toevoegen + validate
 
         $data = $request->all();
-
+        $ending                      = Carbon::now()->addDays($data['duration']);
         $input                       = new Art;
 
         $input->user_id              = Auth::user()->id;
@@ -77,6 +77,7 @@ class ArtController extends Controller
         $input->birth                = $data['birth'];
         $input->death                = $data['death'];
         $input->price                = $data['price'];
+        $input->ending               = $ending;
 
         $input->save();
 
@@ -96,9 +97,6 @@ class ArtController extends Controller
             $picInput->art_id         = $input->id;
             $picInput->path           = $fullPath;
             $picInput->save();
-
-
-
         }
         return $this->newArt()->withSuccess('succesvol toegevoegt');
     }
@@ -121,8 +119,11 @@ class ArtController extends Controller
           $nrbids         .= " " . trans('detail.singleBid');
         }
 
+        $now       = Carbon::now();
+        $dt = new \DateTime($art->ending);
+        $duration       = $dt->diff($now);
 
-        return View('detail', compact('art','headpicture','pictures','watchlist','nrbids'));
+        return View('art.detail', compact('art','headpicture','pictures','watchlist','nrbids','duration'));
     }
 
     public function bid(Request $request)

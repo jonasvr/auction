@@ -1,22 +1,23 @@
 <?php
 
 	return array(
-		'title'				=> 	'titel',
+		'title'						=> 	'titel',
 		'description' 		=> 	'omschrijving',
-		'condition'			=>	'staat van het werk',
-		'artyear'			=> 	'jaar van creatie',
-		'dimensions'		=>	'dimensies',
-		'color'				=> 	'kleur',
-		'style'				=>	'stijl',
-		'era'				=>	'tijdperk',
+		'condition'				=>	'staat van het werk',
+		'artyear'					=> 	'jaar van creatie',
+		'dimensions'			=>	'dimensies',
+		'color'						=> 	'kleur',
+		'style'						=>	'stijl',
+		'era'							=>	'tijdperk',
 
-		'artist'			=>	'artist',
-		'continent'			=>	'land',
-		'birth'				=>	'geboortejaar',
-		'death'				=>	'sterfjaar',
-		
-		'price'				=> 	'vraag prijs',
-		'picture'			=>  'afbeelding',
-		'newTitle'			=>	'Nieuw kunststuk',
-		'ending'			=>	'einde veiling',
+		'artist'					=>	'artist',
+		'continent'				=>	'weerkomst',
+		'birth'						=>	'geboortejaar',
+		'death'						=>	'sterfjaar',
+
+		'price'						=> 	'vraag prijs',
+		'picture'					=>  'afbeelding',
+		'newTitle'				=>	'Nieuw kunststuk',
+		'duration'				=>	'duur in dagen',
+		'submit'					=>	'submit',
 	);

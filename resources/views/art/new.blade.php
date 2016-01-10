@@ -5,17 +5,17 @@
 @endsection
 
 
-@section('container')   
+@section('container')
 
 <div class="row">
   <h1 class='col-md-offset-1 col-md-5'>{!! trans('profile.newTitle') !!}</h1>
 </div>
 <div class="row profile-form text-capitalize blue-text">
 {!! Form::open(array('url' => URL::route('addArt'), 'method' => 'POST', 'class' => 'form-horizontal', 'files' => true )) !!}
-    
+
 <!-- kolom 1 -->
   <div class="col-md-offset-1 col-md-5">
-      
+
       <div class="form-group">
         {!! Form::label('title',  trans('profile.title'), array('class' => 'col-sm-3  control-label')) !!}
         <div class="col-sm-9">
@@ -26,7 +26,7 @@
       <div class="form-group">
         {!! Form::label('description', trans('profile.description'), array('class' => 'col-sm-3  control-label')) !!}
         <div class="col-sm-9">
-          {!! Form::textarea('description','',array('class' => 'form-control', 'rows' => '8')) !!} 
+          {!! Form::textarea('description','',array('class' => 'form-control', 'rows' => '8')) !!}
         </div>
       </div>
 
@@ -47,7 +47,7 @@
         </div>
       </div>
 
-     
+
   </div>
 <!-- eind kolom 1 -->
 <!-- kolom 2 -->
@@ -97,7 +97,7 @@
           {!! Form::text('artist','',array('class' => 'form-control')) !!}
         </div>
       </div>
-      
+
       <div class="form-group">
         {!! Form::label('country', trans('profile.continent'), array('class' => 'col-sm-3  control-label')) !!}
         <div class="col-sm-9">
@@ -105,7 +105,7 @@
         </div>
       </div>
 
-      <div class="form-group">     
+      <div class="form-group">
         {!! Form::label('birth', trans('profile.birth'), array('class' => 'col-sm-3  control-label')) !!}
         <div class="col-sm-9">
           {!! Form::text('birth','',array('class' => 'form-control')) !!}
@@ -127,20 +127,18 @@
       </div>
 
       <div class="form-group">
-      {!! Form::label('price', trans('profile.ending'), array('class' => 'col-sm-3  control-label')) !!}
+      {!! Form::label('duration', trans('profile.duration'), array('class' => 'col-sm-3  control-label')) !!}
       <div class="col-xs-7">
-        {!! Form::date('ending','',array('class' => 'form-control')) !!}
+        {!! Form::number('duration',2,array('class' => 'form-control', 'min' => 2, 'max' => 14)) !!}
       </div>
     </div>
 
     <div class="col-sm-offset-3 col-sm-9">
       <input type="hidden" name="_token" value="{{ csrf_token() }}">
-      {!! Form::submit('Submit!', array('class' => 'btn btn-default')) !!}
+      {!! Form::submit(trans('profile.submit'), array('class' => 'btn btn-default')) !!}
     </div>
   </div>
 <!-- eind kolom 2 -->
 {!! Form::close() !!}
 </div>
 @endsection
-
- 

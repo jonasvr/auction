@@ -1,23 +1,25 @@
 <?php
 
 	return array(
-		'title'				=> 	'title',
-		'description' 		=> 	'description',
+		'title'					=> 	'title',
+		'description' 	=> 	'description',
 		'condition'			=>	'condition',
-		'artyear'			=> 	'Year of creation',
+		'artyear'				=> 	'Year of creation',
 		'dimensions'		=>	'dimensions',
-		'color'				=> 	'color',
-		'style'				=>	'style',
-		'era'				=>	'era',
+		'color'					=> 	'color',
+		'style'					=>	'style',
+		'era'						=>	'era',
 
-		'artist'			=>	'artist',
-		'continent'			=>	'continent',
-		'birth'				=>	'birth',
-		'death'				=>	'death',
-		
-		'price'				=> 	'asking price',
-		'picture'			=>  'picture',
+		'artist'				=>	'artist',
+		'continent'			=>	'origin',
+		'birth'					=>	'birth-year',
+		'death'					=>	'death-year',
+
+		'price'					=> 	'asking price',
+		'picture'				=>  'picture',
 		'newTitle'			=>	'New art Piece',
-		'ending'			=>	'auction ending',
+		'duration'			=>	'duration in days',
+		'submit'				=>	'toevoegen',
+
 
 	);

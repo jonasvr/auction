@@ -21,4 +21,5 @@
 		'qAsk'					=> 'You have a question:',
 		'ask'						=> 'ask',
 		'askButton'			=> 'Ask a question about this auction',
+		'left'					=> 'left',
 	);

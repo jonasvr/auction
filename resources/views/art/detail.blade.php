@@ -19,7 +19,8 @@
 
       <div class="col-md-offset-2 col-md-7">
           <p>
-            25d 14u 44m
+            {{ $duration->d }}d {{ $duration->h }}u {{ $duration->i }}m
+
             <span class="blue-text">
               ({{ $nrbids }})
               <span class="glyphicon glyphicon-menu-hamburger"></span>
@@ -49,7 +50,7 @@
           </p>
 
           <p class="green-text">
-            25d 14u 44m left
+            {{ $duration->d }}d {{ $duration->h }}u {{ $duration->i }}m {{ trans('detail.left') }}
           </p>
 
           <p>September 09, 2013, 13:00 p.m. (EST)</p>
