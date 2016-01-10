@@ -29,6 +29,7 @@ class CreateNewArtsTable extends Migration
             $table->integer('price');
             $table->boolean('sold');
             $table->integer('sold_for');
+            $table->date('ending');
             
             $table->softDeletes();
             $table->timestamps();

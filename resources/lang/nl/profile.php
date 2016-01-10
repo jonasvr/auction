@@ -18,4 +18,5 @@
 		'price'				=> 	'vraag prijs',
 		'picture'			=>  'afbeelding',
 		'newTitle'			=>	'Nieuw kunststuk',
+		'ending'			=>	'einde veiling',
 	);

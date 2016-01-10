@@ -1,4 +1,5 @@
-@extends('master')
+@extends('layout.master')
+
 
 @section('title')
     auction
@@ -6,7 +7,7 @@
 
 
 @section('container')   
-@include('header')
+  @include('layout.header')
 
 <div class="Search">
   <div class="row">

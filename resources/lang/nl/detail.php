@@ -7,6 +7,7 @@
 		'bid'				=> 'bieden',
 		'bidnow'			=> 'bied nu',
 		'add'				=> 'toevoegen aan mijn lijst',
+		'remove'			=> 'verwijder van mijn lijst',
 		'description'		=> 'Omschrijving',
 		'condition'			=> 'Staat van het werk',
 		'artist'			=> 'Artist',

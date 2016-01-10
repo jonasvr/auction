@@ -15,6 +15,8 @@ use App\Country;
 use Auth;
 use Carbon\Carbon;
 use App\Pictures;
+use App\watchlist;
+use App\Bid;
 
 use App\Http\Requests\addArtRequest;
     
@@ -52,7 +54,6 @@ class ArtController extends Controller
 
          // dd($Countrys);
         return view('art.new', compact('styles','eras','cpuntrys'));
-
     }
     public function addart(addArtRequest $request)
     {
@@ -103,4 +104,38 @@ class ArtController extends Controller
         return $this->newArt()->withSuccess('succesvol toegevoegt');
     }
 
+    public function getDetail($id)
+    {
+        $art            =   Art::find($id);
+
+        $headpicture    =   Pictures::Where('art_id',$art->id)->first();
+        $pictures       =   Pictures::Where('art_id',$art->id)->skip(1)->take(3)->get();
+        $watchlist      =   watchlist::where('art_id',$id)
+                            ->where('user_id',Auth::user()->id)
+                            ->count();
+       
+        
+        return View('detail', compact('art','headpicture','pictures','watchlist'));
+    }
+
+    public function bid(Request $request)
+    {
+       $this->validate($request, [
+            'bid'   => 'required|numeric',
+         ]);
+        
+        $input           =   new Bid;
+        $input->art_id   =   $request->art;
+        $input->user_id  =   Auth::user()->id;
+        $input->bid      =   $request->bid;
+       
+       if( $input->save() )
+        {
+            return $this->getDetail($request->art)->withSuccess(trans('succes.bid', ['bid' => $request->bid]));
+        }
+        else
+        {
+            return $this->getDetail($request->art)->withErrors( (trans('error.bid') ) );
+        } 
+    }
 }

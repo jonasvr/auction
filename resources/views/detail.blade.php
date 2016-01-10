@@ -1,4 +1,5 @@
-@extends('master')
+@extends('layout.master')
+
 
 @section('title')
     auction
@@ -6,12 +7,13 @@
 
 
 @section('container')   
-  @include('header')
+  @include('layout.header')
   <!-- end header -->
+
   <div class="wrapper-details">
     <div class="row">
       <div class="col-md-offset-2 col-md-7">
-          <h2> TITLE AUCTION </h2>
+          <h2> {{$art->title}} </h2>
       </div>
       <div class="col-md-3"></div>
 
@@ -31,16 +33,17 @@
       <div class="detailDataBlock row">
         <div class="col-md-offset-2 col-md-6 detailImages">
           <div class="row white-overlay">
-            <img src="/img/1.jpg" class="col-md-12 img-responsive">
-            <img src="/img/1.jpg" class="col-md-4 img-responsive">
-            <img src="/img/1.jpg" class="col-md-4 img-responsive">
-            <img src="/img/1.jpg" class="col-md-4 img-responsive">
+
+          {!! Html::image($headpicture->path, 'a picture of art', array('class' => 'col-md-12 img-responsive')) !!}
+            @foreach($pictures as $picture)
+              {!! Html::image($picture->path, 'a picture of art', array('class' => 'col-md-4 img-responsive')) !!}
+            @endforeach
           </div>
         </div>
 
         <!-- data rechts -->
-        <div class="col-md-2 text-right"> 
-          <h3> title auction</h3>
+        <div class="col-md-3 text-right"> 
+          <h3> {{$art->title}}</h3>
           <p class="blue-text">
             adres
           </p>
@@ -71,19 +74,30 @@
           </p>
           
           <p>{!! trans('detail.bid') !!}?</p>
-          <form class="bid">
+          {!! Form::open(array('url' => URL::route('bid'), 'method' => 'post', 'class' => 'form-horizontal bid')) !!}
             <div class="input-group">
-                  <input type="text" class="form-control" placeholder="bid" name="bid">
+                  {!! Form::text('bid','',array('class' => 'form-control', 'placeholder' => 'bid'))!!}
+                  {!! Form::hidden('art', $art->id)!!}
                   <div class="input-group-addon">
                       <button type="submit"  class="text-uppercase"> {!! trans('detail.bidnow') !!} > </button>
                   </div>
               </div>
-          </form>
-          <p class="text-center"  ><a class="blue-text" href="#">
-            <span class="glyphicon glyphicon-menu-hamburger"> 
-            </span>
-            <u class=""> {!! trans('detail.add') !!} </u>
-          </a></p>
+          {!! Form::close() !!}
+          <p class="text-center">
+            @if($watchlist)
+            <a class="blue-text" href="{{ URL::route('delWl', ['id'=> $art->id] ) }}">
+              <span class="glyphicon glyphicon-menu-hamburger"> 
+              </span>
+              <u> {!! trans('detail.remove') !!} </u>
+            </a>
+            @else
+            <a class="blue-text" href="{{ URL::route('addToWl', ['id'=> $art->id] ) }}">
+              <span class="glyphicon glyphicon-menu-hamburger"> 
+              </span>
+              <u> {!! trans('detail.add') !!} </u>
+            </a>
+            @endif
+          </p>
         </div>
     </div>
 
@@ -93,35 +107,34 @@
 
       <strong>{!! trans('detail.description') !!}</strong>
       <p>
-        Dance of Time III" (1979-84) is a stunning bronze and gold patina sculpture 
-        by Spanish Contemporary artist Salvador Dalí (Spain, 1904 - 1989), measures 10.43 inches (26.50 cm) and is stamped and numbered from an edition of 350. This sculpture is in perfect condition and is accompanied by documentation of authenticity. As one of the most well known and iconic images seen in Dali’s work, the melted watch has appeared consistently throughout the artist’s oeuvre. As time universally knows no limits, it is perceived as something perpetual- ‘dancing on’ and stopping for no one as exemplified in this ‘Dance of Time III’ sculpture. Meant to echo the fluidity of time, the undulated form of this melted clock captures the surrealistic imagery so beloved and continuously employed by Dali.
+          {{$art->description}}
       </p>
 
       <strong>{!! trans('detail.condition') !!}</strong>
       <p>
-        Lorem ipsum dolor sit amet, nec dictum, consectetuer donec tincidunt eget ante libero gravida. Wisi nec nulla, lorem suspendisse lorem id tellus eget, erat tellus, enim at. A purus libero amet vitae accumsan scelerisque, quis orci sed ornare pulvinar, luctus mauris turpis mollis ut vel eget, id massa non cursus felis. Sed et mus non non augue tortor. Pede id massa, ante rhoncus et at ad, fringilla vulputate dapibus nunc, iaculis sollicitudin accumsan non, hac vehicula hymenaeos. Felis aliquet donec vitae. Autem ante, sollicitudin feugiat amet viverra quae risus, dui dis semper ac non, mi curabitur amet. Bibendum nunc fusce aliquam ante tempus, imperdiet magna.
-       </p>
+          {{$art->condition}}
+      </p>
       </div>
 
 
-      <div class=" col-md-2"> 
+      <div class="col-md-offset-1 col-md-2"> 
         <strong>{!! trans('detail.artist') !!}</strong>
         <p>
-          Salvador Dali
+          {{$art->artist}}
         <br />
-          spanish
+          {{$art->country}}
         <br />
-          1904-1980
+          {{$art->birth}}-{{$art->death}}
         </p>
 
         <strong>{!! trans('detail.dimensions') !!}</strong>
         <p>
-          10.43 x 10.43 x 10.44 cm
+          {{$art->dimensions}}
         </p>
 
         <strong>{!! trans('detail.color') !!}</strong>
         <p>
-          bronze, patinated bronze and gold
+          {{$art->color}}
         </p>
       </div>
     </div>

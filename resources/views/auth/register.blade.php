@@ -1,4 +1,5 @@
-@extends('master')
+@extends('layout.master')
+
 
 @section('title')
 	registratie

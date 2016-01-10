@@ -1,4 +1,4 @@
-@extends('master')
+@extends('layout.master')
 
 @section('title')
     auction
@@ -11,10 +11,10 @@
   <h1 class='col-md-offset-1 col-md-5'>{!! trans('profile.newTitle') !!}</h1>
 </div>
 <div class="row profile-form text-capitalize blue-text">
-
+{!! Form::open(array('url' => URL::route('addArt'), 'method' => 'POST', 'class' => 'form-horizontal', 'files' => true )) !!}
+    
 <!-- kolom 1 -->
   <div class="col-md-offset-1 col-md-5">
-    {!! Form::open(array('url' => URL::route('addArt'), 'method' => 'POST', 'class' => 'form-horizontal', 'files' => true )) !!}
       
       <div class="form-group">
         {!! Form::label('title',  trans('profile.title'), array('class' => 'col-sm-3  control-label')) !!}
@@ -126,12 +126,20 @@
         </div>
       </div>
 
+      <div class="form-group">
+      {!! Form::label('price', trans('profile.ending'), array('class' => 'col-sm-3  control-label')) !!}
+      <div class="col-xs-7">
+        {!! Form::date('ending','',array('class' => 'form-control')) !!}
+      </div>
+    </div>
+
     <div class="col-sm-offset-3 col-sm-9">
       <input type="hidden" name="_token" value="{{ csrf_token() }}">
       {!! Form::submit('Submit!', array('class' => 'btn btn-default')) !!}
     </div>
   </div>
 <!-- eind kolom 2 -->
+{!! Form::close() !!}
 </div>
 @endsection
 

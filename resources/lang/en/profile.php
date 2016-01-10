@@ -18,5 +18,6 @@
 		'price'				=> 	'asking price',
 		'picture'			=>  'picture',
 		'newTitle'			=>	'New art Piece',
+		'ending'			=>	'auction ending',
 
 	);

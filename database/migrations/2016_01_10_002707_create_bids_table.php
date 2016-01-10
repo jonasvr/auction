@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePicturesTable extends Migration
+class CreateBidsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,14 +12,16 @@ class CreatePicturesTable extends Migration
      */
     public function up()
     {
-        Schema::create('pictures', function (Blueprint $table) {
+        Schema::create('bids', function (Blueprint $table) {
             $table->increments('id');
+
             $table->integer('art_id')->unsigned();
             $table->foreign('art_id')->references('id')->on('arts')->onDelete('cascade');
-            $table->string('path');
 
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
-            $table->softDeletes();
+            $table->integer('bid');
             $table->timestamps();
         });
     }
@@ -31,6 +33,6 @@ class CreatePicturesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('pictures');
+        Schema::drop('bids');
     }
 }

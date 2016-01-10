@@ -35,9 +35,6 @@ Route::get('/logout', 'Auth\AuthController@getLogout');
 Route::get('/register', 'Auth\AuthController@getRegister');
 Route::post('/register', 'Auth\AuthController@postRegister');
 
-Route::get('/detail', function(){
-	return View('detail');
-});
 
 Route::get('/faq', function(){
 	return View('FAQ');
@@ -46,7 +43,14 @@ Route::get('/isearch', function(){
 	return View('isearch');
 });
 
-Route::get('/art/show', 	['as' => 'show',			'uses' => 'ArtController@show' ]);
-Route::get('/art/new', 		['as' => 'new',				'uses' => 'ArtController@newArt' ]);
-Route::post('/art/addArt', 	['as' => 'addArt', 			'uses' => 'ArtController@addArt']);
+
+Route::get('profile/addToWList/{art_id}',	['as' => 'addToWl',			'uses' => 'ProfileController@addToWatchList']);
+Route::get('profile/delWList/{art_id}',		['as' => 'delWl',			'uses' => 'ProfileController@deleteFromWatchList']);
+Route::post('/profile/bid', 				['as' => 'bid', 			'uses' => 'ArtController@bid']);
+
+
+
+Route::get('art/detail/{id}', 			['as' => 'detail',			'uses' => 'ArtController@getDetail' ]);
+Route::get('/art/new', 					['as' => 'new',				'uses' => 'ArtController@newArt' ]);
+Route::post('/art/addArt', 				['as' => 'addArt', 			'uses' => 'ArtController@addArt']);
 	
