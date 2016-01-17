@@ -36,9 +36,8 @@ Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
 
 
-Route::get('/faq', function(){
-	return View('FAQ');
-});
+Route::get('/faq',   ['as' => 'faq', 'uses' => 'MainController@getFaqs']);
+
 Route::get('/isearch', function(){
 	return View('isearch');
 });

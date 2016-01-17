@@ -14,6 +14,7 @@ use App\Country;
 use Auth;
 use Carbon\Carbon;
 use Session;
+use App\Faq;
 
 class MainController extends Controller
 {
@@ -65,7 +66,6 @@ class MainController extends Controller
                                    }
                                    break;
                                 case 'when':
-
                                   $when = $this->filterOnWhen($value);
                                   echo $when;
                                   $query->where('ending','<',$when);
@@ -115,7 +115,12 @@ class MainController extends Controller
         $duration[] = $dt->diff($now);
       }
       $title = 'search';
-    return View('art.overview', compact('random_art','VoS','duration','picture','title'));
+      $faqs = Faq::where('question', 'like', '%' . $search . '%')
+                  ->orWhere('awnser', 'like', '%' . $search . '%')
+                  ->orWhere('tags', 'like', '%' . $search . '%')
+                  ->get();
+
+    return View('art.overview', compact('random_art','VoS','duration','picture','title','faqs'));
   }
 
   public function searchFiltert($filter,$value)
@@ -147,7 +152,6 @@ class MainController extends Controller
                                     }
                                     break;
                                  case 'when':
-
                                    $when = $this->filterOnWhen($value);
                                    echo $when;
                                    $query->where('ending','<',$when);
@@ -155,10 +159,11 @@ class MainController extends Controller
                                 }
                             })
                           ->paginate(8);
-    $VoS = 'searchFilter';
 
+
+    $VoS = 'searchFilter';
       foreach ($random_art as $art) {
-          $picture[] = $art->pictures()
+        $picture[] = $art->pictures()
                               ->take(1)
                               ->get();
 
@@ -207,5 +212,13 @@ class MainController extends Controller
         break;
     }
     return $when;
+  }
+
+
+
+  public function getFaqs()
+  {
+    $faqs = Faq::all();
+    return View('FAQ',compact('faqs'));
   }
 }

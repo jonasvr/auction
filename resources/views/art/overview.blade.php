@@ -9,7 +9,7 @@
 
 <div class="related row">
   <div class="col-md-offset-2 col-md-8 row">
-  <h2 class="blue-text">Overzicht</h2>
+  <h1 class="blue-text">{{ $title }}</h1>
   <div class="col-md-offset-1 row">
     <p>
       <a href="#" class="filterLink">filter</a>
@@ -103,6 +103,25 @@
 <div class="row text-center">
   {!! $random_art->render() !!}
 </div>
+@if(isset($faqs))
+<div class="col-md-offset-2 col-md-8 row">
+  <h1 class="blue-text">FAQ</h1>
+  <div class="row awnsers">
+    @foreach($faqs as $faq)
+    <div class="row question blue-text">
+      <p id="bid" class="col-md-offset-2 col-md-1 Q"> Q</p>
+      <p class="col-md-5 QT"> {!! $faq->question !!}</p>
+    </div>
+    <div class="row">
+      <p class="col-md-offset-2 col-md-1 A"> A</p>
+      <p class="col-md-6 T">  {!! $faq->awnser !!}
+      </p>
+    </div>
+    @endforeach
+  </div>
+</div>
+  @endif
+
 @endsection
 
 @section('js')
