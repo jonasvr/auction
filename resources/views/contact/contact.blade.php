@@ -10,7 +10,7 @@
 
   <div class="col-md-offset-4 col-md-4 blue-text">
     <h1>Contact</h1>
-    {!! Form::open(array('url' => URL::route('contact'), 'method' => 'post', 'class' => 'form-horizontal')) !!}
+    {!! Form::open(array('url' => URL::route('artcontact'), 'method' => 'post', 'class' => 'form-horizontal')) !!}
 
     <div class="form-group">
       @if(isset($art_id))

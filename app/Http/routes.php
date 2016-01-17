@@ -14,7 +14,7 @@
 Route::get('/language/{lng}',['as'=> 'language', 'uses'=> 'LanguageController@chooser']);
 
 
-Route::get('/', function () {
+Route::get('/',  function () {
     return view('home');
 });
 
@@ -44,25 +44,26 @@ Route::get('/isearch', function(){
 });
 
 
-Route::get('art/detail/{id}', 			       ['as' => 'detail',			  'uses' => 'ArtController@getDetail' ]);
+Route::get('art/detail/{id}', 			        ['as' => 'detail',			   'uses' => 'ArtController@getDetail' ]);
 
 Route::get('/contact', function(){
 	return View('contact.contact');
 });
 
-Route::get('/contact/{art_id}/{title}',    ['as' => 'artcontact', 		'uses' => 'MainController@artcontact']);
-Route::post('/contact', 				           ['as' => 'contact', 			  'uses' => 'MainController@contact']);
+Route::get('/contact/{art_id}/{title}',     ['as' => 'artcontact', 		 'uses' => 'ContactController@artcontact']);
+Route::post('/contact', 				            ['as' => 'confirmContact', 'uses' => 'ContactController@contact']);
 
 Route::group(['middleware' => 'auth'], function () {
 
-  Route::get('profile/addToWList/{art_id}',	['as' => 'addToWl',			'uses' => 'ProfileController@addToWatchList']);
-  Route::get('profile/myAuctions',          ['as' => 'myAuctions',   'uses' => 'ProfileController@myAuctions']);
-  Route::get('profile/myBids',              ['as' => 'myBids',   'uses' => 'ProfileController@myBids']);
-  Route::post('/profile/bid', 				      ['as' => 'bid', 			  'uses' => 'ArtController@bid']);
+  Route::get('profile/addToWList/{art_id}',	['as' => 'addToWl',			   'uses' => 'ProfileController@addToWatchList']);
+  Route::get('profile/myAuctions',          ['as' => 'myAuctions',     'uses' => 'ProfileController@myAuctions']);
+  Route::get('profile/myBids',              ['as' => 'myBids',         'uses' => 'ProfileController@myBids']);
+  Route::post('/profile/bid', 				      ['as' => 'bid', 			     'uses' => 'ArtController@bid']);
 
-  Route::get('/art/new', 					          ['as' => 'new',				  'uses' => 'ArtController@newArt' ]);
-  Route::post('/art/addArt', 				        ['as' => 'addArt', 			'uses' => 'ArtController@addArt']);
-  Route::get('art/buy/{art_id}',            ['as' => 'buynow',			'uses' => 'ArtController@buyNow' ]);
+  Route::get('/art/new', 					          ['as' => 'new',				     'uses' => 'ArtController@newArt' ]);
+  Route::post('/art/addArt', 				        ['as' => 'addArt', 			   'uses' => 'ArtController@addArt']);
+  Route::get('/art/buy/{art_id}',           ['as' => 'buynow',			   'uses' => 'ArtController@buyNow' ]);
 
+  Route::get('/art/overview',			          ['as' => 'overview',			 'uses' => 'ArtController@overview' ]);
 
 });

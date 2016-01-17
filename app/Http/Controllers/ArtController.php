@@ -155,5 +155,24 @@ class ArtController extends Controller
        return view('home')->withSuccess(trans('succes.bought'));
     }
 
+    public function overview()
+    {
+      $now      = Carbon::now();
+      $random_art = Art::where('sold',0)
+                            ->where('ending','>',$now)
+                            ->orderBy(\DB::raw('RAND()'))
+                            ->paginate(8);
+          // http://stackoverflow.com/questions/26983186/how-get-random-row-laravel-5
 
+
+      foreach ($random_art as $art) {
+        $pictures[] = $art->pictures()
+                        ->take(1)
+                        ->get();
+        $dt = new \DateTime($art->ending);
+        $duration[] = $dt->diff($now);
+      }
+
+      return View('art.overview', compact('random_art','pictures','duration'));
+    }
 }
