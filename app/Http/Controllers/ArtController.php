@@ -48,7 +48,7 @@ class ArtController extends Controller
 
         return view('art.new', compact('styles','eras','countrys'));
     }
-    public function addart(addArtRequest $request)
+  public function addart(addArtRequest $request)
     {
        //img nog toevoegen + validate
 
@@ -164,15 +164,108 @@ class ArtController extends Controller
                             ->paginate(8);
           // http://stackoverflow.com/questions/26983186/how-get-random-row-laravel-5
 
+      return $this->showOverview($random_art);
+    }
 
-      foreach ($random_art as $art) {
-        $pictures[] = $art->pictures()
-                        ->take(1)
-                        ->get();
-        $dt = new \DateTime($art->ending);
-        $duration[] = $dt->diff($now);
+    public function filterStyle($style)
+    {
+      //echo $style;
+      $now      = Carbon::now();
+      $random_art = Art::where('sold',0)
+                            ->where('ending','>',$now)
+                            ->where('style_id',$style)
+                            ->orderBy(\DB::raw('RAND()'))
+                            ->paginate(8);
+      return $this->showOverview($random_art);
+    }
+
+    public function filterPrice($price)
+    {
+      $now      = Carbon::now();
+      switch ($price) {
+        case 5000:
+          $lower = 0;
+          break;
+        case 10000:
+          $lower = 5000;
+          break;
+        case 25000:
+          $lower = 10000;
+          break;
+        case 50000:
+          $lower = 25000;
+          break;
+        case 100000:
+          $lower = 25000;
+          break;
+        case 'up':
+          $lower = 100000;
+          break;
+        }
+
+      if($price=='up')
+        {
+          $random_art =  Art::where('sold',0)
+                              ->where('ending','>',$now)
+                              ->where('price','>',$lower)
+                              ->orderBy(\DB::raw('RAND()'))
+                              ->paginate(8);
+        }
+      else
+        {
+          $random_art = Art::where('sold',0)
+                              ->where('ending','>',$now)
+                              ->whereBetween('price', [$lower, $price+1])
+                              ->orderBy(\DB::raw('RAND()'))
+                              ->paginate(8);
+        }
+
+        return $this->showOverview($random_art);
+    }
+
+    public function filterEra($era)
+    {
+      //echo $style;
+      $now      = Carbon::now();
+      $random_art = Art::where('sold',0)
+                            ->where('ending','>',$now)
+                            ->where('era_id',$era)
+                            ->orderBy(\DB::raw('RAND()'))
+                            ->paginate(8);
+      return $this->showOverview($random_art);
+    }
+
+    public function filterWhen($when)
+    {
+      switch ($when) {
+        case 'weekend':
+        $when = new Carbon('this monday');
+          break;
+      case 'new':
+        $when = Carbon::tomorrow();
+          break;
       }
 
-      return View('art.overview', compact('random_art','pictures','duration'));
+      $random_art = Art::where('sold',0)
+                            ->where('ending','<',$when)
+                            ->orderBy(\DB::raw('RAND()'))
+                            ->paginate(8);
+      return $this->showOverview($random_art);
+    }
+
+    public function showOverview($random_art)
+    {$now      = Carbon::now();
+
+        $artpieces=array();
+        foreach ($random_art as $art) {
+            $picture[] = $art->pictures()
+                                ->take(1)
+                                ->get();
+
+          $dt = new \DateTime($art->ending);
+          $duration[] = $dt->diff($now);
+        }
+
+        return View('art.overview', compact('random_art','duration','picture'));
     }
 }

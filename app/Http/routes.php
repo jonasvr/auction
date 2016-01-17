@@ -64,6 +64,10 @@ Route::group(['middleware' => 'auth'], function () {
   Route::post('/art/addArt', 				        ['as' => 'addArt', 			   'uses' => 'ArtController@addArt']);
   Route::get('/art/buy/{art_id}',           ['as' => 'buynow',			   'uses' => 'ArtController@buyNow' ]);
 
-  Route::get('/art/overview',			          ['as' => 'overview',			 'uses' => 'ArtController@overview' ]);
+  Route::get('/art/overview/',			              ['as' => 'overview',			 'uses' => 'ArtController@overview' ]);
+  Route::get('/art/overview/style/{style}',			  ['as' => 'overviewStyle',	 'uses' => 'ArtController@filterStyle' ]);
+  Route::get('/art/overview/price/{price}',			  ['as' => 'overviewPrice',	 'uses' => 'ArtController@filterPrice' ]);
+  Route::get('/art/overview/era/{era}',			      ['as' => 'overviewEra',	   'uses' => 'ArtController@filterEra' ]);
+  Route::get('/art/overview/when/{when}',			    ['as' => 'overviewWhen',	 'uses' => 'ArtController@filterWhen' ]);
 
 });
