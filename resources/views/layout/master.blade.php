@@ -33,14 +33,15 @@
           </ul>
           <div class="col-md-2">
             <ul class="nav navbar-nav navbar-right">
-              <form class="navbar-form" role="search">
+              {!! Form::open(array('url' => URL::route('search'), 'method' => 'post', 'class' => 'navbar-form', 'role' =>"search")) !!}
+
               <div class="input-group">
-                  <input type="text" class="form-control" placeholder="Search" name="q">
+                  <input type="text" class="form-control" placeholder="Search" name="search">
                   <div class="input-group-addon">
                       <button class="glyphicon glyphicon-search" type="submit"></button>
                   </div>
               </div>
-              </form>
+              {!! Form::close()!!}
             </ul>
           </div>
         </div>
@@ -120,27 +121,27 @@
         <div class="col-md-3">
           <ul class="nav nav-pills nav-stacked">
             <li><p class="footerTitles">{!! trans('styles.style') !!}</p></li>
-            <li><a href="#">{!! trans('styles.Abstract') !!}</a></li>
-            <li><a href="#">{!! trans('styles.African') !!}</a></li>
-            <li><a href="#">{!! trans('styles.Asian') !!}</a></li>
-            <li><a href="#">{!! trans('styles.Cemceptual') !!}</a></li>
-            <li><a href="#">{!! trans('styles.Contemporary') !!}</a></li>
-            <li><a href="#">{!! trans('styles.Emerging') !!}</a></li>
-            <li><a href="#">{!! trans('styles.Figurative') !!}</a></li>
-            <li><a href="#">{!! trans('styles.Middle') !!}</a></li>
-            <li><a href="#">{!! trans('styles.Mini') !!}</a></li>
-            <li><a href="#">{!! trans('styles.Modern') !!}</a></li>
-            <li><a href="#">{!! trans('styles.Pop') !!}</a></li>
-            <li><a href="#">{!! trans('styles.Urban') !!}</a></li>
-            <li><a href="#">{!! trans('styles.Vintage') !!}</a></li>
+            <li><a href="{{ URL::route('overviewStyle', ['style'=> 1]) }}">{!! trans('styles.Abstract') !!}</a></li>
+            <li><a href="{{ URL::route('overviewStyle', ['style'=> 2]) }}">{!! trans('styles.African') !!}</a></li>
+            <li><a href="{{ URL::route('overviewStyle', ['style'=> 3]) }}">{!! trans('styles.Asian') !!}</a></li>
+            <li><a href="{{ URL::route('overviewStyle', ['style'=> 4]) }}">{!! trans('styles.Cemceptual') !!}</a></li>
+            <li><a href="{{ URL::route('overviewStyle', ['style'=> 5]) }}">{!! trans('styles.Contemporary') !!}</a></li>
+            <li><a href="{{ URL::route('overviewStyle', ['style'=> 6]) }}">{!! trans('styles.Emerging') !!}</a></li>
+            <li><a href="{{ URL::route('overviewStyle', ['style'=> 7]) }}">{!! trans('styles.Figurative') !!}</a></li>
+            <li><a href="{{ URL::route('overviewStyle', ['style'=> 8]) }}">{!! trans('styles.Middle') !!}</a></li>
+            <li><a href="{{ URL::route('overviewStyle', ['style'=> 9]) }}">{!! trans('styles.Mini') !!}</a></li>
+            <li><a href="{{ URL::route('overviewStyle', ['style'=> 10]) }}">{!! trans('styles.Modern') !!}</a></li>
+            <li><a href="{{ URL::route('overviewStyle', ['style'=> 11]) }}">{!! trans('styles.Pop') !!}</a></li>
+            <li><a href="{{ URL::route('overviewStyle', ['style'=> 12]) }}">{!! trans('styles.Urban') !!}</a></li>
+            <li><a href="{{ URL::route('overviewStyle', ['style'=> 13]) }}">{!! trans('styles.Vintage') !!}</a></li>
           </ul>
            <ul class="nav nav-pills nav-stacked">
             <li><p class="footerTitles">{!! trans('styles.style') !!}</p></li>
-            <li><a href="#">{!! trans('styles.Design') !!}</a></li>
-            <li><a href="#">{!! trans('styles.Paintings') !!}</a></li>
-            <li><a href="#">{!! trans('styles.Photographs') !!}</a></li>
-            <li><a href="#">{!! trans('styles.Prints') !!}</a></li>
-            <li><a href="#">{!! trans('styles.Sculpture') !!}</a></li>
+            <li><a href="{{ URL::route('overviewStyle', ['style'=> 14]) }}">{!! trans('styles.Design') !!}</a></li>
+            <li><a href="{{ URL::route('overviewStyle', ['style'=> 15]) }}">{!! trans('styles.Paintings') !!}</a></li>
+            <li><a href="{{ URL::route('overviewStyle', ['style'=> 16]) }}">{!! trans('styles.Photographs') !!}</a></li>
+            <li><a href="{{ URL::route('overviewStyle', ['style'=> 17]) }}">{!! trans('styles.Prints') !!}</a></li>
+            <li><a href="{{ URL::route('overviewStyle', ['style'=> 18]) }}">{!! trans('styles.Sculpture') !!}</a></li>
           </ul>
         </div>
         <div class="col-md-3">

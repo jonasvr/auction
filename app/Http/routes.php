@@ -64,10 +64,13 @@ Route::group(['middleware' => 'auth'], function () {
   Route::post('/art/addArt', 				        ['as' => 'addArt', 			   'uses' => 'ArtController@addArt']);
   Route::get('/art/buy/{art_id}',           ['as' => 'buynow',			   'uses' => 'ArtController@buyNow' ]);
 
-  Route::get('/art/overview/',			              ['as' => 'overview',			 'uses' => 'ArtController@overview' ]);
-  Route::get('/art/overview/style/{style}',			  ['as' => 'overviewStyle',	 'uses' => 'ArtController@filterStyle' ]);
-  Route::get('/art/overview/price/{price}',			  ['as' => 'overviewPrice',	 'uses' => 'ArtController@filterPrice' ]);
-  Route::get('/art/overview/era/{era}',			      ['as' => 'overviewEra',	   'uses' => 'ArtController@filterEra' ]);
-  Route::get('/art/overview/when/{when}',			    ['as' => 'overviewWhen',	 'uses' => 'ArtController@filterWhen' ]);
+  Route::get('/art/overview/',			              ['as' => 'overview',			 'uses' => 'MainController@overview' ]);
+  Route::get('/art/overview/{filter}/{value}',    ['as' => 'overviewFilter',	'uses' => 'MainController@overviewFilter' ]);
+  Route::get('/art/overview/style/{style}',			  ['as' => 'overviewStyle',	 'uses' => 'MainController@filterStyle' ]);
+  Route::get('/art/overview/price/{price}',			  ['as' => 'overviewPrice',	 'uses' => 'MainController@filterPrice' ]);
+  Route::get('/art/overview/era/{era}',			      ['as' => 'overviewEra',	   'uses' => 'MainController@filterEra' ]);
+  Route::get('/art/overview/when/{when}',			    ['as' => 'overviewWhen',	 'uses' => 'MainController@filterWhen' ]);
+  Route::post('/art/search',	                    ['as' => 'search',			   'uses' => 'MainController@search' ]);
+  Route::get('/art/search/{filter}/{value}',     ['as' => 'searchFilter',			   'uses' => 'MainController@searchFiltert' ]);
 
 });
