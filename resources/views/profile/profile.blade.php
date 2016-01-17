@@ -1,13 +1,17 @@
 @extends('layout.master')
 
 @section('title')
-    auction
+    profile
 @endsection
 
 
-@section('container')   
+@section('container')
+<div class="row">
+  <div class="col-md-offset-2">
 
-profile
+
+  <h1>profile</h1>
+  </div>
+</div>
+
 @endsection
-
- 

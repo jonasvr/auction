@@ -21,8 +21,6 @@ class CreateArtsTable extends Migration
             $table->integer('creation_y');
             $table->string('dimensions');
             $table->string('color');
-            $table->integer('style_id');
-            $table->integer('era_id');
             $table->string('artist');
             $table->string('country');
             $table->integer('birth');
@@ -35,6 +33,12 @@ class CreateArtsTable extends Migration
 
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
+            $table->integer('style_id');
+            // $table->foreign('style_id')->references('id')->on('styles'); //aangepast
+
+            $table->integer('era_id');
+            // $table->foreign('era_id')->references('id')->on('eras'); //aangepast
 
             $table->softDeletes();
             $table->timestamps();

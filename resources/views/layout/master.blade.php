@@ -28,7 +28,7 @@
               <li><a href="/logout"> {!! trans('master.logout') !!}</a></li>
             @else
               <li><a href="{{ url('auth/login') }}"> login</a></li>
-              <li><a href="{{ url('auth/register') }}"> {!! trans('master.register') !!}</a></li> 
+              <li><a href="{{ url('auth/register') }}"> {!! trans('master.register') !!}</a></li>
             @endif
           </ul>
           <div class="col-md-2">
@@ -55,8 +55,8 @@
                 <li><a href="{{ URL::route('new') }}">{!! trans('master.art') !!}</a></li>
                 <li><a href="#">{!! trans('master.search') !!}</a></li>
                 <li><a href="#">{!! trans('master.logout') !!}</a></li>
-                <li><a href="#">{!! trans('master.mybids') !!}</a></li>
-                <li><a href="#">{!! trans('master.contact') !!}</a></li>
+                <li><a href="{{ URL::route('myBids') }}">{!! trans('master.mybids') !!}</a></li>
+                <li><a href="{{ url('/contact')  }}">{!! trans('master.contact') !!}</a></li>
             @endif
             </ul>
           </div>

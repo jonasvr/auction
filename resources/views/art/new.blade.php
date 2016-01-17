@@ -101,7 +101,7 @@
       <div class="form-group">
         {!! Form::label('country', trans('profile.continent'), array('class' => 'col-sm-3  control-label')) !!}
         <div class="col-sm-9">
-          {!! Form::text('country','',array('class' => 'form-control')) !!}
+          {!! Form::select('country', $countrys) !!}
         </div>
       </div>
 

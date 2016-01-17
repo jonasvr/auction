@@ -7,11 +7,12 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-//added by jonas 
+//added by jonas
 use Auth;
 use Users;
 use App\watchlist;
 use App\Bid;
+use App\Art;
 use Redirect;
 
 class profileController extends Controller
@@ -36,24 +37,50 @@ class profileController extends Controller
         return Redirect::back();
     }
 
-    public function bid(Request $request)
+    public function myAuctions()
     {
-      
-       $this->validate($request, [
-            'bid'   => 'required|numeric',
-         ]);
-       
-      
-        $input           =   new Bid;
-        $input->art_id   =   $request->id;
-        $input->user_id  =   Auth::user()->id;
-        $input->bid      =   $request->bid;
-        $input->save();
+        $myArt = Art::where('user_id', Auth::user()->id)
+                      ->get();
 
+        $sold   =array();
+        $active =array();
 
-        return redirect::back()
-                        //->route('detail', [$request->art])
-                        ->withSuccess('test' );
-                        //trans('succes.bid', ['bid' => $request->bid])
+        foreach($myArt as $auction)
+        {
+
+          $auction['bids'] = $auction->bids()->count();
+          if($auction->sold == 1)
+          {
+            $sold[] = $auction;
+          }
+          else {
+            $auction['highest'] = $auction->highest();
+            $active[]   = $auction;
+          }
+        }
+      return View('profile.myauctions',compact('active','sold'));
+    }
+
+    public function myBids()
+    {
+        $mybids = Bid::where('user_id', Auth::user()->id)
+                      ->orderby('art_id')
+                      ->orderby('bid','desc')
+                      ->get();
+
+        $allBids=array();
+        foreach ($mybids as $bid)
+        {
+          $art = Art::where('id', $bid->art_id)
+                      ->where('sold',0)
+                      ->first();
+          if($art)
+          {
+            $bid['title']=$art->title;
+            $bid['ending']=$art->ending;
+            $allBids[]=$bid;
+          }
+        }
+        return View('profile.mybids', compact('allBids'));
     }
 }

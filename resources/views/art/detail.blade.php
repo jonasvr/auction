@@ -130,37 +130,9 @@
           {{$art->color}}
         </p>
         <!-- Trigger the modal with a button -->
-        <button type="button" class="btn-default col-md-11 question" data-toggle="modal" data-target="#modalQ">
+        <a href="{{ URL::route('artcontact', ['art_id' => $art->id,'title'=>$art->title]) }}" class="btn-default col-md-11 question">
           {{ trans('detail.askButton') }}
-        </button>
-
-        <!-- Modal -->
-        <div id="modalQ" class="modal fade" role="dialog">
-          <div class="modal-dialog">
-
-            <!-- Modal content-->
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">{{ trans('detail.qAsk') }}</h4>
-              </div>
-              <div class="modal-body row col-md-offset-2 col-md-8">
-                {!! Form::open(array('url' => URL::route('ask'), 'method' => 'post', 'class' => 'form-horizontal')) !!}
-                <div class="form-group">
-                      {!! Form::label('question', trans('detail.qTitle',['title' => $art->title])) !!}
-                      {!! Form::text('question','',array('class' => 'form-control'))!!}
-                      {!! Form::hidden('art_id', $art->id)!!}
-                </div>
-                <div class="form-group">
-        		        <button type="submit" class="btn btn-default">{{ trans('detail.ask') }}</button>
-        		    </div>
-                {!! Form::close()!!}
-              </div>
-              <div class="modal-footer"></div>
-            </div>
-
-          </div>
-        </div>
+        </a>
 
       </div>
     </div>

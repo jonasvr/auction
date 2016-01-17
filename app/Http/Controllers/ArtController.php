@@ -28,32 +28,25 @@ class ArtController extends Controller
 
     public function newArt()
     {
-        $getEra     = Era::select('id', 'name')
-                        ->get();
-
+        $getEra     = Era::all();
         foreach($getEra as $Era)
         {
             $eras[$Era->id] = $Era->name;
         }
 
-        $getStyle    = Style::select('id', 'name')
-                        ->get();
-
+        $getStyle    = Style::all();
         foreach($getStyle as $Style)
         {
             $styles[$Style->id] = $Style->name;
         }
 
-        $getCountry    = Country::select('id', 'name')
-                        ->get();
-
+        $getCountry    = Country::all();
         foreach($getCountry as $Country)
         {
-            $countrys[$Country->id] = $Country->name;
+            $countrys[$Country->name] = $Country->name;
         }
 
-         // dd($Countrys);
-        return view('art.new', compact('styles','eras','cpuntrys'));
+        return view('art.new', compact('styles','eras','countrys'));
     }
     public function addart(addArtRequest $request)
     {
@@ -132,18 +125,21 @@ class ArtController extends Controller
             'bid'   => 'required|numeric',
          ]);
 
-        $input           =   new Bid;
-        $input->art_id   =   $request->art;
-        $input->user_id  =   Auth::user()->id;
-        $input->bid      =   $request->bid;
+         $bid = Art::find($request->art)->highest();
 
-       if( $input->save() )
+        if( $bid <  $request->bid )
         {
-            return $this->getDetail($request->art)->withSuccess(trans('succes.bid', ['bid' => $request->bid]));
+            $input           =   new Bid;
+            $input->art_id   =   $request->art;
+            $input->user_id  =   Auth::user()->id;
+            $input->bid      =   $request->bid;
+            $input->save();
+
+            return redirect()->back()->withSuccess(trans('succes.bid', ['bid' => $request->bid]));
         }
         else
         {
-            return $this->getDetail($request->art)->withErrors( (trans('error.bid') ) );
+            return redirect()->back()->withErrors(['U moet hoger bieden, er is al '.$bid . ' geboden']);
         }
     }
 
@@ -159,18 +155,5 @@ class ArtController extends Controller
        return view('home')->withSuccess(trans('succes.bought'));
     }
 
-    public function ask(Request $request)
-    {
-        $this->validate($request, [
-             'question'   => 'required',
-          ]);
 
-          $input                = new Questions;
-          $input->art_id        = $request->art_id;
-          $input->question      = $request->question;
-          $input->user_id       = Auth::user()->id;
-          $input->save();
-
-          return Redirect::back()->withSuccess(trans('succes.asked'));
-    }
 }
