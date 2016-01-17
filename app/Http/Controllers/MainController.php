@@ -37,7 +37,8 @@ class MainController extends Controller
         $duration[] = $dt->diff($now);
       }
       $VoS = 'overviewFilter';
-      return View('art.overview', compact('random_art','duration','picture','VoS'));
+        $title = 'overview';
+      return View('art.overview', compact('random_art','duration','picture','VoS','title'));
   }
 
   public function overviewFilter($filter,$value)
@@ -85,8 +86,8 @@ class MainController extends Controller
         $dt = new \DateTime($art->ending);
         $duration[] = $dt->diff($now);
       }
-
-    return View('art.search', compact('random_art','VoS','duration','picture'));
+        $title = 'overview';
+    return View('art.overview', compact('random_art','VoS','duration','picture','title'));
   }
 
   public function search(Request $request)
@@ -113,8 +114,8 @@ class MainController extends Controller
         $dt = new \DateTime($art->ending);
         $duration[] = $dt->diff($now);
       }
-
-    return View('art.search', compact('random_art','VoS','duration','picture'));
+      $title = 'search';
+    return View('art.overview', compact('random_art','VoS','duration','picture','title'));
   }
 
   public function searchFiltert($filter,$value)
@@ -164,8 +165,8 @@ class MainController extends Controller
         $dt = new \DateTime($art->ending);
         $duration[] = $dt->diff($now);
       }
-
-    return View('art.search', compact('random_art','VoS','duration','picture'));
+        $title = 'search';
+    return View('art.search', compact('random_art','VoS','duration','picture','title'));
   }
 
   public function filterOnPrice($price)

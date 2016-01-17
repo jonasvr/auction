@@ -20,10 +20,11 @@ class DatabaseSeeder extends Seeder
         $this->call(EraTableSeeder::class);
         $this->call(StyleTableSeeder::class);
         $this->call(CountryTableSeeder::class);
+        $this->call(FaqsTableSeeder::class);
 
 
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
-        
+
         Model::reguard();
     }
 }
