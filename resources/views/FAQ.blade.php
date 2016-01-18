@@ -2,7 +2,7 @@
 
 
 @section('title')
-    auction
+    FAQ
 @endsection
 
 
@@ -13,13 +13,9 @@
   <div class="row links">
     <h2 class="col-md-offset-2 col-md-8">{!! trans('faq.find') !!}?</h2>
     <div class="row col-md-offset-2 col-md-8">
-      <a class="col-md-3" href="#bid"> {!! trans('faq.bid') !!}?</a>
-      <a class="col-md-3" href="#buy"> {!! trans('faq.buy') !!}?</a>
-      <a class="col-md-3" href="#question"> {!! trans('faq.ask') !!}?</a>
-      <a class="col-md-3" href="#watchlist">{!! trans('faq.watch') !!}?</a>
-      <a class="col-md-3" href="#sell"> {!! trans('faq.sell') !!}?</a>
-      <a class="col-md-3" href="#register"> {!! trans('faq.register') !!}?</a>
-      <a class="col-md-3" href="#whatis"> {!! trans('faq.what') !!}?</a>
+      @foreach($faqs as $key => $faq)
+        <a class="col-md-3 padding-10" href="#{{$key}}"> {!! $faq->question !!}</a>
+      @endforeach
     </div>
     <div class="row">
       <a class="btn btn-default col-md-offset-9 col-md-1 grey-back blue-text" href="{{'isearch'}}"> {!! trans('faq.search')!!} ></a>
@@ -27,10 +23,10 @@
   </div>
 
   <div class="row awnsers">
-    @foreach($faqs as $faq)
+    @foreach($faqs as $key => $faq)
     <div class="row question blue-text">
-      <p id="bid" class="col-md-offset-2 col-md-1 Q"> Q</p>
-      <p class="col-md-5 QT"> {!! $faq->question !!}</p>
+      <p id="{{$key}}" class="col-md-offset-2 col-md-1 Q blue-text text-left"> Q</p>
+      <p class="col-md-5 QT blue-text text-left"> {!! $faq->question !!}</p>
     </div>
     <div class="row">
       <p class="col-md-offset-2 col-md-1 A"> A</p>

@@ -315,7 +315,7 @@ img.img-responsive
 
 .question
 {
-  background-color: #757575;
+  /*background-color: #757575;*/
   color: white;
   text-transform: uppercase;
   text-align: center
@@ -325,9 +325,16 @@ img.img-responsive
 
 /*questions------------------------------*/
 
+
+
 .FAQ .awnsers .question
 {
 	padding-top:25px;
+
+}
+
+.FAQ .awnsers .Q
+{
 
 }
 
@@ -443,4 +450,9 @@ img.img-responsive
 .height-150
 {
   height:150px;
+}
+
+.padding-10
+{
+  padding:10px;
 }
