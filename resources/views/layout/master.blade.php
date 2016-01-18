@@ -48,28 +48,7 @@
       </div>
 
 
-        <div class="collapse navbar-collapse row" id="myNavbar2">
-          <div class="col-md-offset-3 col-md-6">
-            <ul class="nav navbar-nav upper ">
-            @if(Auth::check())
-                <li><a href="/">{!! trans('master.home') !!}</a></li>
-                <li><a href="{{ URL::route('overview') }}">{!! trans('master.art') !!}</a></li>
-                <li><a href="#">{!! trans('master.search') !!}</a></li>
-                <li><a href="#">{!! trans('master.logout') !!}</a></li>
-                <li><a href="{{ URL::route('myBids') }}">{!! trans('master.mybids') !!}</a></li>
-                <li><a href="{{ url('/contact')  }}">{!! trans('master.contact') !!}</a></li>
-            @endif
-            </ul>
-          </div>
-          <div class="col-md-2">
-            <ul class="nav navbar-nav navbar-right upper">
-              <li><a href="{{ URL::route('language', array('lng' => 'nl')) }}">nl</a></li>
-              <li><a href="/language/fr">fr</a></li>
-              <li><a href="{{ URL::route('language', array('lng' => 'en')) }}">en</a></li>
-            </ul>
-          </div>
-          <div class="col-md-1"></div>
-        </div>
+  @include('layout.nav')
 
     </div>
   </nav>
@@ -171,14 +150,14 @@
         <div class="col-md-3">
           <ul class="nav nav-pills nav-stacked">
             <li><p class="footerTitles">{!! trans('master.find') !!}</p></li>
-            <form class="navbar-form" role="search">
+              {!! Form::open(array('url' => URL::route('search'), 'method' => 'post', 'class' => 'navbar-form', 'role' =>"search")) !!}
               <div class="input-group">
-                  <input type="text" class="form-control" placeholder="Search" name="q">
+                  <input type="text" class="form-control" placeholder="Search" name="search">
                   <div class="input-group-btn">
                       <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
                   </div>
               </div>
-              </form>
+              {!! Form::close()!!}
           </ul>
           <ul class="nav nav-pills nav-stacked">
             <li><p class="footerTitles">contact</p></li>
@@ -196,26 +175,7 @@
     </div>
       <div class="container-float row">
           <div class="col-lg-12">
-              <div class="collapse navbar-collapse row" id="myNavbar2">
-                <div class="col-md-offset-3 col-md-6">
-                  <ul class="nav navbar-nav upper ">
-                   <li><a href="#">{!! trans('master.home') !!}</a></li>
-                  <li><a href="#">{!! trans('master.art') !!}</a></li>
-                  <li><a href="#">{!! trans('master.search') !!}</a></li>
-                  <li><a href="#">{!! trans('master.logout') !!}</a></li>
-                  <li><a href="#">{!! trans('master.mybids') !!}</a></li>
-                  <li><a href="#">{!! trans('master.contact') !!}</a></li>
-                  </ul>
-                </div>
-                <div class="col-md-2">
-                  <ul class="nav navbar-nav navbar-right upper">
-                    <li><a href="#">nl</a></li>
-                    <li><a href="#">fr</a></li>
-                    <li><a href="#">en</a></li>
-                  </ul>
-                </div>
-                <div class="col-md-1"></div>
-              </div>
+@include('layout.nav')
             </div>
       </div>
 

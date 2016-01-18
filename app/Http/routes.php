@@ -35,6 +35,9 @@ Route::get('/language/{lng}',['as'=> 'language', 'uses'=> 'LanguageController@ch
 
 Route::get('/',  ['as' => '/', 'uses' => 'HomeController@home']);
 
+Route::get('/admin',  					['as' => 'admin', 'uses' => 'AdminController@index']);
+Route::get('/admin/{art_id}',  	['as' => 'delete', 'uses' => 'AdminController@delete']);
+
 Route::get('/profile', function ()
 	{    return view('profile.profile');
 });
