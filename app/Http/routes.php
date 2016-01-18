@@ -14,17 +14,12 @@
 Route::get('/language/{lng}',['as'=> 'language', 'uses'=> 'LanguageController@chooser']);
 
 
-Route::get('/',  function () {
-    return view('home');
-});
+Route::get('/',  ['as' => '/', 'uses' => 'MainController@home']);
 
 Route::get('/profile', function ()
 	{    return view('profile.profile');
 });
 
-Route::get('/profile/new', ['as' => 'new', function ()
-	{    return view('profile.new');
-}]);
 
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');
@@ -38,9 +33,7 @@ Route::post('auth/register', 'Auth\AuthController@postRegister');
 
 Route::get('/faq',   ['as' => 'faq', 'uses' => 'MainController@getFaqs']);
 
-Route::get('/isearch', function(){
-	return View('isearch');
-});
+Route::get('/isearch', ['as' => 'isearch', 'uses' => 'MainController@isearch']);
 
 
 Route::get('art/detail/{id}', 			        ['as' => 'detail',			   'uses' => 'ArtController@getDetail' ]);

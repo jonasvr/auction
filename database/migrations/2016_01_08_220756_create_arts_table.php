@@ -14,7 +14,7 @@ class CreateArtsTable extends Migration
     {
         Schema::create('arts', function (Blueprint $table) {
             $table->increments('id');
-
+            //$table->string('slug')
             $table->string('title');
             $table->mediumText('description');
             $table->mediumText('condition');
@@ -28,6 +28,8 @@ class CreateArtsTable extends Migration
             $table->integer('price');
             $table->boolean('sold');
             $table->integer('sold_for');
+            $table->integer('sold_to')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')
             $table->date('ending');
 
 

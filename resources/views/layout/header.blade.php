@@ -1,13 +1,11 @@
-<div class="detailHead row">
+<div class="detailHead row" style="background-image:url('/{{$onePiece->path}}');">
     <div class="col-md-offset-8 col-md-2">
       <div class="detailInfo-blue row">
-        <h3>Lorem ipsum </h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-        </p>
+        <h3>{{ $onePiece->title }} </h3>
+        <p>{{ $onePiece->shortdesc }}</p>
       </div>
       <div class="visit row">
-        <a href="#">{!! trans('master.visit') !!} > </a>
+        <a href="{{ URL::route('detail', ['id'=> $onePiece->id]) }}">{!! trans('master.visit') !!} > </a>
       </div>
     </div>
 </div>

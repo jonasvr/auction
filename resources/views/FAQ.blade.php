@@ -7,7 +7,7 @@
 
 
 @section('container')
-  @include('layout.header')
+@include('layout.header',['onePiece' => $onePiece])
 
 <div class="FAQ">
   <div class="row links">

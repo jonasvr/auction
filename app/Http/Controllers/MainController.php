@@ -18,7 +18,18 @@ use App\Faq;
 
 class MainController extends Controller
 {
-
+  public function home()
+  {
+    $now = Carbon::now();
+    $random_art = Art::where('sold',0)
+                  ->where('ending','>',$now)
+                  ->orderBy(\DB::raw('RAND()'))
+                  ->join('pictures', 'arts.id', '=', 'pictures.art_id')
+                  ->select('pictures.path','arts.description','arts.title')
+                  ->take(4)
+                  ->get();
+    return View('home', compact('random_art'));
+  }
   public function overview()
   {  $now      = Carbon::now();
     $random_art = Art::where('sold',0)
@@ -29,17 +40,13 @@ class MainController extends Controller
 
 
 
-      foreach ($random_art as $art) {
-          $picture[] = $art->pictures()
-                              ->take(1)
-                              ->get();
-
-        $dt = new \DateTime($art->ending);
-        $duration[] = $dt->diff($now);
-      }
+      $picture = $this->getPicture($random_art);
+      $duration = $this->getDuration($random_art,$now);
       $VoS = 'overviewFilter';
-        $title = 'overview';
-      return View('art.overview', compact('random_art','duration','picture','VoS','title'));
+      $title = 'overview';
+      $onePiece = $this->onePiece();
+
+      return View('art.overview', compact('random_art','duration','picture','VoS','title','onePiece'));
   }
 
   public function overviewFilter($filter,$value)
@@ -74,27 +81,21 @@ class MainController extends Controller
                            })
                           ->orderBy(\DB::raw('RAND()'))
                           ->paginate(8);
+
+    $picture = $this->getPicture($random_art);
+    $duration = $this->getDuration($random_art,$now);
     $VoS = 'overviewFilter';
-    $now      = Carbon::now();
+    $title = 'overview';
+    $onePiece = $this->onePiece();
 
-
-      foreach ($random_art as $art) {
-          $picture[] = $art->pictures()
-                              ->take(1)
-                              ->get();
-
-        $dt = new \DateTime($art->ending);
-        $duration[] = $dt->diff($now);
-      }
-        $title = 'overview';
-    return View('art.overview', compact('random_art','VoS','duration','picture','title'));
+    return View('art.overview', compact('random_art','VoS','duration','picture','title','onePiece'));
   }
 
   public function search(Request $request)
   {
     $search = $request->search;
     Session::put('search',  $search);
-    $now      = Carbon::now();
+    $now        = Carbon::now();
     $random_art = Art::where('sold',0)
                           ->where('ending','>',$now)
                           ->where(function ($query)use ($search) {
@@ -102,25 +103,19 @@ class MainController extends Controller
                                      ->orWhere('description', 'like', '%' . $search . '%');
                            })
                           ->paginate(8);
-    $VoS = 'searchFilter';
-    $now      = Carbon::now();
 
+    $faqs        = Faq::where('question', 'like', '%' . $search . '%')
+                    ->orWhere('awnser', 'like', '%' . $search . '%')
+                    ->orWhere('tags', 'like', '%' . $search . '%')
+                    ->get();
 
-      foreach ($random_art as $art) {
-          $picture[] = $art->pictures()
-                              ->take(1)
-                              ->get();
+    $picture  = $this->getPicture($random_art);
+    $duration = $this->getDuration($random_art,$now);
+    $VoS      = 'searchFilter';
+    $title    = 'search';
+    $onePiece = $this->onePiece();
 
-        $dt = new \DateTime($art->ending);
-        $duration[] = $dt->diff($now);
-      }
-      $title = 'search';
-      $faqs = Faq::where('question', 'like', '%' . $search . '%')
-                  ->orWhere('awnser', 'like', '%' . $search . '%')
-                  ->orWhere('tags', 'like', '%' . $search . '%')
-                  ->get();
-
-    return View('art.overview', compact('random_art','VoS','duration','picture','title','faqs'));
+    return View('art.overview', compact('random_art','VoS','duration','picture','title','faqs','onePiece'));
   }
 
   public function searchFiltert($filter,$value)
@@ -161,17 +156,32 @@ class MainController extends Controller
                           ->paginate(8);
 
 
-    $VoS = 'searchFilter';
-      foreach ($random_art as $art) {
-        $picture[] = $art->pictures()
-                              ->take(1)
-                              ->get();
+    $picture  = $this->getPicture($random_art);
+    $duration = $this->getDuration($random_art,$now);
+    $VoS      = 'searchFilter';
+    $title    = 'search';
+    $onePiece = $this->onePiece();
+    
+    return View('art.search', compact('random_art','VoS','duration','picture','title','onePiece'));
+  }
 
+  public function getPicture($random_art)
+  {
+    foreach ($random_art as $art) {
+      $picture[] = $art->pictures()
+                            ->take(1)
+                            ->get();
+                          }
+      return $picture;
+  }
+
+  public function getDuration($random_art,$now)
+  {
+    foreach ($random_art as $art) {
         $dt = new \DateTime($art->ending);
         $duration[] = $dt->diff($now);
-      }
-        $title = 'search';
-    return View('art.search', compact('random_art','VoS','duration','picture','title'));
+                          }
+      return $duration;
   }
 
   public function filterOnPrice($price)
@@ -214,11 +224,17 @@ class MainController extends Controller
     return $when;
   }
 
-
-
   public function getFaqs()
   {
     $faqs = Faq::all();
-    return View('FAQ',compact('faqs'));
+    $onePiece = $this->onePiece();
+
+    return View('FAQ',compact('faqs','onePiece'));
+  }
+
+  public function isearch()
+  {
+    $onePiece = $this->onePiece();
+    return View('isearch',compact('onePiece'));
   }
 }

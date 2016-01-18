@@ -6,6 +6,7 @@
 
 
 @section('container')
+@include('layout.header',['onePiece' => $onePiece])
 
 <div class="related row">
   <div class="col-md-offset-2 col-md-8 row">

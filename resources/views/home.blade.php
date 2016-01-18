@@ -6,7 +6,7 @@
 @endsection
 
 
-@section('container')   
+@section('container')
 
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
@@ -19,33 +19,14 @@
 
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
-    <div class="item active">
-      <img src="img/1.jpg" alt="Chania">
+    @foreach($random_art as $key => $art)
+    <div class="item @if($key==0)active @endif">
+      <img src="{{ $art->path }}" alt="{{ $art->title }}">
       <div class="carousel-caption">
-        <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
+        <p>{{ $art->description }}</p>
       </div>
     </div>
-
-    <div class="item">
-      <img src="img/2.jpg" alt="Chania">
-      <div class="carousel-caption">
-        <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
-      </div>
-    </div>
-
-    <div class="item">
-      <img src="img/3.jpg" alt="Flower">
-      <div class="carousel-caption">
-        <p>Beatiful flowers in Kolymbari, Crete.</p>
-      </div>
-    </div>
-
-    <div class="item">
-      <img src="img/4.jpg" alt="Flower">
-      <div class="carousel-caption">
-        <p>Beatiful flowers in Kolymbari, Crete.</p>
-      </div>
-    </div>
+    @endforeach
   </div>
 
   <!-- Left and right controls -->
@@ -64,23 +45,22 @@
   <div class="row">
 
     <div class="col-md-offset-2 col-md-2" class="img-responsive">
-      <img src="img/intro1.png" >
-      <h3>{!! trans('home.signUp') !!}  </h3> 
+      <img src="img/intro1.png" alt="{!! trans('home.signUp') !!}">
+      <h3>{!! trans('home.signUp') !!}  </h3>
       <div class="introText">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
       </div>
     </div>
     <div class="col-md-offset-1 col-md-2" class="img-responsive">
-      <img src="img/intro2.png" >
-      <h3> {!! trans('home.makeDeals') !!}   </h3> 
+      <img src="img/intro2.png" alt=" {!! trans('home.makeDeals') !!}">
+      <h3> {!! trans('home.makeDeals') !!}   </h3>
       <div class="introText">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
       </div>
     </div>
     <div class="col-md-offset-1 col-md-2" class="img-responsive">
-       <img src="img/intro3.png">
-      
-       <h3> {!! trans('home.everyoneHappy') !!}  </h3> 
+       <img src="img/intro3.png" alt="{!! trans('home.everyoneHappy') !!} ">
+       <h3> {!! trans('home.everyoneHappy') !!}  </h3>
       <div class="introText">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
       </div>
@@ -95,7 +75,7 @@
     <div class="less col-md-offset-1 col-md-3">
       <div class="image-container">
         <a href="#">
-          <img class="img-responsive" alt="" src="img/6.jpg"> 
+          <img class="img-responsive" alt="" src="img/6.jpg">
           <div class="after">
             <img class="mag" src="img/mag.png">
           </div>
@@ -103,7 +83,7 @@
       </div>
       <div class="image-container">
         <a href="#">
-          <img class="img-responsive" alt="" src="img/7.jpg"> 
+          <img class="img-responsive" alt="" src="img/7.jpg">
           <div class="after">
             <img class="mag" src="img/mag.png">
           </div>
@@ -113,7 +93,7 @@
     <div class="most col-md-6">
       <div class="image-container">
         <a href="#">
-          <img class="img-responsive mostimg" alt="" src="img/5.jpg"> 
+          <img class="img-responsive mostimg" alt="" src="img/5.jpg">
           <div class="after">
             <img class="mag" src="img/mag.png">
           </div>
@@ -123,5 +103,3 @@
   </div>
 </div>
 @endsection
-
- 

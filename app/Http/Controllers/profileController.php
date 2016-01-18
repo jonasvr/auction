@@ -20,7 +20,7 @@ class profileController extends Controller
     //
     public function addToWatchList($art_id)
     {
-    	$input           =   new Watchinput;
+    	  $input           =   new Watchlist;
         $input->art_id   =   $art_id;
         $input->user_id  =   Auth::user()->id;
         $input->save();

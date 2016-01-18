@@ -58,6 +58,7 @@ class ArtController extends Controller
 
         $input->user_id              = Auth::user()->id;
         $input->title                = $data['title'];
+        //$input->slug                 = $this->slugify($data['title'], "-");
         $input->description          = $data['description'];
         $input->condition            = $data['condition'];
         $input->creation_y           = $data['creation_y'];
@@ -96,6 +97,7 @@ class ArtController extends Controller
 
     public function getDetail($id)
     {
+        $onePiece = $this->onePiece();
         $art            =   Art::where('id',$id)
                                   ->where('sold',0)
                                   ->firstOrFail();
@@ -116,7 +118,7 @@ class ArtController extends Controller
         $dt = new \DateTime($art->ending);
         $duration       = $dt->diff($now);
 
-        return View('art.detail', compact('art','headpicture','pictures','watchlist','nrbids','duration'));
+        return View('art.detail', compact('art','headpicture','pictures','watchlist','nrbids','duration','onePiece'));
     }
 
     public function bid(Request $request)
@@ -150,10 +152,36 @@ class ArtController extends Controller
                       ->firstOrFail();
        $art->sold         = 1;
        $art->sold_for     = $art->price;
+       $art->sold_to      = Auth::user()->id;;
        $art->save();
 
        return view('home')->withSuccess(trans('succes.bought'));
     }
 
+    protected function slugify($text)
+    {
+      // replace non letter or digits by -
+      $text = preg_replace('~[^\\pL\d]+~u', '-', $text);
 
+      // trim
+      $text = trim($text, '-');
+
+      // transliterate
+      $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
+
+      // lowercase
+      $text = strtolower($text);
+
+      // remove unwanted characters
+      $text = preg_replace('~[^-\w]+~', '', $text);
+
+      $text = $text . '-' . str_random(5);
+
+      if (empty($text))
+      {
+        return 'n-a';
+      }
+
+      return $text;
+    }
 }

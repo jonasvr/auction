@@ -7,7 +7,7 @@
 
 
 @section('container')
-  @include('layout.header',['art_id' => $art->id])
+  @include('layout.header',['art_id' => $art->id,'onePiece' => $onePiece])
   <!-- end header -->
 
   <div class="wrapper-details">
@@ -37,7 +37,7 @@
 
           {!! Html::image($headpicture->path, 'a picture of art', array('class' => 'col-md-12 img-responsive')) !!}
             @foreach($pictures as $picture)
-              {!! Html::image($picture->path, 'a picture of art', array('class' => 'col-md-4 img-responsive')) !!}
+              {!! Html::image($picture->path, 'a picture of art', array('class' => 'col-md-4 img-responsive height-150')) !!}
             @endforeach
           </div>
         </div>
@@ -68,12 +68,13 @@
 
           <hr />
 
+
+          @if(Auth::user()->id != $art->user_id)
           <p class="blue-text">
             {!! trans('detail.estimated') !!} <br />
             <span class="price"> €9.500 - €10.500</span><br />
             <a class="green-text" href="{{ URL::route('buynow', ['art_id'=> $art->id]) }}"> <u>{!! trans('detail.buy',['askingprice' => $art->price]) !!} </u></a>
           </p>
-
           <p>{!! trans('detail.bid') !!}?</p>
           {!! Form::open(array('url' => URL::route('bid'), 'method' => 'post', 'class' => 'form-horizontal bid')) !!}
             <div class="input-group">
@@ -91,6 +92,8 @@
               <u> {!! trans('detail.add') !!} </u>
             </a>
           </p>
+          @endif
+
         </div>
     </div>
 
@@ -129,11 +132,11 @@
         <p>
           {{$art->color}}
         </p>
-        <!-- Trigger the modal with a button -->
-        <a href="{{ URL::route('artcontact', ['art_id' => $art->id,'title'=>$art->title]) }}" class="btn-default col-md-11 question">
-          {{ trans('detail.askButton') }}
-        </a>
-
+        @if(Auth::user()->id != $art->user_id)
+          <a href="{{ URL::route('artcontact', ['art_id' => $art->id,'title'=>$art->title]) }}" class="btn-default col-md-11 question">
+            {{ trans('detail.askButton') }}
+          </a>
+        @endif
       </div>
     </div>
   </div>
