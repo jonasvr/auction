@@ -20,6 +20,7 @@ use App\Bid;
 use App\Questions;
 use Redirect;
 
+
 use App\Http\Requests\addArtRequest;
 
 
@@ -72,11 +73,10 @@ class ArtController extends Controller
         $input->death                = $data['death'];
         $input->price                = $data['price'];
         $input->ending               = $ending;
-
         $input->save();
 
-        foreach ($data['pic'] as $pic) {
 
+        foreach ($data['pic'] as $pic) {
             $destinationPath        = 'pic/art/' . $input->id . '/';
             $now = Carbon::now()->format('Y-m-d');
             $extension          = $pic->getClientOriginalExtension();
@@ -92,7 +92,8 @@ class ArtController extends Controller
             $picInput->path           = $fullPath;
             $picInput->save();
         }
-        return $this->newArt()->withSuccess('succesvol toegevoegt');
+
+        return redirect()->route('new')->withSuccess('succesvol toegevoegt');
     }
 
     public function getDetail($id)
@@ -114,11 +115,23 @@ class ArtController extends Controller
           $nrbids         .= " " . trans('detail.singleBid');
         }
 
-        $now       = Carbon::now();
-        $dt = new \DateTime($art->ending);
+        $now            = Carbon::now();
+        $dt             = new \DateTime($art->ending);
         $duration       = $dt->diff($now);
 
-        return View('art.detail', compact('art','headpicture','pictures','watchlist','nrbids','duration','onePiece'));
+        $related        = Art::where('arts.style_id',$art->style_id)
+                                  ->where('sold',0)
+                                  ->join('pictures','pictures.art_id','=','arts.id')
+                                  ->where('ending','>',$now)
+                                  ->orderBy(\DB::raw('RAND()'))
+                                  ->take(4)
+                                  ->get();
+        foreach ($related as $rel) {
+          $dt             = new \DateTime($art->ending);
+          $relDuration[]  = $dt->diff($now);
+        }
+
+        return View('art.detail', compact('art','headpicture','pictures','watchlist','nrbids','duration','onePiece','related','relDuration'));
     }
 
     public function bid(Request $request)
@@ -155,7 +168,8 @@ class ArtController extends Controller
        $art->sold_to      = Auth::user()->id;;
        $art->save();
 
-       return view('home')->withSuccess(trans('succes.bought'));
+       Bid::where('art_id',$art_id)->delete();
+       return redirect()->route('/')->withSuccess(trans('succes.bought'));
     }
 
     protected function slugify($text)

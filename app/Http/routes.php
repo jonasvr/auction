@@ -33,7 +33,7 @@ Route::post('/password/reset', 'Auth\PasswordController@postReset');
 Route::get('/language/{lng}',['as'=> 'language', 'uses'=> 'LanguageController@chooser']);
 
 
-Route::get('/',  ['as' => '/', 'uses' => 'MainController@home']);
+Route::get('/',  ['as' => '/', 'uses' => 'HomeController@home']);
 
 Route::get('/profile', function ()
 	{    return view('profile.profile');

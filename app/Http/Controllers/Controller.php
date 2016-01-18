@@ -26,4 +26,5 @@ abstract class Controller extends BaseController
       $onePiece->shortdesc = implode(' ', array_slice(explode(' ', $onePiece->description), 0, 25)) . "...";
       return $onePiece;
     }
+
 }

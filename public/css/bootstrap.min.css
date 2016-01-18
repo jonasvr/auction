@@ -93,7 +93,7 @@ body
 
 .detailHead
 {
-	
+	  background-image:url('/img/1.jpg');
     background-repeat:no-repeat;
     background-size:cover;
     min-height: 350px;

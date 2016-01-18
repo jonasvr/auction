@@ -8,7 +8,7 @@
         "php": ">=5.5.9",
         "laravel/framework": "5.1.*",
         "laravelcollective/html": "5.1.*"
-        
+
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -55,6 +55,9 @@
     "illuminate/html": "5.*",
     "guzzlehttp/guzzle":"5.*",
     "intervention/image": "^2.3",
-    "cviebrock/image-validator":"^2.0"
+    "cviebrock/image-validator":"^2.0",
+    "laravel/socialite": "1.0.*",
+    "way/generators":"~3.0",
+    "phpspec/phpspec": "2.0"
     }
 }

@@ -81,6 +81,9 @@ class profileController extends Controller
             $allBids[]=$bid;
           }
         }
-        return View('profile.mybids', compact('allBids'));
+
+        $iBought = Art::where('sold_to',Auth::user()->id)
+                        ->get();
+        return View('profile.mybids', compact('allBids','iBought'));
     }
 }

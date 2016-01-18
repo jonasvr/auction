@@ -152,6 +152,8 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Cviebrock\ImageValidator\ImageValidatorServiceProvider::class,
+        // Laravel\Socialite\SocialietServiceProvider::class,
+        // Way\Generators\GeneratorsServiceProvicer::class,
 
 
     ],
@@ -207,8 +209,9 @@ return [
         */
         'Form'      => Collective\Html\FormFacade::class,
         'Html'      => Collective\Html\HtmlFacade::class,
-        'Image'       => Intervention\Image\Facades\Image::class
-        
+        'Image'       => Intervention\Image\Facades\Image::class,
+        //'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+
 
     ],
 

@@ -68,22 +68,25 @@
   </div>
 </div>
 
+@if(isset($popular[2]))
+
 
 <div id="popular">
   <p class="introTitle">{!! trans('home.most') !!}</p>
   <div class="row">
+
     <div class="less col-md-offset-1 col-md-3">
       <div class="image-container">
-        <a href="#">
-          <img class="img-responsive" alt="" src="img/6.jpg">
+        <a href="{{ URL::route('detail', ['id'=> $popular[0]->art_id]) }}">
+          <img class="img-responsive" alt="" src="/{{$picture[0][0]->path}}">
           <div class="after">
             <img class="mag" src="img/mag.png">
           </div>
         </a>
       </div>
       <div class="image-container">
-        <a href="#">
-          <img class="img-responsive" alt="" src="img/7.jpg">
+        <a href="{{ URL::route('detail', ['id'=> $popular[0]->art_id]) }}">
+          <img class="img-responsive" alt="" src="/{{$picture[1][0]->path}}">
           <div class="after">
             <img class="mag" src="img/mag.png">
           </div>
@@ -92,8 +95,8 @@
     </div>
     <div class="most col-md-6">
       <div class="image-container">
-        <a href="#">
-          <img class="img-responsive mostimg" alt="" src="img/5.jpg">
+        <a href="{{ URL::route('detail', ['id'=> $popular[0]->art_id]) }}">
+          <img class="img-responsive mostimg" alt="" src="/{{$picture[2][0]->path}}">
           <div class="after">
             <img class="mag" src="img/mag.png">
           </div>
@@ -102,4 +105,5 @@
     </div>
   </div>
 </div>
+@endif
 @endsection

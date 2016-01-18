@@ -51,6 +51,7 @@
 
           <p class="green-text">
             {{ $duration->d }}d {{ $duration->h }}u {{ $duration->i }}m {{ trans('detail.left') }}
+            <div id="clockdiv"></div>
           </p>
 
           <p>September 09, 2013, 13:00 p.m. (EST)</p>
@@ -145,63 +146,56 @@
     <div class="col-md-offset-2 col-md-8 row">
     <h2 class="blue-text">{!! trans('detail.related') !!}</h2>
 
-      <div class="col-md-3">
-        <img class="img-responsive" src="img/2.jpg">
-        <div class="row">
-          <div class="col-md-offset-1 related-info">
-            <p class="blue-text">1979, Salvador Dali</p>
-            <h3>Dance of time III</h3>
-            <p class="price"> 8.900</p>
-            <div class="row extra">
-              <p class="col-md-6"> 25d 14u 44m</p>
-              <a class="col-md-6 blue-text" href="#"> {!! trans('detail.visit') !!} > </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <img class="img-responsive" src="img/2.jpg">
-        <div class="row">
-          <div class="col-md-offset-1 related-info">
-            <p class="blue-text">1979, Salvador Dali</p>
-            <h3>Dance of time III</h3>
-            <p class="price"> 8.900</p>
-            <div class="row extra">
-              <p class="col-md-6"> 25d 14u 44m</p>
-              <a class="col-md-6 blue-text" href="#"> visit auction > </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <img class="img-responsive" src="img/2.jpg">
-        <div class="row">
-          <div class="col-md-offset-1 related-info">
-            <p class="blue-text">1979, Salvador Dali</p>
-            <h3>Dance of time III</h3>
-            <p class="price"> 8.900</p>
-            <div class="row extra">
-              <p class="col-md-6"> 25d 14u 44m</p>
-              <a class="col-md-6 blue-text" href="#"> visit auction > </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <img class="img-responsive" src="img/2.jpg">
-        <div class="row">
-          <div class="col-md-offset-1 related-info">
-            <p class="blue-text">1979, Salvador Dali</p>
-            <h3>Dance of time III</h3>
-            <p class="price"> 8.900</p>
-            <div class="row extra">
-              <p class="col-md-6"> 25d 14u 44m</p>
-              <a class="col-md-6 blue-text" href="#"> visit auction > </a>
-            </div>
+    @foreach($related as $key => $relatedArt)
+    <div class="col-md-3">
+      <img class="img-responsive" src="/{{ $relatedArt->path }}">
+      <div class="row">
+        <div class="col-md-offset-1 related-info">
+          <p class="blue-text">{{ $relatedArt->creation_y }}, {{ $relatedArt->artist }}</p>
+          <h3>{{ $relatedArt->title }}</h3>
+          <p class="price">{{ $relatedArt->price }}</p>
+          <div class="row extra">
+            <p class="col-md-12"> {{ $relDuration[$key]->d }}d {{ $relDuration[$key]->h }}u {{ $relDuration[$key]->i }}m </p>
+            <a class="col-md-12 blue-text" href="{{ URL::route('detail', ['id'=> $relatedArt->id]) }}"> {!! trans('detail.visit') !!} > </a>
           </div>
         </div>
       </div>
     </div>
-
+    @endforeach
+    </div>
   </div>
+@endsection
+@section('js')
+  <script type="text/javascript">
+  $(document).ready(function(){
+    function getTimeRemaining(endtime){
+      var days    = <?php echo $duration->d; ?>;
+      var hours   = <?php echo $duration->h; ?>;
+      var minutes = <?php echo $duration->i; ?>;
+    return {
+      'days': days,
+      'hours': hours,
+      'minutes': minutes
+    };
+  }
+
+  function initializeClock(id){
+    var clock = document.getElementById(id);
+    var timeinterval = setInterval(function(){
+      var t = getTimeRemaining();
+      clock.innerHTML = 'days: ' + t.days + '<br>' +
+                        'hours: '+ t.hours + '<br>' +
+                        'minutes: ' + t.minutes;
+      if(t.total<=0){
+        clearInterval(timeinterval);
+      }
+    },60000);
+  }
+
+  initializeClock('clockdiv');
+  });
+
+
+  </script>
+
 @endsection

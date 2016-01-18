@@ -44,6 +44,33 @@
 
       @endforeach
       </div>
+
+      <div class="row">
+        <h2>What you Bought</h2>
+        <h3 class="col-md-4">
+         Title
+        </h3>
+        <h3 class="col-md-4">
+          Bid
+        </h3>
+        <h3 class="col-md-4">
+          bought at:
+        </h3>
+      @foreach($iBought as $buys)
+        <p class="col-md-4">
+           {{ $buys->title }}
+        </p>
+        <p class="col-md-4">
+          {{ $buys->sold_for }}
+        </p>
+        <p class="col-md-4">
+          {{ $buys->updated_at }}
+        </p>
+
+
+      @endforeach
+      </div>
+
     </div>
   </div>
 @endsection

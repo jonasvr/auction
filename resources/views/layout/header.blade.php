@@ -12,12 +12,11 @@
 
 <div class="row path">
       <div class="col-md-offset-2 col-md-6">
-        <a href="#"> link ></a>
-        <a href="#"> link ></a>
-        <a href="#"> link ></a>
-        <a href="#"> link ></a>
-        <a href="#"> link ></a>
-        <a href="#"> link ></a>
+      @if(isset($path))
+        <p class="blue-text">
+          {{ $path }}
+        </p>
+      @endif
         </div>
       <div class="col-md-2 text-right">
         @if(isset($art_id))

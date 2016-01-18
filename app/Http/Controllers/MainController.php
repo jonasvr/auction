@@ -18,18 +18,7 @@ use App\Faq;
 
 class MainController extends Controller
 {
-  public function home()
-  {
-    $now = Carbon::now();
-    $random_art = Art::where('sold',0)
-                  ->where('ending','>',$now)
-                  ->orderBy(\DB::raw('RAND()'))
-                  ->join('pictures', 'arts.id', '=', 'pictures.art_id')
-                  ->select('pictures.path','arts.description','arts.title')
-                  ->take(4)
-                  ->get();
-    return View('home', compact('random_art'));
-  }
+
   public function overview()
   {  $now      = Carbon::now();
     $random_art = Art::where('sold',0)
@@ -88,7 +77,9 @@ class MainController extends Controller
     $title = 'overview';
     $onePiece = $this->onePiece();
 
-    return View('art.overview', compact('random_art','VoS','duration','picture','title','onePiece'));
+    $path = $this->getPath($filter,$value);
+    
+    return View('art.overview', compact('random_art','VoS','duration','picture','title','onePiece','path'));
   }
 
   public function search(Request $request)
@@ -114,8 +105,9 @@ class MainController extends Controller
     $VoS      = 'searchFilter';
     $title    = 'search';
     $onePiece = $this->onePiece();
+    $path     = $search;
 
-    return View('art.overview', compact('random_art','VoS','duration','picture','title','faqs','onePiece'));
+    return View('art.overview', compact('random_art','VoS','duration','picture','title','faqs','onePiece', 'path'));
   }
 
   public function searchFiltert($filter,$value)
@@ -161,12 +153,34 @@ class MainController extends Controller
     $VoS      = 'searchFilter';
     $title    = 'search';
     $onePiece = $this->onePiece();
-    
+    $path     = $search;
+    $path     .= $this->getPath($filter,$value);
     return View('art.search', compact('random_art','VoS','duration','picture','title','onePiece'));
+  }
+
+  public function getPath($filter,$value)
+  {
+      $path = $filter. " > ";
+      switch ($filter)
+      {
+      case 'style':
+        $path .= Style::where('id',$value)->select('name')->first()->name;
+        break;
+      case 'era':
+        $path .= Era::where('id',$value)->select('name')->first()->name;
+        break;
+      case 'price':
+        $path .=$this->filterOnPrice($value)."-".$value;
+        break;
+     case 'when':
+       break;
+     }
+     return $path;
   }
 
   public function getPicture($random_art)
   {
+    $picture=array();
     foreach ($random_art as $art) {
       $picture[] = $art->pictures()
                             ->take(1)
@@ -177,6 +191,7 @@ class MainController extends Controller
 
   public function getDuration($random_art,$now)
   {
+    $duration=array();
     foreach ($random_art as $art) {
         $dt = new \DateTime($art->ending);
         $duration[] = $dt->diff($now);

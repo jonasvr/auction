@@ -29,7 +29,7 @@ class CreateArtsTable extends Migration
             $table->boolean('sold');
             $table->integer('sold_for');
             $table->integer('sold_to')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users')
+            //$table->foreign('user_id')->references('id')->on('users');
             $table->date('ending');
 
 
