@@ -57,13 +57,21 @@ class MainController extends Controller
                                     $query->where('price','>',$lower);
                                    }
                                    else {
-                                    //$query->whereBetween('price', [$lower, $price+1]);
-                                    $query->where('price','<',$value);
+                                    $query->whereBetween('price', [$lower, $value+1]);
+                                    //$query->where('price','<',$value);
                                    }
                                    break;
                                 case 'when':
-                                  $when = $this->filterOnWhen($value);
-                                  $query->where('ending','<',$when);
+                                    switch ($value) {
+                                      case 'weekend':
+                                      $when = $this->filterOnWhen($value);
+                                      $query->where('ending','<',$when);
+                                        break;
+                                      case 'new':
+                                        $tomorrow = Carbon::tomorrow();
+                                        $query->where('created_at','<',$tomorrow);
+                                        break;
+                                      }
                                   break;
                                }
                            })
@@ -136,14 +144,21 @@ class MainController extends Controller
                                      $query->where('price','>',$lower);
                                     }
                                     else {
-                                     //$query->whereBetween('price', [$lower, $price+1]);
-                                     $query->where('price','<',$value);
+                                     $query->whereBetween('price', [$lower, $value+1]);
+                                     //$query->where('price','<',$value);
                                     }
                                     break;
                                  case 'when':
-                                   $when = $this->filterOnWhen($value);
-                                   echo $when;
-                                   $query->where('ending','<',$when);
+                                     switch ($value) {
+                                       case 'weekend':
+                                       $when = $this->filterOnWhen($value);
+                                       $query->where('ending','<',$when);
+                                         break;
+                                       case 'new':
+                                         $tomorrow = Carbon::tomorrow();
+                                         $query->where('created_at','<',$tomorrow);
+                                         break;
+                                       }
                                    break;
                                 }
                             })
