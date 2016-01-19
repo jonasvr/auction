@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 use Carbon\Carbon;
 use App\Art;
+use App\watchlist;
 
 abstract class Controller extends BaseController
 {
@@ -27,4 +28,13 @@ abstract class Controller extends BaseController
       return $onePiece;
     }
 
+    public function buy($price)
+    {
+      $art->sold         = 1;
+      $art->sold_for     = $art->price;
+      $art->sold_to      = Auth::user()->id;;
+      $art->save();
+      Bid::where('art_id',$art_id)->delete();
+      watchlist::where('art_id',$art_id)->delete();
+    }
 }

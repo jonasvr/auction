@@ -7,81 +7,41 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Art;
+use Carbon\Carbon;
+use App\Bid;
+use App\watchlist;
+
 class CronsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
+  public function index()
+  {
+    $today = Carbon::today();
+    $arts = Art::where('ending',"<",$today)
+                ->where('sold',0)
+                ->get();
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        //dd($arts);
+    foreach ($arts as $art) {
+      $bidder = bid::where('bid',$art->highest())
+                      ->where('art_id',$art->id)
+                      ->select('user_id','bid')
+                      ->first();
+        //echo($bidder);
+        if(!$bidder)
+        {
+          $art->sold_for     = 0;
+          $art->sold_to      = 0;
+        }
+        else
+        {
+          $art->sold_for     = $bidder->bid;
+          $art->sold_to      = $bidder->user_id;
+        }
+          $art->sold         = 1;
+          Bid::where('art_id',$art->id)->delete();
+          watchlist::where('art_id',$art->id)->delete();
+          $art->save();
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+  }
 }

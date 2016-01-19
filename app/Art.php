@@ -19,6 +19,10 @@ class Art extends Model
     {
         return $this->bids()->max('bid');
     }
+    public function highestBidder()
+    {
+        return $this->bids()->select('user_id')->max('bid');
+    }
 
     public function pictures()
     {

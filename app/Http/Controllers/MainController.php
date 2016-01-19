@@ -78,12 +78,15 @@ class MainController extends Controller
     $onePiece = $this->onePiece();
 
     $path = $this->getPath($filter,$value);
-    
+
     return View('art.overview', compact('random_art','VoS','duration','picture','title','onePiece','path'));
   }
 
   public function search(Request $request)
   {
+    $this->validate($request, [
+         'search'     => 'required|String',
+      ]);
     $search = $request->search;
     Session::put('search',  $search);
     $now        = Carbon::now();

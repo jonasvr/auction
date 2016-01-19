@@ -34,6 +34,10 @@ class addArtRequest extends Request
             'birth'                 => 'numeric',
             'price'                 => 'required|numeric',
             'duration'              => 'required|numeric',
+            'pic.0'                 => 'required|image',
+            'pic.1'                 => 'required|image',
+            'pic.2'                 => 'required|image',
+            'pic.3'                 => 'required|image',
         ];
 // $validator = parent::getValidatorInstance();
 

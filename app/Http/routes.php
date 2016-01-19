@@ -82,3 +82,7 @@ Route::group(['middleware' => 'auth'], function () {
   Route::get('/art/search/{filter}/{value}',      ['as' => 'searchFilter',			   'uses' => 'MainController@searchFiltert' ]);
 
 });
+
+
+// cronjob tests
+Route::get('/cron',      ['as' => 'cron',			   'uses' => 'CronsController@index' ]);

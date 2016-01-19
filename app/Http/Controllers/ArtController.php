@@ -134,7 +134,7 @@ class ArtController extends Controller
         $watchlist = watchlist::where('art_id',$id)
                                 ->where('user_id',Auth::user()->id)
                                 ->first();
-      
+
         return View('art.detail', compact('art','headpicture','pictures','watchlist','nrbids','duration','onePiece','related','relDuration'));
     }
 
@@ -167,12 +167,14 @@ class ArtController extends Controller
        $art   = Art::where('id',$art_id)
                       ->where('sold',0)
                       ->firstOrFail();
-       $art->sold         = 1;
-       $art->sold_for     = $art->price;
-       $art->sold_to      = Auth::user()->id;;
-       $art->save();
 
-       Bid::where('art_id',$art_id)->delete();
+        $art->sold         = 1;
+        $art->sold_for     = $art->price;
+        $art->sold_to      = Auth::user()->id;;
+        $art->save();
+        Bid::where('art_id',$art_id)->delete();
+        watchlist::where('art_id',$art_id)->delete();
+
        return redirect()->route('/')->withSuccess(trans('succes.bought'));
     }
 
