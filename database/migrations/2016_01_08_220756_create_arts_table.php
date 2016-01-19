@@ -26,6 +26,8 @@ class CreateArtsTable extends Migration
             $table->integer('birth');
             $table->integer('death');
             $table->integer('price');
+            $table->integer('min');
+            $table->integer('max');
             $table->boolean('sold');
             $table->integer('sold_for');
             $table->integer('sold_to')->unsigned();

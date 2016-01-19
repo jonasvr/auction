@@ -7,7 +7,7 @@
 		'login'				=> 'inloggen',
 		'home'				=> 'home',
 		'art'				=> 'kunst',
-		'search'			=> 'zoeken',
+		'search'			=> 'ik zoek',
 		'myauctions'		=> 'mijnveilingen',
 		'mybids'			=> 'mijnboden',
 		'contact'			=> 'contact',

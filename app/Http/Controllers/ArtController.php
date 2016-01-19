@@ -73,6 +73,8 @@ class ArtController extends Controller
         $input->birth                = $data['birth'];
         $input->death                = $data['death'];
         $input->price                = $data['price'];
+        $input->price                = $data['min'];
+        $input->price                = $data['max'];
         $input->ending               = $ending;
         $input->save();
 

@@ -2,11 +2,11 @@
 
 
 @section('title')
-    auction
+    Isearch
 @endsection
 
 
-@section('container')   
+@section('container')
   @include('layout.header')
 
 <div class="Search">
@@ -42,7 +42,7 @@
       </div> <div class="col-md-offset-2"></div>
     </div>
   </form>
-</div> 
+</div>
 
 <div class="overvieuw">
   <div class="row">
@@ -71,7 +71,7 @@
           <p><strong>Search:</strong> Mona Lisa, Leonardo Da Vinci</p>
           <p><strong>Description:</strong> Lorem ipsum, dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut </p>
           <p><strong>Posted:</strong> 5 July 2013</p>
-        </div> 
+        </div>
         <a class="btn btn-default col-md-offset-1 col-md-2 grey-back blue-text" href="{{'isearch'}}"> I own this artwork ></a>
     </div>
     <div class="col-md-offset-2 col-md-9 row results">
@@ -79,7 +79,7 @@
           <p><strong>Search:</strong> Mona Lisa, Leonardo Da Vinci</p>
           <p><strong>Description:</strong> Lorem ipsum, dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut </p>
           <p><strong>Posted:</strong> 5 July 2013</p>
-        </div> 
+        </div>
         <a class="btn btn-default col-md-offset-1 col-md-2 grey-back blue-text" href="{{'isearch'}}"> I own this artwork ></a>
     </div>
     <div class="col-md-offset-2 col-md-9 row results">
@@ -87,7 +87,7 @@
           <p><strong>Search:</strong> Mona Lisa, Leonardo Da Vinci</p>
           <p><strong>Description:</strong> Lorem ipsum, dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut </p>
           <p><strong>Posted:</strong> 5 July 2013</p>
-        </div> 
+        </div>
         <a class="btn btn-default col-md-offset-1 col-md-2 grey-back blue-text" href="{{'isearch'}}"> I own this artwork ></a>
     </div>
     <div class="col-md-offset-2 col-md-9 row results">
@@ -95,7 +95,7 @@
           <p><strong>Search:</strong> Mona Lisa, Leonardo Da Vinci</p>
           <p><strong>Description:</strong> Lorem ipsum, dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut </p>
           <p><strong>Posted:</strong> 5 July 2013</p>
-        </div> 
+        </div>
         <a class="btn btn-default col-md-offset-1 col-md-2 grey-back blue-text" href="{{'isearch'}}"> I own this artwork ></a>
     </div>
     <div class="col-md-offset-2 col-md-9 row results">
@@ -103,13 +103,11 @@
           <p><strong>Search:</strong> Mona Lisa, Leonardo Da Vinci</p>
           <p><strong>Description:</strong> Lorem ipsum, dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut </p>
           <p><strong>Posted:</strong> 5 July 2013</p>
-        </div> 
+        </div>
         <a class="btn btn-default col-md-offset-1 col-md-2 grey-back blue-text" href="{{'isearch'}}"> I own this artwork ></a>
     </div>
-    
+
   </div>
 </div>
 
 @endsection
-
- 

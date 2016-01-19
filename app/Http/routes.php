@@ -58,11 +58,11 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('watchlist/',  									['as' => 'watchlist', 			 'uses' => 'ProfileController@myWatchList']);
 
 
-  Route::get('/profile/myAuctions',          ['as' => 'myAuctions',     'uses' => 'ProfileController@myAuctions']);
-  Route::get('/profile/myBids',              ['as' => 'myBids',         'uses' => 'ProfileController@myBids']);
-  Route::get('/profile/{art_id}',  					['as' => 'deleteWL', 			 'uses' => 'ProfileController@deleteFromWatchList']);
-	Route::get('/profile', 					['as' => 'profile', 'uses' => 'ProfileController@profile']);
-	Route::get('/profile/delete/{not_id}', ['as' => 'deleteNot', 'uses' => 'ProfileController@deleteNot']);
+  Route::get('/profile/myAuctions',          	['as' => 'myAuctions',     'uses' => 'ProfileController@myAuctions']);
+  Route::get('/profile/myBids',              	['as' => 'myBids',         'uses' => 'ProfileController@myBids']);
+  Route::get('/profile/{art_id}',  						['as' => 'deleteWL', 			 'uses' => 'ProfileController@deleteFromWatchList']);
+	Route::get('/profile', 											['as' => 'profile', 			 'uses' => 'ProfileController@profile']);
+	Route::get('/profile/delete/{not_id}', 			['as' => 'deleteNot', 		 'uses' => 'ProfileController@deleteNot']);
 	Route::get('/checknote','ProfileController@checknoti');
 
 	Route::post('/art/bid', 				      ['as' => 'bid', 			     'uses' => 'ArtController@bid']);
@@ -70,12 +70,12 @@ Route::group(['middleware' => 'auth'], function () {
   Route::post('/art/addArt', 				        ['as' => 'addArt', 			   'uses' => 'ArtController@addArt']);
   Route::get('/art/buy/{art_id}',           ['as' => 'buynow',			   'uses' => 'ArtController@buyNow' ]);
 
-  Route::get('/art/overview/',			              ['as' => 'overview',			 'uses' => 'MainController@overview' ]);
-  Route::get('/art/overview/{filter}/{value}',    ['as' => 'overviewFilter',	'uses' => 'MainController@overviewFilter' ]);
-  Route::get('/art/overview/style/{style}',			  ['as' => 'overviewStyle',	 'uses' => 'MainController@filterStyle' ]);
-  Route::get('/art/overview/price/{price}',			  ['as' => 'overviewPrice',	 'uses' => 'MainController@filterPrice' ]);
-  Route::get('/art/overview/era/{era}',			      ['as' => 'overviewEra',	   'uses' => 'MainController@filterEra' ]);
-  Route::get('/art/overview/when/{when}',			    ['as' => 'overviewWhen',	 'uses' => 'MainController@filterWhen' ]);
+  Route::get('/art',			              	['as' => 'overview',			 'uses' => 'MainController@overview' ]);
+  Route::get('/art/{filter}/{value}',    	['as' => 'overviewFilter',	'uses' => 'MainController@overviewFilter' ]);
+  Route::get('/art/style/{style}',			  ['as' => 'overviewStyle',	 'uses' => 'MainController@filterStyle' ]);
+  Route::get('/art/price/{price}',			  ['as' => 'overviewPrice',	 'uses' => 'MainController@filterPrice' ]);
+  Route::get('/art/era/{era}',			      ['as' => 'overviewEra',	   'uses' => 'MainController@filterEra' ]);
+  Route::get('/art/when/{when}',			    ['as' => 'overviewWhen',	 'uses' => 'MainController@filterWhen' ]);
   Route::post('/art/search',	                    ['as' => 'search',			   'uses' => 'MainController@search' ]);
   Route::get('/art/search/{filter}/{value}',      ['as' => 'searchFilter',			   'uses' => 'MainController@searchFiltert' ]);
 

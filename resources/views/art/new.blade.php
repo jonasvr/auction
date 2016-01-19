@@ -1,14 +1,14 @@
 @extends('layout.master')
 
 @section('title')
-    auction
+    New Art
 @endsection
 
 
 @section('container')
 
 <div class="row">
-  <h1 class='col-md-offset-1 col-md-5'>{!! trans('profile.newTitle') !!}</h1>
+  <h1 class='col-md-offset-1 col-md-5 text-capitalize blue-text'>{!! trans('profile.newTitle') !!}</h1>
 </div>
 <div class="row profile-form text-capitalize blue-text">
 {!! Form::open(array('url' => URL::route('addArt'), 'method' => 'POST', 'class' => 'form-horizontal', 'files' => true )) !!}
@@ -22,7 +22,12 @@
           {!! Form::text('title','',array('class' => 'form-control'))!!}
         </div>
       </div>
-
+      <div class="form-group">
+        {!! Form::label('artist', trans('profile.artist'), array('class' => 'col-sm-3  control-label')) !!}
+        <div class="col-sm-9">
+          {!! Form::text('artist','',array('class' => 'form-control')) !!}
+        </div>
+      </div>
       <div class="form-group">
         {!! Form::label('description', trans('profile.description'), array('class' => 'col-sm-3  control-label')) !!}
         <div class="col-sm-9">
@@ -36,6 +41,12 @@
           {!! Form::textarea('condition','',array('class' => 'form-control', 'rows' => '8')) !!}
         </div>
       </div>
+      <div class="form-group">
+           {!! Form::label('creation_y', trans('profile.artyear'), array('class' => 'col-sm-3  control-label')) !!}
+           <div class="col-sm-9">
+             {!! Form::text('creation_y','',array('class' => 'form-control')) !!}
+           </div>
+         </div>
 
       <div class="form-group">
         {!! Form::label('condition', trans('profile.picture'), array('class' => 'col-sm-3  control-label')) !!}
@@ -53,12 +64,7 @@
 <!-- kolom 2 -->
   <div class="col-md-5 form-horizontal">
 
-   <div class="form-group">
-        {!! Form::label('creation_y', trans('profile.artyear'), array('class' => 'col-sm-3  control-label')) !!}
-        <div class="col-sm-9">
-          {!! Form::text('creation_y','',array('class' => 'form-control')) !!}
-        </div>
-      </div>
+
 
       <div class="form-group">
         {!! Form::label('dimensions', trans('profile.dimensions'), array('class' => 'col-sm-3  control-label')) !!}
@@ -91,12 +97,7 @@
           {!! Form::select('era_id', $eras) !!}
         </div>
       </div>
-      <div class="form-group">
-        {!! Form::label('artist', trans('profile.artist'), array('class' => 'col-sm-3  control-label')) !!}
-        <div class="col-sm-9">
-          {!! Form::text('artist','',array('class' => 'form-control')) !!}
-        </div>
-      </div>
+
 
       <div class="form-group">
         {!! Form::label('country', trans('profile.continent'), array('class' => 'col-sm-3  control-label')) !!}
@@ -118,7 +119,18 @@
           {!! Form::text('death','',array('class' => 'form-control')) !!}
         </div>
       </div>
-
+      <div class="form-group">
+           {!! Form::label('min', trans('profile.min'), array('class' => 'col-sm-3  control-label')) !!}
+           <div class="col-sm-9">
+             {!! Form::text('creation_y','',array('class' => 'form-control')) !!}
+           </div>
+         </div>
+       <div class="form-group">
+            {!! Form::label('max', trans('profile.max'), array('class' => 'col-sm-3  control-label')) !!}
+            <div class="col-sm-9">
+              {!! Form::text('creation_y','',array('class' => 'form-control')) !!}
+            </div>
+          </div>
       <div class="form-group">
         {!! Form::label('price', trans('profile.price'), array('class' => 'col-sm-3  control-label')) !!}
         <div class="col-sm-9">

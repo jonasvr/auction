@@ -2,7 +2,7 @@
 
 
 @section('title')
-	registratie
+	Registratie
 @endsection
 
 @section('container')

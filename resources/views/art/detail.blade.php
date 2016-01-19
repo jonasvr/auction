@@ -2,7 +2,7 @@
 
 
 @section('title')
-    auction
+      {{$art->title}}
 @endsection
 
 
@@ -13,12 +13,12 @@
   <div class="wrapper-details">
     <div class="row">
       <div class="col-md-offset-2 col-md-7">
-          <h2> {{$art->title}} </h2>
+          <h1 class="text-capitalize"> {{$art->title}} </h1>
       </div>
       <div class="col-md-3"></div>
 
       <div class="col-md-offset-2 col-md-7">
-          <p>
+          <p @if( $duration->d < 1) class="red-text"@endif>
             {{ $duration->d }}d {{ $duration->h }}u {{ $duration->i }}m
 
             <span class="blue-text">
@@ -44,12 +44,12 @@
 
         <!-- data rechts -->
         <div class="col-md-3 text-right">
-          <h3> {{$art->title}}</h3>
+          <h3 class="text-capitalize"> {{$art->title}}</h3>
           <p class="blue-text">
             adres
           </p>
 
-          <p class="green-text">
+          <p @if( $duration->d < 1) class="red-text" @else class="green-text" @endif>
             {{ $duration->d }}d {{ $duration->h }}u {{ $duration->i }}m {{ trans('detail.left') }}
             <div id="clockdiv"></div>
           </p>
@@ -73,7 +73,7 @@
           @if(Auth::user()->id != $art->user_id)
           <p class="blue-text">
             {!! trans('detail.estimated') !!} <br />
-            <span class="price"> €9.500 - €10.500</span><br />
+            {{-- <span class="price"> {{ €$art->min }} - €{{ $art->max }}</span><br /> --}}
             <a class="green-text" href="{{ URL::route('buynow', ['art_id'=> $art->id]) }}"> <u>{!! trans('detail.buy',['askingprice' => $art->price]) !!} </u></a>
           </p>
           <p>{!! trans('detail.bid') !!}?</p>
@@ -163,7 +163,7 @@
           <h3>{{ $relatedArt->title }}</h3>
           <p class="price">{{ $relatedArt->price }}</p>
           <div class="row extra">
-            <p class="col-md-12"> {{ $relDuration[$key]->d }}d {{ $relDuration[$key]->h }}u {{ $relDuration[$key]->i }}m </p>
+            <p  @if( $duration->d < 1) class="col-md-12 red-text" @else class="col-md-12" @endif > {{ $relDuration[$key]->d }}d {{ $relDuration[$key]->h }}u {{ $relDuration[$key]->i }}m </p>
             <a class="col-md-12 blue-text" href="{{ URL::route('detail', ['id'=> $relatedArt->id]) }}"> {!! trans('detail.visit') !!} > </a>
           </div>
         </div>

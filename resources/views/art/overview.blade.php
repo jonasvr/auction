@@ -90,7 +90,7 @@
             {{ $art->price }}
           </p>
           <div class="row extra">
-            <p class="col-md-12">
+            <p @if( $duration[$key]->d < 1) class="col-md-12 red-text" @else class="col-md-12" @endif >
               {{ $duration[$key]->d }}d {{ $duration[$key]->h }}u {{ $duration[$key]->i }}m
             </p>
             <a class="col-md-12 blue-text" href="{{ URL::route('detail', ['id'=> $art->id]) }}">

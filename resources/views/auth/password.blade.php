@@ -2,7 +2,7 @@
 
 
 @section('title')
-	registratie
+	Change password
 @endsection
 
 @section('container')

@@ -7,7 +7,7 @@
 		'login'				=> 'login',
 		'home'				=> 'home',
 		'art'				=> 'art',
-		'search'			=> 'search',
+		'search'			=> 'iSearch',
 		'myauctions'		=> 'myauctions',
 		'mybids'			=> 'mybids',
 		'contact'			=> 'contact',

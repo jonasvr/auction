@@ -20,4 +20,6 @@
 		'newTitle'				=>	'Nieuw kunststuk',
 		'duration'				=>	'duur in dagen',
 		'submit'					=>	'submit',
+		'min'							=>	'min-geschat',
+		'max'							=>	'max-geschat',
 	);

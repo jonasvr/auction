@@ -32,7 +32,7 @@ class MainController extends Controller
       $picture = $this->getPicture($random_art);
       $duration = $this->getDuration($random_art,$now);
       $VoS = 'overviewFilter';
-      $title = 'overview';
+      $title = 'Overview';
       $onePiece = $this->onePiece();
 
       return View('art.overview', compact('random_art','duration','picture','VoS','title','onePiece'));
@@ -63,7 +63,6 @@ class MainController extends Controller
                                    break;
                                 case 'when':
                                   $when = $this->filterOnWhen($value);
-                                  echo $when;
                                   $query->where('ending','<',$when);
                                   break;
                                }
@@ -74,7 +73,7 @@ class MainController extends Controller
     $picture = $this->getPicture($random_art);
     $duration = $this->getDuration($random_art,$now);
     $VoS = 'overviewFilter';
-    $title = 'overview';
+    $title = 'Overview';
     $onePiece = $this->onePiece();
 
     $path = $this->getPath($filter,$value);
@@ -106,7 +105,7 @@ class MainController extends Controller
     $picture  = $this->getPicture($random_art);
     $duration = $this->getDuration($random_art,$now);
     $VoS      = 'searchFilter';
-    $title    = 'search';
+    $title    = 'Search';
     $onePiece = $this->onePiece();
     $path     = $search;
 
@@ -154,7 +153,7 @@ class MainController extends Controller
     $picture  = $this->getPicture($random_art);
     $duration = $this->getDuration($random_art,$now);
     $VoS      = 'searchFilter';
-    $title    = 'search';
+    $title    = 'Search';
     $onePiece = $this->onePiece();
     $path     = $search;
     $path     .= $this->getPath($filter,$value);

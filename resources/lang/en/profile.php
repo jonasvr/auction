@@ -20,6 +20,7 @@
 		'newTitle'			=>	'New art Piece',
 		'duration'			=>	'duration in days',
 		'submit'				=>	'toevoegen',
-
+		'min'							=>	'min-estimated',
+		'max'							=>	'max-estimated',
 
 	);

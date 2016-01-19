@@ -1,7 +1,7 @@
 @extends('layout.master')
 
 @section('title')
-	login
+	Login
 @endsection
 
 @section('container')
