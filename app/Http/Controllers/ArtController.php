@@ -19,6 +19,7 @@ use App\watchlist;
 use App\Bid;
 use App\Questions;
 use Redirect;
+use App\Notification;
 
 
 use App\Http\Requests\addArtRequest;
@@ -148,9 +149,17 @@ class ArtController extends Controller
 
         if( $bid <  $request->bid )
         {
+
+          $input = Bid::where('user_id',Auth::user()->id)
+                        ->where('art_id',$request->art)
+                        ->first();
+          if(empty($input))
+          {
             $input           =   new Bid;
             $input->art_id   =   $request->art;
             $input->user_id  =   Auth::user()->id;
+          }
+
             $input->bid      =   $request->bid;
             $input->save();
 
@@ -170,8 +179,11 @@ class ArtController extends Controller
 
         $art->sold         = 1;
         $art->sold_for     = $art->price;
-        $art->sold_to      = Auth::user()->id;;
+        $art->sold_to      = Auth::user()->id;
         $art->save();
+
+        $this->notification($art->id,Auth::user()->id);
+
         Bid::where('art_id',$art_id)->delete();
         watchlist::where('art_id',$art_id)->delete();
 
@@ -203,5 +215,35 @@ class ArtController extends Controller
       }
 
       return $text;
+    }
+
+    public function notification($art_id,$user_id)
+    {
+      $bidders = bid::where('bids.art_id',$art_id)
+                    ->join('arts','arts.id','=','bids.art_id')
+                    ->where('bids.user_id','<>',$user_id)
+                    ->select('bids.user_id','arts.title')
+                    ->get();
+      foreach($bidders as $bidder)
+      {
+        $input              = new notification;
+        $input->user_id     = $bidder->user_id;
+        $input->notification     = $bidder->title . " is sold.";
+        $input->save();
+      }
+
+      $watchlist = watchlist::where('watchlists.art_id',$art_id)
+                    ->join('arts','arts.id','=','watchlists.art_id')
+                    ->where('watchlists.user_id','<>',$user_id)
+                    ->select('watchlists.user_id','arts.title')
+                    ->get();
+
+      foreach($watchlist as $list)
+      {
+        $input              = new notification;
+        $input->user_id     = $list->user_id;
+        $input->notification    = $list->title . " from your watchlist is sold.";
+        $input->save();
+      }
     }
 }

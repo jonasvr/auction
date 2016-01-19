@@ -36,8 +36,8 @@ class profileController extends Controller
     public function checknoti()
     {
       $notifications = notification::where('user_id',Auth::user()->id)->get();
-      //dd(e//mpty($notifications);
-      if(empty($notifications))
+
+      if(!empty($notifications))
       {
         return response()->json(1);
       }

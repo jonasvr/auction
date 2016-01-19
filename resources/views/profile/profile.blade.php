@@ -8,7 +8,7 @@
 @section('container')
 <div class="row blue-text">
 
-@if(empty($notifications))
+@if(!empty($notifications))
 <div class=" col-md-offset-2 col-md-8 alert alert-info">
     <h4>Your notifications</h4>
     <ul class="list-unstyled">

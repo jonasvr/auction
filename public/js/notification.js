@@ -14,14 +14,6 @@ $(document).ready(function(e){
             // selectField.empty();
             selectField.append('   <span class="glyphicon glyphicon-envelope"></span>');
           }
-          // // the next thing you want to do
-          // var country= document.getElementById('country');
-          // var selectField = $('.subcategorie');
-          // selectField.empty();
-          // for (var i = 0; i < data.length; i++) {
-          // selectField.append('<option' + ' value=' + data[i].value + '>' + data[i].content + '</option>');
-          // }
-          // selectField.show();
         }
     });
 
