@@ -98,7 +98,7 @@ class ArtController extends Controller
 
     public function getDetail($id)
     {
-        $onePiece = $this->onePiece();
+        $onePiece       =   $this->onePiece();
         $art            =   Art::where('id',$id)
                                   ->where('sold',0)
                                   ->firstOrFail();
@@ -131,6 +131,10 @@ class ArtController extends Controller
           $relDuration[]  = $dt->diff($now);
         }
 
+        $watchlist = watchlist::where('art_id',$id)
+                                ->where('user_id',Auth::user()->id)
+                                ->first();
+      
         return View('art.detail', compact('art','headpicture','pictures','watchlist','nrbids','duration','onePiece','related','relDuration'));
     }
 

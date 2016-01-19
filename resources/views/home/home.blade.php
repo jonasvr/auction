@@ -2,7 +2,7 @@
 
 
 @section('title')
-    auction
+    Home
 @endsection
 
 

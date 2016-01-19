@@ -45,6 +45,8 @@ class HomeController extends Controller
                               ->take(1)
                               ->get();
                             }
-    return View('home', compact('random_art','popular','picture'));
+    return View('home.home', compact('random_art','popular','picture'));
   }
+
+
 }

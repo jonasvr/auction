@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>@yield('title')</title>
+  <title>@yield('title') | Auction</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href="/img/favicon.gif" type="image/gif" sizes="16x16">
@@ -21,7 +21,7 @@
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav upper col-md-6">
             @if(Auth::check())
-              <li class="{{ Request::is('/') ? 'active' : '' }}"><a href="{{ url('/') }}"><span class="glyphicon glyphicon-align-justify"> {!! trans('master.watchlist') !!}</a></li>
+              <li class="{{ Request::is('/') ? 'active' : '' }}"><a href="{{ url('/watchlist') }}"><span class="glyphicon glyphicon-align-justify"> {!! trans('master.watchlist') !!}</a></li>
               <li role="separator" class="divider-vertical"></li>
               <li class="{{ Request::is('profile') ? 'active' : '' }}"><a href="{{ url('/profile') }}"><span class="glyphicon glyphicon-user"> {!! trans('master.profile') !!}</a></li>
               <li role="separator" class="divider-vertical"></li>
@@ -93,7 +93,6 @@
           <ul class="nav nav-pills nav-stacked">
             <li><p class="footerTitles">{!! trans('master.languages') !!}</p></li>
             <li><a href="#">Nederlands</a></li>
-            <li><a href="#">Français</a></li>
             <li><a href="#">English</a></li>
           </ul>
         </div>

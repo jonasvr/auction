@@ -20,7 +20,7 @@ class AdminController extends Controller
                 ->where('ending','>',$now)
                 ->get();
 
-    return View('admin',compact('artPieces'));
+    return View('home.admin',compact('artPieces'));
   }
 
   public function delete($art_id)

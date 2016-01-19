@@ -14,7 +14,6 @@
   <div class="col-md-2">
     <ul class="nav navbar-nav navbar-right upper">
       <li><a href="{{ URL::route('language', array('lng' => 'nl')) }}">nl</a></li>
-      <li><a href="/language/fr">fr</a></li>
       <li><a href="{{ URL::route('language', array('lng' => 'en')) }}">en</a></li>
     </ul>
   </div>

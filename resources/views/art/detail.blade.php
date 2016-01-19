@@ -87,11 +87,19 @@
               </div>
           {!! Form::close() !!}
           <p class="text-center">
+            @if($watchlist)
+            <div class="blue-text ">
+              <span class="glyphicon glyphicon-menu-hamburger">
+              </span>
+              <u> {!! trans('detail.on') !!} </u>
+            </div>
+            @else
             <a class="blue-text" href="{{ URL::route('addToWl', ['id'=> $art->id] ) }}">
               <span class="glyphicon glyphicon-menu-hamburger">
               </span>
               <u> {!! trans('detail.add') !!} </u>
             </a>
+            @endif
           </p>
           @endif
 

@@ -8,7 +8,7 @@
 		'bid'						=> 'bids',
 		'bidnow'				=> 'bid now',
 		'add'						=> 'add to my watchlist',
-		'remove'				=> 'remove from my watchlist',
+		'on'						=> 'already on your watchlist',
 		'description'		=> 'Description',
 		'condition'			=> 'Condition',
 		'artist'				=> 'artist',

@@ -37,6 +37,15 @@ class profileController extends Controller
         return Redirect::back();
     }
 
+    public function myWatchlist()
+    {
+      $list = watchlist::where('watchlists.user_id',Auth::user()->id)
+                        ->join('arts','arts.id','=','watchlists.art_id')
+                        //->select('arts.id','arts.title','watchlists.created_at')
+                        ->paginate(12);  
+      return View('profile.watchlist', compact('list'));
+    }
+
     public function myAuctions()
     {
         $myArt = Art::where('user_id', Auth::user()->id)

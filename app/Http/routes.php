@@ -57,10 +57,16 @@ Route::post('/contact', 				            ['as' => 'confirmContact', 'uses' => 'Co
 
 Route::group(['middleware' => 'auth'], function () {
 
-  Route::get('profile/addToWList/{art_id}',	['as' => 'addToWl',			   'uses' => 'ProfileController@addToWatchList']);
+  Route::get('watchlist/addToWList/{art_id}',	['as' => 'addToWl',			   'uses' => 'ProfileController@addToWatchList']);
+	Route::get('watchlist/{art_id}',  					['as' => 'deleteWL', 			 'uses' => 'ProfileController@deleteFromWatchList']);
+	Route::get('watchlist/',  									['as' => 'watchlist', 			 'uses' => 'ProfileController@myWatchList']);
+
+
   Route::get('profile/myAuctions',          ['as' => 'myAuctions',     'uses' => 'ProfileController@myAuctions']);
   Route::get('profile/myBids',              ['as' => 'myBids',         'uses' => 'ProfileController@myBids']);
   Route::post('/profile/bid', 				      ['as' => 'bid', 			     'uses' => 'ArtController@bid']);
+	Route::get('/profile/{art_id}',  					['as' => 'deleteWL', 			 'uses' => 'ProfileController@deleteFromWatchList']);
+
 
   Route::get('/art/new', 					          ['as' => 'new',				     'uses' => 'ArtController@newArt' ]);
   Route::post('/art/addArt', 				        ['as' => 'addArt', 			   'uses' => 'ArtController@addArt']);
@@ -73,6 +79,6 @@ Route::group(['middleware' => 'auth'], function () {
   Route::get('/art/overview/era/{era}',			      ['as' => 'overviewEra',	   'uses' => 'MainController@filterEra' ]);
   Route::get('/art/overview/when/{when}',			    ['as' => 'overviewWhen',	 'uses' => 'MainController@filterWhen' ]);
   Route::post('/art/search',	                    ['as' => 'search',			   'uses' => 'MainController@search' ]);
-  Route::get('/art/search/{filter}/{value}',     ['as' => 'searchFilter',			   'uses' => 'MainController@searchFiltert' ]);
+  Route::get('/art/search/{filter}/{value}',      ['as' => 'searchFilter',			   'uses' => 'MainController@searchFiltert' ]);
 
 });
