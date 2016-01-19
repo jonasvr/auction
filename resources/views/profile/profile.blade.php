@@ -1,12 +1,27 @@
 @extends('layout.master')
 
 @section('title')
-    profile
+    Profile
 @endsection
 
 
 @section('container')
 <div class="row blue-text">
+
+@if(empty($notifications))
+<div class=" col-md-offset-2 col-md-8 alert alert-info">
+    <h4>Your notifications</h4>
+    <ul class="list-unstyled">
+      @foreach($notifications as $message)
+       <li>
+         <a href="{{ URL::route('deleteNot', ['not_id'=>$message->id]) }}"><span class="glyphicon glyphicon-remove"></span></a>
+         {{$message->notification}}
+       </li>
+      @endforeach
+    </ul>
+  </div>
+@endif
+
 
   <h1 class="col-md-offset-2 col-md-10">profile</h1>
   <a href="{{ URL::route('myAuctions') }}">

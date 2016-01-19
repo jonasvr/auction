@@ -5,6 +5,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href="/img/favicon.gif" type="image/gif" sizes="16x16">
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+
   </head>
   <body>
   <nav class="navbar navbar-default" role="navigation">
@@ -21,9 +24,9 @@
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav upper col-md-6">
             @if(Auth::check())
-              <li class="{{ Request::is('/') ? 'active' : '' }}"><a href="{{ url('/watchlist') }}"><span class="glyphicon glyphicon-align-justify"> {!! trans('master.watchlist') !!}</a></li>
+              <li class="{{ Request::is('/') ? 'active' : '' }}"><a href="{{ url('/watchlist') }}"><span class="glyphicon glyphicon-align-justify"> {!! trans('master.watchlist') !!}</span></a></li>
               <li role="separator" class="divider-vertical"></li>
-              <li class="{{ Request::is('profile') ? 'active' : '' }}"><a href="{{ url('/profile') }}"><span class="glyphicon glyphicon-user"> {!! trans('master.profile') !!}</a></li>
+              <li class="{{ Request::is('profile') ? 'active' : '' }}"><a href="{{ url('/profile') }}"><span id="notes" class="glyphicon glyphicon-user"> {!! trans('master.profile') !!}</span></a></li>
               <li role="separator" class="divider-vertical"></li>
               <li><a href="/logout"> {!! trans('master.logout') !!}</a></li>
             @else
@@ -179,10 +182,11 @@
       </div>
 
   </body>
-  <link rel="stylesheet" href="/css/bootstrap.min.css">
+
   <script src="/js/jquery.min.js"></script>
   <script src="/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="/css/style.css">
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript" src="/js/notification.js"></script>
   @yield('js')
 
 

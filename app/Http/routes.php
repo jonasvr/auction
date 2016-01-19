@@ -38,10 +38,6 @@ Route::get('/',  ['as' => '/', 'uses' => 'HomeController@home']);
 Route::get('/admin',  					['as' => 'admin', 'uses' => 'AdminController@index']);
 Route::get('/admin/{art_id}',  	['as' => 'delete', 'uses' => 'AdminController@delete']);
 
-Route::get('/profile', function ()
-	{    return view('profile.profile');
-});
-
 Route::get('/faq',   ['as' => 'faq', 'uses' => 'MainController@getFaqs']);
 Route::get('/isearch', ['as' => 'isearch', 'uses' => 'MainController@isearch']);
 
@@ -62,12 +58,14 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('watchlist/',  									['as' => 'watchlist', 			 'uses' => 'ProfileController@myWatchList']);
 
 
-  Route::get('profile/myAuctions',          ['as' => 'myAuctions',     'uses' => 'ProfileController@myAuctions']);
-  Route::get('profile/myBids',              ['as' => 'myBids',         'uses' => 'ProfileController@myBids']);
-  Route::post('/profile/bid', 				      ['as' => 'bid', 			     'uses' => 'ArtController@bid']);
-	Route::get('/profile/{art_id}',  					['as' => 'deleteWL', 			 'uses' => 'ProfileController@deleteFromWatchList']);
+  Route::get('/profile/myAuctions',          ['as' => 'myAuctions',     'uses' => 'ProfileController@myAuctions']);
+  Route::get('/profile/myBids',              ['as' => 'myBids',         'uses' => 'ProfileController@myBids']);
+  Route::get('/profile/{art_id}',  					['as' => 'deleteWL', 			 'uses' => 'ProfileController@deleteFromWatchList']);
+	Route::get('/profile', 					['as' => 'profile', 'uses' => 'ProfileController@profile']);
+	Route::get('/profile/delete/{not_id}', ['as' => 'deleteNot', 'uses' => 'ProfileController@deleteNot']);
+	Route::get('/checknote','ProfileController@checknoti');
 
-
+	Route::post('/art/bid', 				      ['as' => 'bid', 			     'uses' => 'ArtController@bid']);
   Route::get('/art/new', 					          ['as' => 'new',				     'uses' => 'ArtController@newArt' ]);
   Route::post('/art/addArt', 				        ['as' => 'addArt', 			   'uses' => 'ArtController@addArt']);
   Route::get('/art/buy/{art_id}',           ['as' => 'buynow',			   'uses' => 'ArtController@buyNow' ]);

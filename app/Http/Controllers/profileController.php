@@ -9,15 +9,41 @@ use App\Http\Controllers\Controller;
 
 //added by jonas
 use Auth;
-use Users;
+use App\User;
 use App\watchlist;
 use App\Bid;
 use App\Art;
 use Redirect;
+use App\Notification;
 
 class profileController extends Controller
 {
-    //
+    public function profile()
+    {
+      // $notifications = user::find(Auth::user()->id)->notifications();
+      // dd($notifications);
+
+      $notifications = notification::where('user_id',Auth::user()->id)->get();
+      return View('profile.profile', compact('notifications'));
+    }
+
+    public function deleteNot($not_id)
+    {
+      notification::find($not_id)->delete();
+      return redirect()->route('profile');
+    }
+
+    public function checknoti()
+    {
+      $notifications = notification::where('user_id',Auth::user()->id)->get();
+      //dd(e//mpty($notifications);
+      if(empty($notifications))
+      {
+        return response()->json(1);
+      }
+      return response()->json(0);
+    }
+
     public function addToWatchList($art_id)
     {
     	  $input           =   new Watchlist;
@@ -42,7 +68,7 @@ class profileController extends Controller
       $list = watchlist::where('watchlists.user_id',Auth::user()->id)
                         ->join('arts','arts.id','=','watchlists.art_id')
                         //->select('arts.id','arts.title','watchlists.created_at')
-                        ->paginate(12);  
+                        ->paginate(12);
       return View('profile.watchlist', compact('list'));
     }
 
