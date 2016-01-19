@@ -44,6 +44,7 @@
 
       @endforeach
       </div>
+      @if(empty($iBought))
 
       <div class="row">
         <h2>What you Bought</h2>
@@ -71,6 +72,7 @@
       @endforeach
       </div>
 
+    @endif
     </div>
   </div>
 @endsection

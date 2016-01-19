@@ -19,12 +19,13 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">landoretti</a>
+          <a class="navbar-brand" href="{{ url('/') }}"><img src="/img/logo.png" alt="logo" class="img-responsive"/></a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav upper col-md-6">
+
             @if(Auth::check())
-              <li class="{{ Request::is('/') ? 'active' : '' }}"><a href="{{ url('/watchlist') }}"><span class="glyphicon glyphicon-align-justify"> {!! trans('master.watchlist') !!}</span></a></li>
+              <li class="{{ Request::is('/watchlist') ? 'active' : '' }}"><a href="{{ url('/watchlist') }}"><span class="glyphicon glyphicon-align-justify"> {!! trans('master.watchlist') !!}</span></a></li>
               <li role="separator" class="divider-vertical"></li>
               <li class="{{ Request::is('profile') ? 'active' : '' }}"><a href="{{ url('/profile') }}"><span id="notes" class="glyphicon glyphicon-user"> {!! trans('master.profile') !!}</span></a></li>
               <li role="separator" class="divider-vertical"></li>
