@@ -35,8 +35,8 @@ Route::get('/language/{lng}',['as'=> 'language', 'uses'=> 'LanguageController@ch
 
 Route::get('/',  ['as' => '/', 'uses' => 'HomeController@home']);
 
-Route::get('/admin',  					['as' => 'admin', 'uses' => 'AdminController@index']);
-Route::get('/admin/{art_id}',  	['as' => 'delete', 'uses' => 'AdminController@delete']);
+Route::get('/admin',  					['as' => 'admin', 	'uses' => 'AdminController@index']);
+Route::get('/admin/{art_id}',  	['as' => 'delete', 	'uses' => 'AdminController@delete']);
 
 Route::get('/faq',   ['as' => 'faq', 'uses' => 'MainController@getFaqs']);
 Route::get('/isearch', ['as' => 'isearch', 'uses' => 'MainController@isearch']);
@@ -44,10 +44,7 @@ Route::get('/isearch', ['as' => 'isearch', 'uses' => 'MainController@isearch']);
 
 Route::get('art/detail/{id}', 			        ['as' => 'detail',			   'uses' => 'ArtController@getDetail' ]);
 
-Route::get('/contact', function(){
-	return View('contact.contact');
-});
-
+Route::get('/contact', function(){ return View('contact.contact');});
 Route::get('/contact/{art_id}/{title}',     ['as' => 'artcontact', 		 'uses' => 'ContactController@artcontact']);
 Route::post('/contact', 				            ['as' => 'confirmContact', 'uses' => 'ContactController@contact']);
 
@@ -65,7 +62,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/profile/delete/{not_id}', 			['as' => 'deleteNot', 		 'uses' => 'ProfileController@deleteNot']);
 	Route::get('/checknote','ProfileController@checknoti');
 
-	Route::post('/art/bid', 				      ['as' => 'bid', 			     'uses' => 'ArtController@bid']);
+	Route::post('/art/bid', 				      		['as' => 'bid', 			     'uses' => 'ArtController@bid']);
   Route::get('/art/new', 					          ['as' => 'new',				     'uses' => 'ArtController@newArt' ]);
   Route::post('/art/addArt', 				        ['as' => 'addArt', 			   'uses' => 'ArtController@addArt']);
   Route::get('/art/buy/{art_id}',           ['as' => 'buynow',			   'uses' => 'ArtController@buyNow' ]);
@@ -84,3 +81,13 @@ Route::group(['middleware' => 'auth'], function () {
 
 // cronjob tests
 Route::get('/cron',      ['as' => 'cron',			   'uses' => 'CronsController@index' ]);
+// mail tests
+
+
+use Illuminate\Support\Facades\Mail;
+Route::get('/mail',function(){
+
+		Mail::send('email.test', ['name' => 'jonas'], function($message){
+			$message->to('jonasvanreet@gmail.com','test')->subject('welcome!');
+		});
+});
