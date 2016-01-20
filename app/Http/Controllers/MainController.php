@@ -171,8 +171,8 @@ class MainController extends Controller
     $title    = 'Search';
     $onePiece = $this->onePiece();
     $path     = $search;
-    $path     .= $this->getPath($filter,$value);
-    return View('art.search', compact('random_art','VoS','duration','picture','title','onePiece'));
+    $path     .= ' > ' .$this->getPath($filter,$value);
+    return View('art.overview', compact('random_art','VoS','duration','picture','title','onePiece','path'));
   }
 
   public function getPath($filter,$value)
