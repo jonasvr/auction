@@ -15,7 +15,7 @@ abstract class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    public function onePiece()
+    public function onePiece() //header artpiece
     {
       $now = Carbon::now();
       $onePiece = Art::where('sold',0)
@@ -24,7 +24,10 @@ abstract class Controller extends BaseController
                     ->join('pictures', 'arts.id', '=', 'pictures.art_id')
                     ->select('pictures.path','arts.description','arts.title','arts.id')
                     ->first();
-      $onePiece->shortdesc = implode(' ', array_slice(explode(' ', $onePiece->description), 0, 25)) . "...";
+      if(!empty($onepiece))
+      {
+        $onePiece->shortdesc = implode(' ', array_slice(explode(' ', $onePiece->description), 0, 25)) . "..."; }
+      else{$onePiece = 'empty';}
       return $onePiece;
     }
 

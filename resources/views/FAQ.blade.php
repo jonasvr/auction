@@ -7,7 +7,10 @@
 
 
 @section('container')
-@include('layout.header',['onePiece' => $onePiece])
+  @if($onePiece !='empty')
+      @include('layout.header',['onePiece' => $onePiece])
+  @endif
+
 
 <div class="FAQ">
   <div class="row links">

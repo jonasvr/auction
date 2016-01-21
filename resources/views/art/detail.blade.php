@@ -7,7 +7,11 @@
 
 
 @section('container')
-  @include('layout.header',['art_id' => $art->id,'onePiece' => $onePiece])
+
+  @if($onePiece !='empty')
+      @include('layout.header',['art_id' => $art->id,'onePiece' => $onePiece])
+  @endif
+
   <!-- end header -->
 
   <div class="wrapper-details">

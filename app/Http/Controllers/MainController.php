@@ -34,7 +34,6 @@ class MainController extends Controller
       $VoS = 'overviewFilter';
       $title = 'Overview';
       $onePiece = $this->onePiece();
-
       return View('art.overview', compact('random_art','duration','picture','VoS','title','onePiece'));
   }
 
@@ -83,7 +82,6 @@ class MainController extends Controller
     $VoS = 'overviewFilter';
     $title = 'Overview';
     $onePiece = $this->onePiece();
-
     $path = $this->getPath($filter,$value);
 
     return View('art.overview', compact('random_art','VoS','duration','picture','title','onePiece','path'));

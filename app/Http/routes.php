@@ -35,14 +35,21 @@ Route::get('/language/{lng}',['as'=> 'language', 'uses'=> 'LanguageController@ch
 
 Route::get('/',  ['as' => '/', 'uses' => 'HomeController@home']);
 
-Route::get('/admin',  					['as' => 'admin', 	'uses' => 'AdminController@index']);
+Route::get('/adminPage',  					['as' => 'admin', 	'uses' => 'AdminController@index']);
 Route::get('/admin/{art_id}',  	['as' => 'delete', 	'uses' => 'AdminController@delete']);
 
+Route::get('/admin', function() {
+    if (Auth::user()->id==1) {
+      return Redirect::action('AdminController@index');
+    }
+    else {
+        return Redirect::action('HomeController@home');
+    }
+});
 Route::get('/faq',   ['as' => 'faq', 'uses' => 'MainController@getFaqs']);
 Route::get('/isearch', ['as' => 'isearch', 'uses' => 'MainController@isearch']);
 
 
-Route::get('art/detail/{id}', 			        ['as' => 'detail',			   'uses' => 'ArtController@getDetail' ]);
 
 Route::get('/contact', function(){ return View('contact.contact');});
 Route::get('/contact/{art_id}/{title}',     ['as' => 'artcontact', 		 'uses' => 'ContactController@artcontact']);
@@ -60,23 +67,24 @@ Route::group(['middleware' => 'auth'], function () {
   Route::get('/profile/{art_id}',  						['as' => 'deleteWL', 			 'uses' => 'ProfileController@deleteFromWatchList']);
 	Route::get('/profile', 											['as' => 'profile', 			 'uses' => 'ProfileController@profile']);
 	Route::get('/profile/delete/{not_id}', 			['as' => 'deleteNot', 		 'uses' => 'ProfileController@deleteNot']);
-	Route::get('/checknote','ProfileController@checknoti');
+	Route::get('/checknote','ProfileController@checknoti');//kijken of er een notification is
 
 	Route::post('/art/bid', 				      		['as' => 'bid', 			     'uses' => 'ArtController@bid']);
   Route::get('/art/new', 					          ['as' => 'new',				     'uses' => 'ArtController@newArt' ]);
   Route::post('/art/addArt', 				        ['as' => 'addArt', 			   'uses' => 'ArtController@addArt']);
   Route::get('/art/buy/{art_id}',           ['as' => 'buynow',			   'uses' => 'ArtController@buyNow' ]);
 
-  Route::get('/art',			              	['as' => 'overview',			 'uses' => 'MainController@overview' ]);
-  Route::get('/art/{filter}/{value}',    	['as' => 'overviewFilter',	'uses' => 'MainController@overviewFilter' ]);
-  Route::get('/art/style/{style}',			  ['as' => 'overviewStyle',	 'uses' => 'MainController@filterStyle' ]);
-  Route::get('/art/price/{price}',			  ['as' => 'overviewPrice',	 'uses' => 'MainController@filterPrice' ]);
-  Route::get('/art/era/{era}',			      ['as' => 'overviewEra',	   'uses' => 'MainController@filterEra' ]);
-  Route::get('/art/when/{when}',			    ['as' => 'overviewWhen',	 'uses' => 'MainController@filterWhen' ]);
-  Route::post('/art/search',	                    ['as' => 'search',			   'uses' => 'MainController@search' ]);
-  Route::get('/art/search/{filter}/{value}',      ['as' => 'searchFilter',			   'uses' => 'MainController@searchFiltert' ]);
-
 });
+
+Route::get('/art',			              	        ['as' => 'overview',			 'uses' => 'MainController@overview' ]);
+Route::get('art/detail/{id}', 			            ['as' => 'detail',			   'uses' => 'ArtController@getDetail' ]);
+Route::get('/art/{filter}/{value}',    	        ['as' => 'overviewFilter',	'uses' => 'MainController@overviewFilter' ]);
+Route::get('/art/style/{style}',			          ['as' => 'overviewStyle',	 'uses' => 'MainController@filterStyle' ]);
+Route::get('/art/price/{price}',			          ['as' => 'overviewPrice',	 'uses' => 'MainController@filterPrice' ]);
+Route::get('/art/era/{era}',			              ['as' => 'overviewEra',	   'uses' => 'MainController@filterEra' ]);
+Route::get('/art/when/{when}',			            ['as' => 'overviewWhen',	 'uses' => 'MainController@filterWhen' ]);
+Route::post('/art/search',	                    ['as' => 'search',			   'uses' => 'MainController@search' ]);
+Route::get('/art/search/{filter}/{value}',      ['as' => 'searchFilter',			   'uses' => 'MainController@searchFiltert' ]);
 
 
 // cronjob tests
@@ -88,6 +96,6 @@ use Illuminate\Support\Facades\Mail;
 Route::get('/mail',function(){
 
 		Mail::send('email.test', ['name' => 'jonas'], function($message){
-			$message->to('jonasvanreet@gmail.com','test')->subject('welcome!');
+			$message->to('jonasvanreeth@gmail.com','test')->subject('welcome!');
 		});
 });

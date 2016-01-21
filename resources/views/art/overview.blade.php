@@ -6,12 +6,14 @@
 
 
 @section('container')
-@if(isset($path))
-  @include('layout.header',['onePiece' => $onePiece, 'path' => $path])
-@else
-  @include('layout.header',['onePiece' => $onePiece])
-@endif
-
+  @if($onePiece !='empty')
+      @include('layout.header',['art_id' => $art->id,'onePiece' => $onePiece])
+    @if(isset($path))
+      @include('layout.header',['onePiece' => $onePiece, 'path' => $path])
+    @else
+      @include('layout.header',['onePiece' => $onePiece])
+    @endif
+  @endif
 
 <div class="related row">
   <div class="col-md-offset-2 col-md-8 row">

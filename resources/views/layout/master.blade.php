@@ -32,7 +32,7 @@
               <li><a href="/logout"> {!! trans('master.logout') !!}</a></li>
             @else
               <li><a href="{{ url('auth/login') }}"> login</a></li>
-              <li><a href="{{ url('auth/register') }}"> {!! trans('master.register') !!}</a></li>
+              <li><a href="{{ url('/password/reset') }}"> reset</a></li>
             @endif
           </ul>
           <div class="col-md-2">
@@ -83,71 +83,72 @@
         <div class="col-md-3">
           <ul class="nav nav-pills nav-stacked">
             <li><p class="footerTitles">help</p></li>
-            <li><a href="#">{!! trans('master.login') !!}</a></li>
-            <li><a href="#">{!! trans('master.register') !!}</a></li>
+            <li><a href="{{ url('auth/login') }}">{!! trans('master.login') !!}</a></li>
+            <li><a href="{{ url('auth/register') }}">{!! trans('master.register') !!}</a></li>
+            <li><a href="{{ url('auth/register') }}">{!! trans('master.forget') !!}</a></li>
           </ul>
           <ul class="nav nav-pills nav-stacked">
             <li><p class="footerTitles">help</p></li>
             <li><a href="#">Terms of Service</a></li>
             <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">FAQ</a></li>
-            <li><a href="#">Contact Us</a></li>
+            <li><a href="URL::route('faq')">FAQ</a></li>
+            <li><a href="URL::route('contact')">Contact Us</a></li>
             <li><a href="#">About Us</a></li>
           </ul>
           <ul class="nav nav-pills nav-stacked">
             <li><p class="footerTitles">{!! trans('master.languages') !!}</p></li>
-            <li><a href="#">Nederlands</a></li>
-            <li><a href="#">English</a></li>
+            <li><a href="{{ URL::route('language', array('lng' => 'nl')) }}">Nederlands</a></li>
+            <li><a href="{{ URL::route('language', array('lng' => 'en')) }}">English</a></li>
           </ul>
         </div>
         <div class="col-md-3">
           <ul class="nav nav-pills nav-stacked">
             <li><p class="footerTitles">{!! trans('styles.style') !!}</p></li>
-            <li><a href="{{ URL::route('overviewStyle', ['style'=> 1]) }}">{!! trans('styles.Abstract') !!}</a></li>
-            <li><a href="{{ URL::route('overviewStyle', ['style'=> 2]) }}">{!! trans('styles.African') !!}</a></li>
-            <li><a href="{{ URL::route('overviewStyle', ['style'=> 3]) }}">{!! trans('styles.Asian') !!}</a></li>
-            <li><a href="{{ URL::route('overviewStyle', ['style'=> 4]) }}">{!! trans('styles.Cemceptual') !!}</a></li>
-            <li><a href="{{ URL::route('overviewStyle', ['style'=> 5]) }}">{!! trans('styles.Contemporary') !!}</a></li>
-            <li><a href="{{ URL::route('overviewStyle', ['style'=> 6]) }}">{!! trans('styles.Emerging') !!}</a></li>
-            <li><a href="{{ URL::route('overviewStyle', ['style'=> 7]) }}">{!! trans('styles.Figurative') !!}</a></li>
-            <li><a href="{{ URL::route('overviewStyle', ['style'=> 8]) }}">{!! trans('styles.Middle') !!}</a></li>
-            <li><a href="{{ URL::route('overviewStyle', ['style'=> 9]) }}">{!! trans('styles.Mini') !!}</a></li>
-            <li><a href="{{ URL::route('overviewStyle', ['style'=> 10]) }}">{!! trans('styles.Modern') !!}</a></li>
-            <li><a href="{{ URL::route('overviewStyle', ['style'=> 11]) }}">{!! trans('styles.Pop') !!}</a></li>
-            <li><a href="{{ URL::route('overviewStyle', ['style'=> 12]) }}">{!! trans('styles.Urban') !!}</a></li>
-            <li><a href="{{ URL::route('overviewStyle', ['style'=> 13]) }}">{!! trans('styles.Vintage') !!}</a></li>
+            <li><a href="{{ URL::route('overviewFilter', ['filter'=>'style', 'value'=> 1]) }}">{!! trans('styles.Abstract') !!}</a></li>
+            <li><a href="{{ URL::route('overviewFilter', ['filter'=>'style', 'value'=> 2]) }}">{!! trans('styles.African') !!}</a></li>
+            <li><a href="{{ URL::route('overviewFilter', ['filter'=>'style', 'value'=> 3]) }}">{!! trans('styles.Asian') !!}</a></li>
+            <li><a href="{{ URL::route('overviewFilter', ['filter'=>'style', 'value'=> 4]) }}">{!! trans('styles.Cemceptual') !!}</a></li>
+            <li><a href="{{ URL::route('overviewFilter', ['filter'=>'style', 'value'=> 5]) }}">{!! trans('styles.Contemporary') !!}</a></li>
+            <li><a href="{{ URL::route('overviewFilter', ['filter'=>'style', 'value'=> 6]) }}">{!! trans('styles.Emerging') !!}</a></li>
+            <li><a href="{{ URL::route('overviewFilter', ['filter'=>'style', 'value'=> 7]) }}">{!! trans('styles.Figurative') !!}</a></li>
+            <li><a href="{{ URL::route('overviewFilter', ['filter'=>'style', 'value'=> 8]) }}">{!! trans('styles.Middle') !!}</a></li>
+            <li><a href="{{ URL::route('overviewFilter', ['filter'=>'style', 'value'=> 9]) }}">{!! trans('styles.Mini') !!}</a></li>
+            <li><a href="{{ URL::route('overviewFilter', ['filter'=>'style', 'value'=> 10]) }}">{!! trans('styles.Modern') !!}</a></li>
+            <li><a href="{{ URL::route('overviewFilter', ['filter'=>'style', 'value'=> 11]) }}">{!! trans('styles.Pop') !!}</a></li>
+            <li><a href="{{ URL::route('overviewFilter', ['filter'=>'style', 'value'=> 12]) }}">{!! trans('styles.Urban') !!}</a></li>
+            <li><a href="{{ URL::route('overviewFilter', ['filter'=>'style', 'value'=> 13]) }}">{!! trans('styles.Vintage') !!}</a></li>
           </ul>
            <ul class="nav nav-pills nav-stacked">
             <li><p class="footerTitles">{!! trans('styles.style') !!}</p></li>
-            <li><a href="{{ URL::route('overviewStyle', ['style'=> 14]) }}">{!! trans('styles.Design') !!}</a></li>
-            <li><a href="{{ URL::route('overviewStyle', ['style'=> 15]) }}">{!! trans('styles.Paintings') !!}</a></li>
-            <li><a href="{{ URL::route('overviewStyle', ['style'=> 16]) }}">{!! trans('styles.Photographs') !!}</a></li>
-            <li><a href="{{ URL::route('overviewStyle', ['style'=> 17]) }}">{!! trans('styles.Prints') !!}</a></li>
-            <li><a href="{{ URL::route('overviewStyle', ['style'=> 18]) }}">{!! trans('styles.Sculpture') !!}</a></li>
+            <li><a href="{{ URL::route('overviewFilter', ['filter'=>'style', 'value'=> 14]) }}">{!! trans('styles.Design') !!}</a></li>
+            <li><a href="{{ URL::route('overviewFilter', ['filter'=>'style', 'value'=> 15]) }}">{!! trans('styles.Paintings') !!}</a></li>
+            <li><a href="{{ URL::route('overviewFilter', ['filter'=>'style', 'value'=> 16]) }}">{!! trans('styles.Photographs') !!}</a></li>
+            <li><a href="{{ URL::route('overviewFilter', ['filter'=>'style', 'value'=> 17]) }}">{!! trans('styles.Prints') !!}</a></li>
+            <li><a href="{{ URL::route('overviewFilter', ['filter'=>'style', 'value'=> 18]) }}">{!! trans('styles.Sculpture') !!}</a></li>
           </ul>
         </div>
         <div class="col-md-3">
           <ul class="nav nav-pills nav-stacked">
             <li><p class="footerTitles">{!! trans('master.price') !!}</p></li>
-            <li><a href="#">{!! trans('master.up') !!} 5,000</a></li>
-            <li><a href="#">5,000-10,000</a></li>
-            <li><a href="#">10,000-25,000</a></li>
-            <li><a href="#">25,000-50,000</a></li>
-            <li><a href="#">50,000-100,000</a></li>
-            <li><a href="#">{!! trans('master.above') !!}</a></li>
+            <li><a href="{{ URL::route('overviewFilter', ['filter'=>'price', 'value'=> '5000']) }}">{!! trans('master.up') !!} 5,000</a></li>
+            <li><a href="{{ URL::route('overviewFilter', ['filter'=>'price', 'value'=> '10000']) }}">5,000-10,000</a></li>
+            <li><a href="{{ URL::route('overviewFilter', ['filter'=>'price', 'value'=> '25000']) }}">10,000-25,000</a></li>
+            <li><a href="{{ URL::route('overviewFilter', ['filter'=>'price', 'value'=> '50000']) }}">25,000-50,000</a></li>
+            <li><a href="{{ URL::route('overviewFilter', ['filter'=>'price', 'value'=> '100000']) }}">50,000-100,000</a></li>
+            <li><a href="{{ URL::route('overviewFilter', ['filter'=>'price', 'value'=> 'up']) }}">{!! trans('master.above') !!}</a></li>
           </ul>
           <ul class="nav nav-pills nav-stacked">
             <li><p class="footerTitles">{!! trans('master.era') !!}</p></li>
-            <li><a href="#">{!! trans('master.pre') !!}</a></li>
-            <li><a href="#">1940s-1950s</a></li>
-            <li><a href="#">1960s-1980s</a></li>
-            <li><a href="#">1980s-{!! trans('master.present') !!}</a></li>
+            <li><a href="{{ URL::route('overviewFilter', ['filter'=>'era', 'value'=> 1]) }}">{!! trans('master.pre') !!}</a></li>
+            <li><a href="{{ URL::route('overviewFilter', ['filter'=>'era', 'value'=> 2]) }}">1940s-1950s</a></li>
+            <li><a href="{{ URL::route('overviewFilter', ['filter'=>'era', 'value'=> 3]) }}">1960s-1980s</a></li>
+            <li><a href="{{ URL::route('overviewFilter', ['filter'=>'era', 'value'=> 4]) }}">1980s-{!! trans('master.present') !!}</a></li>
           </ul>
           <ul class="nav nav-pills nav-stacked">
             <li><p class="footerTitles">{!! trans('master.ending') !!}</p></li>
-            <li><a href="#">{!! trans('master.this') !!}</a></li>
-            <li><a href="#">{!! trans('master.newly') !!}</a></li>
-            <li><a href="#">{!! trans('master.now') !!}</a></li>
+            <li><a href="{{ URL::route('overviewFilter', ['filter'=>'when', 'value'=> 'weekend']) }}">{!! trans('master.this') !!}</a></li>
+            <li><a href="{{ URL::route('overviewFilter', ['filter'=>'when', 'value'=> 'new']) }}">{!! trans('master.newly') !!}</a></li>
+            <li><a href="{{ URL::route('overviewFilter', ['filter'=>'when', 'value'=> 'now']) }}">{!! trans('master.now') !!}</a></li>
           </ul>
         </div>
         <div class="col-md-3">

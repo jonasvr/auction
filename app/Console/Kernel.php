@@ -36,32 +36,35 @@ class Kernel extends ConsoleKernel
 
 
         $today = Carbon::today();
+        //alle auctions ophalen die eindigen
         $arts = Art::where('ending',"<",$today)
                     ->where('sold',0)
                     ->get();
 
-            //dd($arts);
+          // alle bidders afgaan
         foreach ($arts as $art) {
           $bidder = bid::where('bid',$art->highest())
                           ->where('art_id',$art->id)
                           ->select('user_id','bid')
                           ->first();
-          $piece =Art::find($art->id);
-            if(!$bidder)
+              if(!$bidder) //als er geen bidders zijn
             {
               $art->sold_for     = 0;
               $art->sold_to      = 0;
-              $this->notification($art->id,0);
+              $input                  = new notification;
+              $input->user_id         = $art->user_id;
+              $input->notification    = $bidder->title . " hasn't been sold before closing.";
+              $input->save();
             }
             else
             {
               $art->sold_for     = $bidder->bid;
               $art->sold_to      = $bidder->user_id;
-              $this->notification($art->id,$bidder->user_id);
+              $this->notification($art->id,$bidder->user_id); //melding sturen naar alle bieders/geintresseerde die het niet verkregen
 
               $input              = new notification;
               $input->user_id     = $bidder->user_id;
-              $input->notification    = $piece->title . " is yours for ".$bidder->bid."euro";
+              $input->notification    = $art->title . " is yours for ".$bidder->bid."euro"; //
               $input->save();
             }
               $art->sold         = 1;
@@ -69,7 +72,7 @@ class Kernel extends ConsoleKernel
               watchlist::where('art_id',$art->id)->delete();
               $art->save();
         }
-      })->dailyAt('00:00');
+      })->dailyAt('00:01');
     }
 
 
