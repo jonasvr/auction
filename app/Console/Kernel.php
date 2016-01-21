@@ -43,7 +43,7 @@ class Kernel extends ConsoleKernel
 
           // alle bidders afgaan
         foreach ($arts as $art) {
-          $bidder = bid::where('bid',$art->highest())
+              $bidder = bid::where('bid',$art->highest())
                           ->where('art_id',$art->id)
                           ->select('user_id','bid')
                           ->first();
@@ -85,8 +85,8 @@ class Kernel extends ConsoleKernel
                     ->get();
       foreach($bidders as $bidder)
       {
-        $input              = new notification;
-        $input->user_id     = $bidder->user_id;
+        $input                   = new notification;
+        $input->user_id          = $bidder->user_id;
         $input->notification     = $bidder->title . " is sold.";
         $input->save();
       }
@@ -99,8 +99,8 @@ class Kernel extends ConsoleKernel
 
       foreach($watchlist as $list)
       {
-        $input              = new notification;
-        $input->user_id     = $list->user_id;
+        $input                  = new notification;
+        $input->user_id         = $list->user_id;
         $input->notification    = $list->title . " from your watchlist is sold.";
         $input->save();
       }

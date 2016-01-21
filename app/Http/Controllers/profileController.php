@@ -20,9 +20,6 @@ class profileController extends Controller
 {
     public function profile()
     {
-      // $notifications = user::find(Auth::user()->id)->notifications();
-      // dd($notifications);
-
       $notifications = notification::where('user_id',Auth::user()->id)->get();
       return View('profile.profile', compact('notifications'));
     }
@@ -36,8 +33,8 @@ class profileController extends Controller
     public function checknoti()
     {
       $notifications = notification::where('user_id',Auth::user()->id)->get();
-
-      if(!empty($notifications))
+      //dd(empty($notifications));
+      if($notifications->count())
       {
         return response()->json(1);
       }
