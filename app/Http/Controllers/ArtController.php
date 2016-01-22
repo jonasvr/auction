@@ -73,8 +73,8 @@ class ArtController extends Controller
         $input->birth                = $data['birth'];
         $input->death                = $data['death'];
         $input->price                = $data['price'];
-        $input->price                = $data['min'];
-        $input->price                = $data['max'];
+        $input->min                  = $data['min'];
+        $input->max                  = $data['max'];
         $input->ending               = $ending;
         $input->save();
 
@@ -137,8 +137,11 @@ class ArtController extends Controller
         $watchlist = watchlist::where('art_id',$id)
                                 ->where('user_id',Auth::user()->id)
                                 ->first();
-
-        return View('art.detail', compact('art','headpicture','pictures','watchlist','nrbids','duration','onePiece','related','relDuration'));
+        $added             = new \DateTime($art->created_at);
+        $added = $added->format( 'F j Y');
+        $shortdesc = implode(' ', array_slice(explode(' ', $art->description), 0, 20)) . "..."; 
+        //->format('l jS \\of F Y h:i:s A');         // Thursday 25th of December 1975 02:15:16 PM
+        return View('art.detail', compact('shortdesc','added','art','headpicture','pictures','watchlist','nrbids','duration','onePiece','related','relDuration'));
     }
 
     public function bid(Request $request)

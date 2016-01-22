@@ -30,10 +30,10 @@ class addArtRequest extends Request
             'condition'             => 'required',
             'dimensions'            => 'required',
             'artist'                => 'required',
-            'artyear'               => 'numeric|size:4',
+            'artyear'               => 'digits:4',
 
-            'death'                 => 'numeric|size:4',
-            'birth'                 => 'numeric|size:4',
+            'death'                 => 'digits:4',
+            'birth'                 => 'digits:4',
             'min'                   => 'required|numeric',
             'max'                   => 'required|numeric',
             'price'                 => 'required|numeric',

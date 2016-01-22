@@ -122,13 +122,13 @@
       <div class="form-group">
            {!! Form::label('min', trans('profile.min'), array('class' => 'col-sm-3  control-label')) !!}
            <div class="col-sm-9">
-             {!! Form::text('creation_y','',array('class' => 'form-control')) !!}
+             {!! Form::text('min','',array('class' => 'form-control')) !!}
            </div>
          </div>
        <div class="form-group">
             {!! Form::label('max', trans('profile.max'), array('class' => 'col-sm-3  control-label')) !!}
             <div class="col-sm-9">
-              {!! Form::text('creation_y','',array('class' => 'form-control')) !!}
+              {!! Form::text('max','',array('class' => 'form-control')) !!}
             </div>
           </div>
       <div class="form-group">

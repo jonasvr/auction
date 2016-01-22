@@ -13,73 +13,73 @@ class StyleTableSeeder extends Seeder
     public function run()
     {
         DB::table('styles');
-        
+
             $style                	= new Style;
-            $style->name          	= "Abstract";        
+            $style->name          	= "Abstract";
             $style->save();
 
             $style                	= new Style;
-            $style->name          	= "African";        
+            $style->name          	= "African";
             $style->save();
 
             $style                	= new Style;
-            $style->name          	= "Asian";        
+            $style->name          	= "Asian";
             $style->save();
 
             $style                	= new Style;
-            $style->name          	= "Cemceptual";        
+            $style->name          	= "Cemceptual";
             $style->save();
 
             $style                	= new Style;
-            $style->name          	= "Emerging";        
+            $style->name          	= "Emerging";
             $style->save();
 
             $style                	= new Style;
-            $style->name          	= "Figurative";        
+            $style->name          	= "Figurative";
             $style->save();
 
             $style                	= new Style;
-            $style->name          	= "Middle";        
+            $style->name          	= "Middle";
             $style->save();
 
             $style                	= new Style;
-            $style->name          	= "Minimaism";        
+            $style->name          	= "Mini";        
             $style->save();
 
             $style                	= new Style;
-            $style->name          	= "Modern";        
+            $style->name          	= "Modern";
             $style->save();
 
             $style                	= new Style;
-            $style->name          	= "Pop";        
+            $style->name          	= "Pop";
             $style->save();
 
             $style                	= new Style;
-            $style->name          	= "Urban";        
+            $style->name          	= "Urban";
             $style->save();
 
             $style                	= new Style;
-            $style->name          	= "Vintage";        
+            $style->name          	= "Vintage";
             $style->save();
 
             $style                	= new Style;
-            $style->name          	= "Design";        
+            $style->name          	= "Design";
             $style->save();
 
             $style                	= new Style;
-            $style->name          	= "Paintings";        
+            $style->name          	= "Paintings";
             $style->save();
 
             $style                	= new Style;
-            $style->name          	= "Photographs";        
+            $style->name          	= "Photographs";
             $style->save();
 
             $style                	= new Style;
-            $style->name          	= "Prints";        
+            $style->name          	= "Prints";
             $style->save();
 
             $style                	= new Style;
-            $style->name          	= "Sculpture";        
+            $style->name          	= "Sculpture";
             $style->save();
     }
 }

@@ -32,7 +32,7 @@
               <li><a href="/logout"> {!! trans('master.logout') !!}</a></li>
             @else
               <li><a href="{{ url('auth/login') }}"> login</a></li>
-              <li><a href="{{ url('/password/reset') }}"> reset</a></li>
+              <li><a href="{{ url('auth/register') }}">{!! trans('master.register') !!}</a></li>
             @endif
           </ul>
           <div class="col-md-2">
@@ -67,7 +67,7 @@
             @endforeach
           </div>
         @endif
-        @if (!empty($success))
+        @if (isset($success))
           <div class="alert alert-success">
             {{ $success }}
           </div>
@@ -85,7 +85,7 @@
             <li><p class="footerTitles">help</p></li>
             <li><a href="{{ url('auth/login') }}">{!! trans('master.login') !!}</a></li>
             <li><a href="{{ url('auth/register') }}">{!! trans('master.register') !!}</a></li>
-            <li><a href="{{ url('auth/register') }}">{!! trans('master.forget') !!}</a></li>
+            <li><a href="{{ url('auth/reset') }}">reset</a></li>
           </ul>
           <ul class="nav nav-pills nav-stacked">
             <li><p class="footerTitles">help</p></li>

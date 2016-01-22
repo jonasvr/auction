@@ -49,21 +49,21 @@
         <!-- data rechts -->
         <div class="col-md-3 text-right">
           <h3 class="text-capitalize"> {{$art->title}}</h3>
-          <p class="blue-text">
+          {{-- <p class="blue-text">
             adres
-          </p>
+          </p> --}}
 
           <p @if( $duration->d < 1) class="red-text" @else class="green-text" @endif>
             {{ $duration->d }}d {{ $duration->h }}u {{ $duration->i }}m {{ trans('detail.left') }}
             <div id="clockdiv"></div>
           </p>
 
-          <p>September 09, 2013, 13:00 p.m. (EST)</p>
+          <p>{{ $added }}</p>
           <hr />
           <p class="info-block">
-              Lorem ipsum dolor sit amet, ut duo odio electram cotidieque, ridens placerat complectitur
+              {{ $shortdesc }}
           </p>
-          <a class="black-link" href="#">
+          <a class="black-link" href="#description">
             <strong>
               <u>
                 {!! trans('detail.more') !!}
@@ -77,7 +77,7 @@
           @if(Auth::user()->id != $art->user_id)
           <p class="blue-text">
             {!! trans('detail.estimated') !!} <br />
-            {{-- <span class="price"> {{ €$art->min }} - €{{ $art->max }}</span><br /> --}}
+            <span class="price"> €{{ $art->min }} - €{{ $art->max }}</span><br />
             <a class="green-text" href="{{ URL::route('buynow', ['art_id'=> $art->id]) }}"> <u>{!! trans('detail.buy',['askingprice' => $art->price]) !!} </u></a>
           </p>
           <p>{!! trans('detail.bid') !!}?</p>
@@ -110,7 +110,7 @@
         </div>
     </div>
 
-    <div class="row detail-Description-enCo text-left">
+    <div id="description" class="row detail-Description-enCo text-left">
       <!-- description condition -->
       <div class="col-md-offset-2 col-md-6">
 
@@ -176,38 +176,4 @@
     @endforeach
     </div>
   </div>
-@endsection
-@section('js')
-  <script type="text/javascript">
-  $(document).ready(function(){
-    function getTimeRemaining(endtime){
-      var days    = <?php echo $duration->d; ?>;
-      var hours   = <?php echo $duration->h; ?>;
-      var minutes = <?php echo $duration->i; ?>;
-    return {
-      'days': days,
-      'hours': hours,
-      'minutes': minutes
-    };
-  }
-
-  function initializeClock(id){
-    var clock = document.getElementById(id);
-    var timeinterval = setInterval(function(){
-      var t = getTimeRemaining();
-      clock.innerHTML = 'days: ' + t.days + '<br>' +
-                        'hours: '+ t.hours + '<br>' +
-                        'minutes: ' + t.minutes;
-      if(t.total<=0){
-        clearInterval(timeinterval);
-      }
-    },60000);
-  }
-
-  initializeClock('clockdiv');
-  });
-
-
-  </script>
-
 @endsection
