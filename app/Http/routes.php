@@ -56,6 +56,9 @@ Route::get('/contact/{art_id}/{title}',     ['as' => 'artcontact', 		 'uses' => 
 Route::post('/contact', 				            ['as' => 'confirmContact', 'uses' => 'ContactController@contact']);
 
 Route::group(['middleware' => 'auth'], function () {
+  // Password reset link request routes...
+  Route::get('update', 'UpdatePasswordController@getUpdate');
+  Route::post('update', 'UpdatePasswordController@postUpdate');
 
   Route::get('watchlist/addToWList/{art_id}',	['as' => 'addToWl',			   'uses' => 'ProfileController@addToWatchList']);
 	Route::get('watchlist/{art_id}',  					['as' => 'deleteWL', 			 'uses' => 'ProfileController@deleteFromWatchList']);

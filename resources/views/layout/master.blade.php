@@ -85,7 +85,11 @@
             <li><p class="footerTitles">help</p></li>
             <li><a href="{{ url('auth/login') }}">{!! trans('master.login') !!}</a></li>
             <li><a href="{{ url('auth/register') }}">{!! trans('master.register') !!}</a></li>
-            <li><a href="{{ url('/password/email') }}">reset</a></li>
+          @if(!Auth::check())
+            <li><a href="{{ url('/password/email') }}">reset pass</a></li>
+          @else
+          <li><a href="{{ url('update') }}">update pass</a></li>
+          @endif
           </ul>
           <ul class="nav nav-pills nav-stacked">
             <li><p class="footerTitles">help</p></li>
