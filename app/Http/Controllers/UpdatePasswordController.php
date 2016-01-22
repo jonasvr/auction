@@ -25,7 +25,7 @@ class UpdatePasswordController extends Controller
           'old_password' => 'required',
           'password'     => 'required|confirmed|min:6',
       ]);
-
+//https://laravel.com/docs/master/hashing
       $user = Auth::user();
       if (Hash::check($request->old_password, $user->password)) {
         $user->password = Hash::make($request->password);

@@ -65,7 +65,7 @@ class Kernel extends ConsoleKernel
 
               $input              = new notification;
               $input->user_id     = $bidder->user_id;
-              $input->notification    = $art->title . " is yours for ".$bidder->bid."euro"; //
+              $input->notification    = $art->title . " is yours for ".$bidder->bid." euro"; //
               $input->save();
             }
               $art->sold         = 1;
