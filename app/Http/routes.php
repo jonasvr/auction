@@ -85,17 +85,3 @@ Route::get('/art/era/{era}',			              ['as' => 'overviewEra',	   'uses' =
 Route::get('/art/when/{when}',			            ['as' => 'overviewWhen',	 'uses' => 'MainController@filterWhen' ]);
 Route::post('/art/search',	                    ['as' => 'search',			   'uses' => 'MainController@search' ]);
 Route::get('/art/search/{filter}/{value}',      ['as' => 'searchFilter',			   'uses' => 'MainController@searchFiltert' ]);
-
-
-// cronjob tests
-Route::get('/cron',      ['as' => 'cron',			   'uses' => 'CronsController@index' ]);
-// mail tests
-
-
-use Illuminate\Support\Facades\Mail;
-Route::get('/mail',function(){
-
-		Mail::send('email.test', ['name' => 'jonas'], function($message){
-			$message->to('jonasvanreeth@gmail.com','test')->subject('welcome!');
-		});
-});

@@ -11,6 +11,7 @@ use Carbon\Carbon;
 use App\Bid;
 use App\watchlist;
 use App\notification;
+use Illuminate\Support\Facades\Mail;
 
 
 class Kernel extends ConsoleKernel
@@ -72,6 +73,9 @@ class Kernel extends ConsoleKernel
               watchlist::where('art_id',$art->id)->delete();
               $art->save();
         }
+        Mail::send('email.test', ['name' => 'jonas'], function($message){
+          $message->to('jonasvanreeth@gmail.com','test')->subject('welcome!');
+        });
       })->dailyAt('00:01');
     }
 

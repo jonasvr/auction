@@ -85,7 +85,7 @@
             <li><p class="footerTitles">help</p></li>
             <li><a href="{{ url('auth/login') }}">{!! trans('master.login') !!}</a></li>
             <li><a href="{{ url('auth/register') }}">{!! trans('master.register') !!}</a></li>
-            <li><a href="{{ url('auth/reset') }}">reset</a></li>
+            <li><a href="{{ url('/password/email') }}">reset</a></li>
           </ul>
           <ul class="nav nav-pills nav-stacked">
             <li><p class="footerTitles">help</p></li>
