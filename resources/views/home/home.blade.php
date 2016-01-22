@@ -39,34 +39,35 @@
     <span class="sr-only">Next</span>
   </a>
 </div>
-
+@if(!Auth::check())
 <div id="intro">
  <p class="introTitle text-center">{!! trans('home.howdoesitwork') !!}</p>
   <div class="row">
 
     <div class="col-md-offset-2 col-md-2" class="img-responsive">
-      <img src="img/intro1.png" alt="{!! trans('home.signUp') !!}">
+      <a href="{{ url('auth/register') }}"><img src="img/intro1.png" alt="{!! trans('home.signUp') !!}"></a>
       <h3>{!! trans('home.signUp') !!}  </h3>
       <div class="introText">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+        Sign up here, it's free!
       </div>
     </div>
     <div class="col-md-offset-1 col-md-2" class="img-responsive">
       <img src="img/intro2.png" alt=" {!! trans('home.makeDeals') !!}">
       <h3> {!! trans('home.makeDeals') !!}   </h3>
       <div class="introText">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+        Place bids or buy with the asking price
       </div>
     </div>
     <div class="col-md-offset-1 col-md-2" class="img-responsive">
        <img src="img/intro3.png" alt="{!! trans('home.everyoneHappy') !!} ">
        <h3> {!! trans('home.everyoneHappy') !!}  </h3>
       <div class="introText">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+      Full refund if not correctly arrived.
       </div>
     </div>
   </div>
 </div>
+@endif
 
 @if(isset($popular[2]))
 

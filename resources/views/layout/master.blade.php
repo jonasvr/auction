@@ -67,7 +67,7 @@
             @endforeach
           </div>
         @endif
-        @if (isset($success))
+        @if(isset($success))
           <div class="alert alert-success">
             {{ $success }}
           </div>

@@ -160,7 +160,7 @@
 
     @foreach($related as $key => $relatedArt)
     <div class="col-md-3">
-      <img class="img-responsive" src="/{{ $relatedArt->path }}">
+      <img class="img-responsive" src="/{{ $relatedArt->path }}" alt=" {{$relatedArt->title}}">
       <div class="row">
         <div class="col-md-offset-1 related-info">
           <p class="blue-text">{{ $relatedArt->creation_y }}, {{ $relatedArt->artist }}</p>

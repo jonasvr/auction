@@ -139,7 +139,7 @@ class ArtController extends Controller
                                 ->first();
         $added             = new \DateTime($art->created_at);
         $added = $added->format( 'F j Y');
-        $shortdesc = implode(' ', array_slice(explode(' ', $art->description), 0, 20)) . "..."; 
+        $shortdesc = implode(' ', array_slice(explode(' ', $art->description), 0, 20)) . "...";
         //->format('l jS \\of F Y h:i:s A');         // Thursday 25th of December 1975 02:15:16 PM
         return View('art.detail', compact('shortdesc','added','art','headpicture','pictures','watchlist','nrbids','duration','onePiece','related','relDuration'));
     }
@@ -172,7 +172,7 @@ class ArtController extends Controller
         }
         else
         {
-            return redirect()->back()->withErrors(['U moet hoger bieden, er is al '.$bid . ' geboden']);
+            return redirect()->back()->withErrors(['U moet hoger bieden, er is al €'.$bid . ' geboden']);
         }
     }
 

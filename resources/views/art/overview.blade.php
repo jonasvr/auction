@@ -7,7 +7,6 @@
 
 @section('container')
   @if($onePiece !='empty')
-      @include('layout.header',['art_id' => $art->id,'onePiece' => $onePiece])
     @if(isset($path))
       @include('layout.header',['onePiece' => $onePiece, 'path' => $path])
     @else
@@ -81,7 +80,7 @@
     @foreach($random_art as $key => $art)
     {{-- {{ dd($picture) }} --}}
     <div class="col-md-3 pieceOverview">
-      <img class="img-responsive" src="{{ url() }}/{{$picture[$key][0]->path }}">
+      <img class="img-responsive" src="{{ url() }}/{{$picture[$key][0]->path }}" alt="{{ $art->title }}">
       <div class="row">
         <div class="col-md-offset-1 related-info">
           <p class="blue-text">

@@ -24,7 +24,7 @@ abstract class Controller extends BaseController
                     ->join('pictures', 'arts.id', '=', 'pictures.art_id')
                     ->select('pictures.path','arts.description','arts.title','arts.id')
                     ->first();
-      if(!empty($onepiece))
+      if(!empty($onePiece))
       {
         $onePiece->shortdesc = implode(' ', array_slice(explode(' ', $onePiece->description), 0, 25)) . "..."; }
       else{$onePiece = 'empty';}
